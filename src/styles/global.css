@@ -37,7 +37,6 @@
 }
 
 @layer components {
-  @import "./animation.css";
   @import "./swiper.css";
 }
 
