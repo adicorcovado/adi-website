@@ -1,1 +1,81 @@
 @import "tailwindcss";
+
+@source "../../node_modules/preline/dist/*.js";
+@import "../../node_modules/preline/variants.css";
+
+/* Self-hosted Noto Sans fonts */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: optional;
+}
+
+@layer components {
+  @import "./animation.css";
+  @import "./swiper.css";
+}
+
+@theme {
+    /* Font Families */
+    --default-font-family: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+
+    /* Colors */
+    --color-primary-50:  #e8f1ea;
+    --color-primary-100: #b9d2be;
+    --color-primary-200: #97bd9f;
+    --color-primary-300: #689f73;
+    --color-primary-400: #4a8c58;  
+    --color-primary-500: #1d6f2e; 
+    --color-primary-600: #1a652a;
+    --color-primary-700: #154f21;
+    --color-primary-800: #103d19;
+    --color-primary-900: #0c2f13; 
+
+    --color-secondary-50:  #f1f4e8;
+    --color-secondary-100: #d4deb7;
+    --color-secondary-200: #bfce95;
+    --color-secondary-300: #a2b864;
+    --color-secondary-400: #90aa46;
+    --color-secondary-500: #749518;
+    --color-secondary-600: #6a8816;
+    --color-secondary-700: #526a11;
+    --color-secondary-800: #40520d;
+    --color-secondary-900: #313f0a;
+
+    --color-accent-50:  #e9e9ef;
+    --color-accent-100: #babacc;
+    --color-accent-200: #9999b4;
+    --color-accent-300: #6a6b91;
+    --color-accent-400: #4d4e7c;  
+    --color-accent-500: #21225b;  
+    --color-accent-600: #1e1f53;
+    --color-accent-700: #171841;
+    --color-accent-800: #121332;
+    --color-accent-900: #0e0e26;
+}

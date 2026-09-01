@@ -1,0 +1,26 @@
+/* Custom Swiper Overrides */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+/* Hide default navigation and pagination (we use custom ones) */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+/* Ensure slides maintain consistent height */
+.swiper-slide > * {
+  width: 100%;
+  height: 100%;
+}

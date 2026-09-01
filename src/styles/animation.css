@@ -1,0 +1,93 @@
+/* AOS Animations */
+/* --------------------------------- */
+
+[data-aos] {
+  opacity: 0;
+  transform: translateY(0);
+  transition: none;
+  will-change: transform, opacity, clip-path, filter;
+
+  body[data-aos-easing="reveal-ease-out"] &,
+  &[data-aos][data-aos-easing="reveal-ease-out"] {
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
+[data-aos="reveal-anim-right"] {
+  opacity: 0;
+  clip-path: inset(0 0 0 100%);
+  transform: translateX(5%);
+  transition-property: transform, opacity, clip-path;
+
+  &.aos-animate {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+[data-aos="reveal-anim-left"] {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform: translateX(-5%);
+  transition-property: transform, opacity, clip-path;
+
+  &.aos-animate {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+[data-aos="reveal-anim-top"] {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(-5%);
+  transition-property: transform, opacity, clip-path;
+
+  &.aos-animate {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+[data-aos="reveal-anim-bottom"] {
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+  transform: translateY(5%);
+  transition-property: transform, opacity, clip-path;
+
+  &.aos-animate {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+[data-aos="reveal-from-blur"] {
+  opacity: 1;
+  filter: blur(10px);
+  transition-property: filter;
+
+  &.aos-animate {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Modal Animations */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
