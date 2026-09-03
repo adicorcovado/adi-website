@@ -1,0 +1,53 @@
+---
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "inverse";
+type Size = "sm" | "md" | "lg";
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  target?: "_blank";
+  type?: "button" | "submit";
+  class?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  target,
+  type = "button",
+  class: className = "",
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500";
+
+const variants: Record<Variant, string> = {
+  primary: "bg-primary-500 text-white hover:bg-primary-600",
+  secondary: "bg-secondary-500 text-white hover:bg-secondary-600",
+  outline:
+    "border-2 border-primary-500 text-primary-600 hover:bg-primary-50",
+  ghost: "text-primary-600 hover:bg-primary-50",
+  inverse: "border-2 border-white text-white hover:bg-white/10",
+};
+
+const sizes: Record<Size, string> = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+const classes = [base, variants[variant], sizes[size], className].join(" ");
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  href={href}
+  target={target}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
+  type={!href ? type : undefined}
+  class={classes}
+>
+  <slot />
+</Tag>

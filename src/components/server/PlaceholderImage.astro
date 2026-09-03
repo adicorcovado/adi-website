@@ -1,0 +1,44 @@
+---
+interface Props {
+  label: string;
+  aspect?: string;
+  variant?: "primary" | "secondary" | "accent";
+  class?: string;
+}
+
+const {
+  label,
+  aspect = "aspect-video",
+  variant = "primary",
+  class: className = "",
+} = Astro.props;
+
+const gradients: Record<NonNullable<Props["variant"]>, string> = {
+  primary: "from-primary-300 via-primary-500 to-primary-700",
+  secondary: "from-secondary-300 via-secondary-500 to-secondary-700",
+  accent: "from-accent-300 via-accent-500 to-accent-700",
+};
+---
+
+<div
+  class={`relative flex items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${gradients[variant]} ${aspect} ${className}`}
+>
+  <svg
+    class="h-10 w-10 text-white/40 sm:h-12 sm:w-12"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="1.5"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 4.5h18M3.75 4.5v15a.75.75 0 00.75.75h15a.75.75 0 00.75-.75v-15M8.25 9.75a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+    ></path>
+  </svg>
+  <span
+    class="absolute bottom-3 left-3 rounded-full bg-black/25 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm"
+  >
+    Photo: {label}
+  </span>
+</div>

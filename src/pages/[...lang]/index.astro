@@ -1,10 +1,23 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/server/home/Hero.astro";
+import Intro from "../../components/server/home/Intro.astro";
+import Projects from "../../components/server/home/Projects.astro";
+import Corcovado from "../../components/server/home/Corcovado.astro";
+import Cta from "../../components/server/home/Cta.astro";
+import { generatePaths, getCurrentLanguage } from "../../utils/languages";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+export async function getStaticPaths() {
+  return generatePaths();
+}
+
+const lang = getCurrentLanguage(Astro.params.lang);
 ---
 
-<Layout>
-  <div>Hola</div>
+<Layout lang={lang}>
+  <Hero lang={lang} />
+  <Intro lang={lang} />
+  <Projects lang={lang} />
+  <Corcovado lang={lang} />
+  <Cta lang={lang} />
 </Layout>

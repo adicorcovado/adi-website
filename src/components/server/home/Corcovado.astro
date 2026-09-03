@@ -1,0 +1,54 @@
+---
+import Section from "../Section.astro";
+import PlaceholderImage from "../PlaceholderImage.astro";
+import Reveal from "../../client/Reveal";
+import { getTranslations } from "../../../utils/translations";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang).home.corcovado;
+---
+
+<Section id="corcovado" background="white">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <Reveal client:visible>
+      <p class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase">
+        {t.eyebrow}
+      </p>
+      <h2 class="mt-4 text-3xl font-bold text-accent-900 sm:text-4xl">
+        {t.title}
+      </h2>
+      <p class="mt-6 text-lg text-accent-700">
+        {t.body}
+      </p>
+
+      <ul class="mt-8 space-y-6">
+        {
+          t.points.map((point) => (
+            <li class="flex gap-4">
+              <span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-primary-500" />
+              <div>
+                <p class="font-brevia font-semibold text-accent-900">
+                  {point.title}
+                </p>
+                <p class="mt-1 text-accent-700">{point.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </Reveal>
+
+    <Reveal client:visible delay={0.1}>
+      <PlaceholderImage
+        label={t.imageAlt}
+        variant="accent"
+        aspect="aspect-[4/3]"
+        class="w-full"
+      />
+    </Reveal>
+  </div>
+</Section>
