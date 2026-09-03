@@ -3,46 +3,59 @@
 @source "../../node_modules/preline/dist/*.js";
 @import "../../node_modules/preline/variants.css";
 
-/* Self-hosted Noto Sans fonts */
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/NotoSans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: optional;
-}
-
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/NotoSans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: optional;
-}
-
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/NotoSans-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: optional;
-}
-
-@font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/NotoSans-ExtraBold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: optional;
-}
+/*
+ * Futura PT and Brevia are served by Adobe Fonts (Typekit) via the
+ * <link> tag in Layout.astro, which already declares the @font-face
+ * rules — no @font-face needed here. Available faces:
+ *   "futura-pt"      400 (regular), 500 (semibold)
+ *   "futura-pt-bold" 700 (bold)
+ *   "brevia"         400 (regular), 600 (semibold), 700 (bold)
+ */
 
 @layer components {
   @import "./swiper.css";
 }
 
+@layer base {
+  /* Titles/subtitles use Brevia; body copy uses Futura PT via
+     --default-font-family. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "brevia", sans-serif;
+  }
+
+  b,
+  strong,
+  .font-bold:not(:is(h1, h2, h3, h4, h5, h6)) {
+    font-family: "futura-pt-bold", sans-serif;
+  }
+
+  /* Brevia carries its own semibold/bold weights within a single
+     family, so keep it from inheriting the futura-pt-bold swap and
+     the futura-pt semibold override above. */
+  .font-brevia.font-bold {
+    font-family: "brevia", sans-serif;
+  }
+
+  .font-brevia.font-semibold {
+    font-weight: 600;
+  }
+}
+
 @theme {
     /* Font Families */
-    --default-font-family: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+    --default-font-family: "futura-pt", ui-sans-serif, system-ui, sans-serif;
+
+    /* Secondary typeface, applied via the `font-brevia` utility */
+    --font-brevia: "brevia", sans-serif;
+
+    /* futura-pt only ships regular (400) and semibold (500); bold (700)
+       is a separate family, so it's remapped to font-bold below. */
+    --font-weight-semibold: 500;
 
     /* Colors */
     --color-primary-50:  #e8f1ea;
