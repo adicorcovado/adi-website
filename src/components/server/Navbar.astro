@@ -41,7 +41,7 @@ const languages = supportedLanguages.map((code) => ({
     class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
   >
     <a href={homePath} class="flex items-center gap-2">
-      <img src="/logo-adi.png" alt="ADI Corcovado" class="h-10 w-auto" />
+      <img src="/logo-adi.png" alt="ADI Corcovado" class="h-20 w-auto" />
     </a>
 
     <nav class="hidden items-center gap-8 lg:flex">
@@ -49,7 +49,7 @@ const languages = supportedLanguages.map((code) => ({
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-semibold text-accent-900 transition-colors hover:text-primary-500"
+            class="text-lg font-semibold text-accent-900 transition-colors hover:text-primary-500"
           >
             {item.label}
           </a>
@@ -77,9 +77,14 @@ const languages = supportedLanguages.map((code) => ({
           ))
         }
       </div>
-      <Button href={cta.href} size="sm">{cta.label}</Button>
+      <Button href={cta.href} size="md">{cta.label}</Button>
     </div>
 
-    <MobileMenu client:load navItems={navItems} cta={cta} languages={languages} />
+    <MobileMenu
+      client:load
+      navItems={navItems}
+      cta={cta}
+      languages={languages}
+    />
   </div>
 </header>

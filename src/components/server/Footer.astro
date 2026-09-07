@@ -26,13 +26,15 @@ const year = new Date().getFullYear();
     <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
       <div class="sm:col-span-2 lg:col-span-2">
         <a href={homePath} class="flex items-center gap-2">
-          <img src="/logo-adi.png" alt="ADI Corcovado" class="h-12 w-auto" />
+          <img src="/logo-adi.png" alt="ADI Corcovado" class="h-20 w-auto" />
         </a>
-        <p class="mt-4 max-w-sm text-sm text-accent-200">{t.footer.tagline}</p>
+        <p class="mt-4 max-w-sm text-md text-accent-200">{t.footer.tagline}</p>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold tracking-wide text-accent-200 uppercase">
+        <h3
+          class="text-sm font-semibold tracking-wide text-accent-200 uppercase"
+        >
           {t.footer.linksTitle}
         </h3>
         <ul class="mt-4 space-y-3">
@@ -41,7 +43,7 @@ const year = new Date().getFullYear();
               <li>
                 <a
                   href={item.href}
-                  class="text-sm text-white/80 transition-colors hover:text-white"
+                  class="text-md text-white/80 transition-colors hover:text-white"
                 >
                   {item.label}
                 </a>
@@ -52,10 +54,12 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold tracking-wide text-accent-200 uppercase">
+        <h3
+          class="text-sm font-semibold tracking-wide text-accent-200 uppercase"
+        >
           {t.footer.contactTitle}
         </h3>
-        <ul class="mt-4 space-y-3 text-sm text-white/80">
+        <ul class="mt-4 space-y-3 text-md text-white/80">
           <li>{t.footer.address}</li>
           <li>
             <a href={`mailto:${t.footer.email}`} class="hover:text-white">
