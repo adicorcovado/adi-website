@@ -10,7 +10,7 @@ export const translations = {
     },
     footer: {
       tagline:
-        "A non-profit sustaining life inside Corcovado National Park — lodging, meals, and ranger support at the Sirena Station.",
+        "A non-profit sustaining life inside Corcovado National Park, lodging, meals, and ranger support at the Sirena Station.",
       linksTitle: "Explore",
       contactTitle: "Get in touch",
       address: "Sirena Ranger Station, Corcovado National Park, Costa Rica",
@@ -23,7 +23,7 @@ export const translations = {
         eyebrow: "ADI Corcovado",
         title: "Guardians of Costa Rica's last great wilderness",
         subtitle:
-          "We run the lodging, food service, and daily life of the Sirena Ranger Station deep inside Corcovado National Park — so rangers, researchers, and visitors can keep protecting one of the most biodiverse places on Earth.",
+          "We run the lodging, food service, and daily life of the Sirena Ranger Station deep inside Corcovado National Park, so rangers, researchers, and visitors can keep protecting one of the most biodiverse places on Earth.",
         primaryCta: "Support Our Work",
         secondaryCta: "See Our Projects",
         imageAlt: "Aerial view of the Corcovado rainforest canopy",
@@ -31,7 +31,7 @@ export const translations = {
       intro: {
         eyebrow: "Who we are",
         title: "A non-profit built around one remote outpost",
-        body: "ADI Corcovado is the association behind the Sirena Ranger Station — the beating heart of Corcovado National Park. Every meal served, bed made, and repair completed keeps rangers in the field and the park's rainforest, beaches, and wildlife protected for the generations to come.",
+        body: "ADI Corcovado is the association behind the Sirena Ranger Station, the beating heart of Corcovado National Park. Every meal served, bed made, and repair completed keeps rangers in the field and the park's rainforest, beaches, and wildlife protected for the generations to come.",
         imageAlt: "Volunteers and rangers outside the Sirena Station",
       },
       projects: {
@@ -70,7 +70,7 @@ export const translations = {
       corcovado: {
         eyebrow: "The park",
         title: "Inside Corcovado National Park",
-        body: "Called 'the most biologically intense place on Earth' by National Geographic, Corcovado protects one of the last great expanses of Pacific lowland rainforest in Central America — home to tapirs, scarlet macaws, all four Costa Rican monkey species, and hundreds of species found nowhere else.",
+        body: "Called 'the most biologically intense place on Earth' by National Geographic, Corcovado protects one of the last great expanses of Pacific lowland rainforest in Central America, home to tapirs, scarlet macaws, all four Costa Rican monkey species, and hundreds of species found nowhere else.",
         points: [
           {
             title: "Sirena Ranger Station",
@@ -111,7 +111,7 @@ export const translations = {
     },
     footer: {
       tagline:
-        "Una asociación sin fines de lucro que sostiene la vida dentro del Parque Nacional Corcovado — hospedaje, alimentación y apoyo a los guardaparques en la Estación Sirena.",
+        "Una asociación sin fines de lucro que sostiene la vida dentro del Parque Nacional Corcovado, hospedaje, alimentación y apoyo a los guardaparques en la Estación Sirena.",
       linksTitle: "Explorar",
       contactTitle: "Contáctanos",
       address:
@@ -125,7 +125,7 @@ export const translations = {
         eyebrow: "ADI Corcovado",
         title: "Guardianes de la última gran selva de Costa Rica",
         subtitle:
-          "Administramos el hospedaje, la alimentación y la vida diaria de la Estación Sirena en el corazón del Parque Nacional Corcovado — para que guardaparques, investigadores y visitantes puedan seguir protegiendo uno de los lugares más biodiversos del planeta.",
+          "Administramos el hospedaje, la alimentación y la vida diaria de la Estación Sirena en el corazón del Parque Nacional Corcovado, para que guardaparques, investigadores y visitantes puedan seguir protegiendo uno de los lugares más biodiversos del planeta.",
         primaryCta: "Apoya Nuestro Trabajo",
         secondaryCta: "Ver Nuestros Proyectos",
         imageAlt: "Vista aérea del dosel de la selva de Corcovado",
@@ -169,7 +169,7 @@ export const translations = {
       corcovado: {
         eyebrow: "El parque",
         title: "Dentro del Parque Nacional Corcovado",
-        body: "Descrito por National Geographic como 'el lugar biológicamente más intenso de la Tierra', Corcovado protege una de las últimas grandes extensiones de selva tropical del Pacífico en Centroamérica — hogar de dantas, lapas rojas, los cuatro monos de Costa Rica y cientos de especies que no existen en ningún otro lugar.",
+        body: "Descrito por National Geographic como 'el lugar biológicamente más intenso de la Tierra', Corcovado protege una de las últimas grandes extensiones de selva tropical del Pacífico en Centroamérica, hogar de dantas, lapas rojas, los cuatro monos de Costa Rica y cientos de especies que no existen en ningún otro lugar.",
         points: [
           {
             title: "Estación de Guardaparques Sirena",
