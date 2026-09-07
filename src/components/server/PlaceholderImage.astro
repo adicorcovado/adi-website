@@ -21,7 +21,7 @@ const gradients: Record<NonNullable<Props["variant"]>, string> = {
 ---
 
 <div
-  class={`relative flex items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${gradients[variant]} ${aspect} ${className}`}
+  class={`relative flex items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br ${gradients[variant]} ${aspect} ${className}`}
 >
   <svg
     class="h-10 w-10 text-white/40 sm:h-12 sm:w-12"

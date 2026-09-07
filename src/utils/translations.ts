@@ -46,18 +46,24 @@ export const translations = {
             description:
               "Maintaining safe, comfortable housing for park rangers, researchers, and visiting scientists stationed deep in the rainforest.",
             imageAlt: "Sirena Station lodging cabins",
+
+            image: "/images/projects/sirena-station.webp",
           },
           {
             title: "Ranger Food Service",
             description:
               "Running the kitchen and dining hall that feeds the rangers and staff who patrol and protect Corcovado every day.",
             imageAlt: "Dining hall at the Sirena Station",
+
+            image: "/images/projects/food.webp",
           },
           {
             title: "Trail & Facility Upkeep",
             description:
               "Funding the ongoing maintenance of trails, docks, and station infrastructure across one of the park's most visited zones.",
             imageAlt: "Forest trail inside Corcovado National Park",
+
+            image: "/images/projects/trail.webp",
           },
         ],
       },
@@ -142,18 +148,21 @@ export const translations = {
             description:
               "Mantenimiento de alojamiento seguro y cómodo para guardaparques, investigadores y científicos visitantes en medio de la selva.",
             imageAlt: "Cabañas de hospedaje en la Estación Sirena",
+            image: "/images/projects/sirena-station.webp",
           },
           {
             title: "Alimentación de Guardaparques",
             description:
               "Operación de la cocina y el comedor que alimenta a los guardaparques y al personal que patrulla y protege Corcovado cada día.",
             imageAlt: "Comedor en la Estación Sirena",
+            image: "/images/projects/food.webp",
           },
           {
             title: "Mantenimiento de Senderos e Instalaciones",
             description:
               "Financiamiento del mantenimiento continuo de senderos, muelles e infraestructura en una de las zonas más visitadas del parque.",
             imageAlt: "Sendero en el Parque Nacional Corcovado",
+            image: "/images/projects/trail.webp",
           },
         ],
       },

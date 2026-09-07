@@ -15,7 +15,9 @@ const t = getTranslations(lang).home.corcovado;
 <Section id="corcovado" background="white">
   <div class="grid items-center gap-12 lg:grid-cols-2">
     <Reveal client:visible>
-      <p class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase">
+      <p
+        class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase"
+      >
         {t.eyebrow}
       </p>
       <h2 class="mt-4 text-3xl font-bold text-accent-900 sm:text-4xl">
@@ -43,11 +45,10 @@ const t = getTranslations(lang).home.corcovado;
     </Reveal>
 
     <Reveal client:visible delay={0.1}>
-      <PlaceholderImage
-        label={t.imageAlt}
-        variant="accent"
-        aspect="aspect-[4/3]"
-        class="w-full"
+      <img
+        src="/images/home/wildlife.webp"
+        alt={t.imageAlt}
+        class="aspect-4/3 w-full rounded-2xl object-cover"
       />
     </Reveal>
   </div>
