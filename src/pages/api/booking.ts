@@ -129,7 +129,8 @@ export const POST: APIRoute = async ({ request }) => {
   const notificationEmail = import.meta.env.BOOKING_NOTIFICATION_EMAIL || t.footer.email;
 
   const nights = calculateNights(data.checkInDate, data.checkOutDate);
-  const pricing = calculateBookingPricing(data, data.meals, nights);
+  const sameDayTrip = data.checkInDate === data.checkOutDate;
+  const pricing = calculateBookingPricing(data, data.meals, nights, !sameDayTrip);
   const attachmentBuffer = Buffer.from(await entranceFeeProof.arrayBuffer());
 
   const resend = new Resend(resendApiKey);

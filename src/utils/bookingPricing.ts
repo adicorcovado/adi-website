@@ -82,6 +82,7 @@ export function calculateBookingPricing(
   headcounts: HeadcountTotals,
   meals: MealTotals,
   nights: number,
+  includeLodging: boolean = true,
 ): BookingPricing {
   const lodgingLines: BookingLodgingLine[] = [];
   const mealLines: BookingMealLine[] = [];
@@ -91,20 +92,22 @@ export function calculateBookingPricing(
     totalsByCurrency[currency] = (totalsByCurrency[currency] ?? 0) + amount;
   };
 
-  for (const category of HEADCOUNT_FIELDS) {
-    const count = headcounts[category];
-    if (!count) continue;
+  if (includeLodging) {
+    for (const category of HEADCOUNT_FIELDS) {
+      const count = headcounts[category];
+      if (!count) continue;
 
-    const rate = BOOKING_RATES[category];
-    const total = rate.lodgingPerNight * count * nights;
-    lodgingLines.push({
-      category,
-      currency: rate.currency,
-      count,
-      unitPrice: rate.lodgingPerNight,
-      total,
-    });
-    addToTotal(rate.currency, total);
+      const rate = BOOKING_RATES[category];
+      const total = rate.lodgingPerNight * count * nights;
+      lodgingLines.push({
+        category,
+        currency: rate.currency,
+        count,
+        unitPrice: rate.lodgingPerNight,
+        total,
+      });
+      addToTotal(rate.currency, total);
+    }
   }
 
   for (const mealType of MEAL_TYPES) {
