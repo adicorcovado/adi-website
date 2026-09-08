@@ -65,10 +65,11 @@ function renderSummaryBody(input: BuildBookingEmailInput): string {
   if (data.companyName) {
     tripDetailRows.push([shared.companyLabel, data.companyName]);
   }
+  const sameDayTrip = data.checkInDate === data.checkOutDate;
   tripDetailRows.push(
     [shared.checkInLabel, formatDate(data.checkInDate, lang)],
     [shared.checkOutLabel, formatDate(data.checkOutDate, lang)],
-    [shared.nightsLabel, String(pricing.nights)],
+    [shared.nightsLabel, sameDayTrip ? "--" : String(pricing.nights)],
   );
 
   let html = renderSectionTitle(shared.tripDetailsTitle);
