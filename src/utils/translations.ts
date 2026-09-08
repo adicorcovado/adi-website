@@ -99,6 +99,95 @@ export const translations = {
         secondaryCta: "Contact Us",
       },
     },
+    contact: {
+      hero: {
+        eyebrow: "Plan your visit",
+        title: "Contact Us",
+        subtitle:
+          "Tell us about your stay at the Sirena Ranger Station and we'll take care of the rest — lodging, meals, and park logistics.",
+      },
+      form: {
+        steps: [
+          { title: "Trip Details" },
+          { title: "Meals" },
+          { title: "Documents" },
+        ],
+        step1: {
+          title: "Trip details",
+          description:
+            "Tell us who's coming and when so we can prepare the station for your stay.",
+          fields: {
+            name: { label: "Full name", placeholder: "Jane Doe" },
+            companyName: {
+              label: "Company name",
+              placeholder: "Organization or company (optional)",
+            },
+            checkInDate: { label: "Check-in date" },
+            checkOutDate: { label: "Check-out date" },
+            adults: { label: "Number of adults" },
+            children: { label: "Number of children" },
+            guides: { label: "Number of guides" },
+            volunteers: {
+              label: "Number of Costa Rican students or volunteers",
+            },
+            researchers: {
+              label: "Number of researchers or public officials",
+            },
+          },
+        },
+        step2: {
+          title: "Meals",
+          description:
+            "Let us know how many people need each meal during the stay.",
+          mealTypes: {
+            breakfast: { title: "Breakfasts" },
+            snack: { title: "Snacks" },
+            lunch: { title: "Lunches" },
+            dinner: { title: "Dinners" },
+          },
+          fields: {
+            adults: { label: "Adults" },
+            children: { label: "Children" },
+            guides: { label: "Guides" },
+            volunteers: { label: "Students / volunteers" },
+            researchers: { label: "Researchers / officials" },
+          },
+        },
+        step3: {
+          title: "Documents",
+          description:
+            "Upload your Corcovado National Park entrance fee confirmation to complete your request.",
+          fields: {
+            file: {
+              label: "Park entrance fee confirmation",
+              helpText: "PDF or image, up to 10 MB.",
+              dropText: "Drag and drop your file here, or",
+              browseText: "browse",
+              noFileText: "No file selected",
+            },
+          },
+        },
+        buttons: {
+          back: "Back",
+          next: "Continue",
+          submit: "Submit request",
+          submitting: "Submitting…",
+        },
+        errors: {
+          nameRequired: "Please enter your full name.",
+          checkInRequired: "Please select a check-in date.",
+          checkOutRequired: "Please select a check-out date.",
+          dateOrder: "Check-out date must be on or after the check-in date.",
+          countMin: "Must be 0 or greater.",
+          fileRequired: "Please upload the entrance fee confirmation.",
+        },
+        success: {
+          title: "Request received",
+          description:
+            "Thanks! We've logged your request and will be in touch shortly to confirm the details.",
+        },
+      },
+    },
   },
   es: {
     nav: {
@@ -198,11 +287,103 @@ export const translations = {
         secondaryCta: "Contáctanos",
       },
     },
+    contact: {
+      hero: {
+        eyebrow: "Planifica tu visita",
+        title: "Contáctanos",
+        subtitle:
+          "Cuéntanos sobre tu estadía en la Estación Sirena y nosotros nos encargamos del resto: hospedaje, alimentación y logística del parque.",
+      },
+      form: {
+        steps: [
+          { title: "Detalles del viaje" },
+          { title: "Alimentación" },
+          { title: "Documentos" },
+        ],
+        step1: {
+          title: "Detalles del viaje",
+          description:
+            "Cuéntanos quién viene y cuándo para preparar la estación para tu estadía.",
+          fields: {
+            name: { label: "Nombre completo", placeholder: "Juana Pérez" },
+            companyName: {
+              label: "Nombre de la empresa",
+              placeholder: "Organización o empresa (opcional)",
+            },
+            checkInDate: { label: "Fecha de ingreso" },
+            checkOutDate: { label: "Fecha de salida" },
+            adults: { label: "Cantidad de adultos" },
+            children: { label: "Cantidad de niños" },
+            guides: { label: "Cantidad de guías" },
+            volunteers: {
+              label: "Cantidad de estudiantes costarricenses o voluntarios",
+            },
+            researchers: {
+              label: "Cantidad de investigadores o funcionarios públicos",
+            },
+          },
+        },
+        step2: {
+          title: "Alimentación",
+          description:
+            "Indícanos cuántas personas necesitan cada tiempo de comida durante la estadía.",
+          mealTypes: {
+            breakfast: { title: "Desayunos" },
+            snack: { title: "Meriendas" },
+            lunch: { title: "Almuerzos" },
+            dinner: { title: "Cenas" },
+          },
+          fields: {
+            adults: { label: "Adultos" },
+            children: { label: "Niños" },
+            guides: { label: "Guías" },
+            volunteers: { label: "Estudiantes / voluntarios" },
+            researchers: { label: "Investigadores / funcionarios" },
+          },
+        },
+        step3: {
+          title: "Documentos",
+          description:
+            "Adjunta la confirmación de pago de la tarifa de ingreso al Parque Nacional Corcovado para completar tu solicitud.",
+          fields: {
+            file: {
+              label: "Confirmación de tarifa de ingreso al parque",
+              helpText: "PDF o imagen, hasta 10 MB.",
+              dropText: "Arrastra y suelta tu archivo aquí, o",
+              browseText: "selecciónalo",
+              noFileText: "Ningún archivo seleccionado",
+            },
+          },
+        },
+        buttons: {
+          back: "Atrás",
+          next: "Continuar",
+          submit: "Enviar solicitud",
+          submitting: "Enviando…",
+        },
+        errors: {
+          nameRequired: "Por favor ingresa tu nombre completo.",
+          checkInRequired: "Por favor selecciona una fecha de ingreso.",
+          checkOutRequired: "Por favor selecciona una fecha de salida.",
+          dateOrder:
+            "La fecha de salida debe ser igual o posterior a la fecha de ingreso.",
+          countMin: "Debe ser 0 o mayor.",
+          fileRequired:
+            "Por favor adjunta la confirmación de la tarifa de ingreso.",
+        },
+        success: {
+          title: "Solicitud recibida",
+          description:
+            "¡Gracias! Registramos tu solicitud y te contactaremos pronto para confirmar los detalles.",
+        },
+      },
+    },
   },
 } as const;
 
 export type Language = keyof typeof translations;
 export type Translations = (typeof translations)[Language];
+export type ContactTranslations = Translations["contact"];
 
 export function getTranslations(lang: string | undefined): Translations {
   const language = (lang || "en") as Language;

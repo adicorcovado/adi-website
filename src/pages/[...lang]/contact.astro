@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/server/Section.astro";
+import Reveal from "../../components/client/Reveal";
+import ContactWizard from "../../components/client/contact/ContactWizard";
+import { generatePaths, getCurrentLanguage } from "../../utils/languages";
+import { getTranslations } from "../../utils/translations";
+
+export async function getStaticPaths() {
+  return generatePaths();
+}
+
+const lang = getCurrentLanguage(Astro.params.lang);
+const t = getTranslations(lang).contact;
+---
+
+<Layout
+  lang={lang}
+  title={`${t.hero.title} · ADI Corcovado`}
+  description={t.hero.subtitle}
+>
+  <section class="bg-primary-50">
+    <div class="mx-auto max-w-3xl px-6 py-16 text-center sm:py-20 lg:px-8">
+      <Reveal client:load mode="mount">
+        <p
+          class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase"
+        >
+          {t.hero.eyebrow}
+        </p>
+        <h1 class="mt-4 text-4xl font-bold text-accent-900 sm:text-5xl">
+          {t.hero.title}
+        </h1>
+        <p class="mt-6 text-lg text-accent-700">
+          {t.hero.subtitle}
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  <Section background="white" containerClass="max-w-3xl">
+    <ContactWizard client:visible t={t.form} />
+  </Section>
+</Layout>

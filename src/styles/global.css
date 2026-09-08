@@ -84,10 +84,22 @@
     --color-accent-100: #babacc;
     --color-accent-200: #9999b4;
     --color-accent-300: #6a6b91;
-    --color-accent-400: #4d4e7c;  
-    --color-accent-500: #21225b;  
+    --color-accent-400: #4d4e7c;
+    --color-accent-500: #21225b;
     --color-accent-600: #1e1f53;
     --color-accent-700: #171841;
     --color-accent-800: #121332;
     --color-accent-900: #0e0e26;
+
+    /* Danger scale, used for form validation errors. */
+    --color-danger-50:  #fdecec;
+    --color-danger-100: #f8c6c6;
+    --color-danger-200: #f2a3a3;
+    --color-danger-300: #e97878;
+    --color-danger-400: #e15555;
+    --color-danger-500: #d32f2f;
+    --color-danger-600: #bd2828;
+    --color-danger-700: #932020;
+    --color-danger-800: #711818;
+    --color-danger-900: #571212;
 }

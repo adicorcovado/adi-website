@@ -22,7 +22,7 @@ const navItems = [
   { label: t.nav.about, href: `${homePath}#about` },
   { label: t.nav.projects, href: `${homePath}#projects` },
   { label: t.nav.corcovado, href: `${homePath}#corcovado` },
-  { label: t.nav.contact, href: `${homePath}#contact` },
+  { label: t.nav.contact, href: getLocalizedPath(lang, "contact") },
 ];
 
 const cta = { label: t.nav.donate, href: `${homePath}#contact` };
