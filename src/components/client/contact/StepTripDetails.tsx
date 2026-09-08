@@ -1,4 +1,4 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import type { ContactFormValues } from "../../../utils/contactFormSchema";
 import { HEADCOUNT_FIELDS } from "../../../utils/contactFormSchema";
 import type { ContactTranslations } from "../../../utils/translations";
@@ -11,8 +11,18 @@ interface StepTripDetailsProps {
 export default function StepTripDetails({ t }: StepTripDetailsProps) {
   const {
     register,
+    control,
+    trigger,
     formState: { errors },
   } = useFormContext<ContactFormValues>();
+
+  const checkInDate = useWatch({ control, name: "checkInDate" });
+  const checkInField = register("checkInDate");
+  const checkOutField = register("checkOutDate");
+
+  const revalidateDates = () => {
+    void trigger(["checkInDate", "checkOutDate"]);
+  };
 
   return (
     <div>
@@ -55,7 +65,11 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
             id="checkInDate"
             type="date"
             className={inputClasses(!!errors.checkInDate)}
-            {...register("checkInDate")}
+            {...checkInField}
+            onBlur={(e) => {
+              checkInField.onBlur(e);
+              revalidateDates();
+            }}
           />
         </FormField>
 
@@ -67,8 +81,13 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
           <input
             id="checkOutDate"
             type="date"
+            min={checkInDate || undefined}
             className={inputClasses(!!errors.checkOutDate)}
-            {...register("checkOutDate")}
+            {...checkOutField}
+            onBlur={(e) => {
+              checkOutField.onBlur(e);
+              revalidateDates();
+            }}
           />
         </FormField>
 

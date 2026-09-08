@@ -54,6 +54,14 @@ export default function ContactWizard({ t }: ContactWizardProps) {
     setIsSubmitted(true);
   });
 
+  const handlePrimaryAction = () => {
+    if (step < TOTAL_STEPS - 1) {
+      void handleNext();
+    } else {
+      void onSubmit();
+    }
+  };
+
   if (isSubmitted) {
     return (
       <div className="rounded-2xl bg-white p-8 text-center shadow-sm sm:p-12">
@@ -140,26 +148,23 @@ export default function ContactWizard({ t }: ContactWizardProps) {
               {t.buttons.back}
             </button>
 
-            {step < TOTAL_STEPS - 1 ? (
-              <button
-                type="button"
-                onClick={handleNext}
-                className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600"
-              >
-                {t.buttons.next}
-                <HiOutlineArrowRight className="h-4 w-4" />
-              </button>
-            ) : (
-              <button
-                type="submit"
-                disabled={methods.formState.isSubmitting}
-                className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-70"
-              >
-                {methods.formState.isSubmitting
-                  ? t.buttons.submitting
-                  : t.buttons.submit}
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={handlePrimaryAction}
+              disabled={step === TOTAL_STEPS - 1 && methods.formState.isSubmitting}
+              className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-70"
+            >
+              {step < TOTAL_STEPS - 1 ? (
+                <>
+                  {t.buttons.next}
+                  <HiOutlineArrowRight className="h-4 w-4" />
+                </>
+              ) : methods.formState.isSubmitting ? (
+                t.buttons.submitting
+              ) : (
+                t.buttons.submit
+              )}
+            </button>
           </div>
         </form>
       </FormProvider>

@@ -62,7 +62,9 @@ export default function StepDocuments({ t }: StepDocumentsProps) {
                   {t.fields.file.browseText}
                 </span>
               </p>
-              <p className="text-sm text-accent-400">{t.fields.file.helpText}</p>
+              <p className="text-sm text-accent-400">
+                {t.fields.file.helpText}
+              </p>
               <p className="mt-2 text-sm font-semibold text-accent-900">
                 {value instanceof File ? value.name : t.fields.file.noFileText}
               </p>
