@@ -123,6 +123,8 @@ export const translations = {
           nameRequired: "Please enter your full name.",
           emailRequired: "Please enter your email address.",
           emailInvalid: "Please enter a valid email address.",
+          submitError:
+            "We couldn't send your message. Please try again in a moment.",
         },
         success: {
           title: "Message sent",
@@ -226,6 +228,29 @@ export const translations = {
       },
     },
     emails: {
+      contact: {
+        admin: {
+          subjectPrefix: "New contact message",
+          heading: "New contact message",
+          intro:
+            "A new message was submitted through the website contact form.",
+        },
+        guest: {
+          subject: "We've received your message",
+          heading: "Thanks for reaching out!",
+          intro:
+            "We've received your message and will get back to you as soon as we can.",
+          footerNote:
+            "Have more to add in the meantime? Just reply to this email.",
+        },
+        shared: {
+          greeting: "Hi {name},",
+          detailsTitle: "Contact details",
+          nameLabel: "Name",
+          emailLabel: "Email",
+          messageTitle: "Message",
+        },
+      },
       booking: {
         admin: {
           subjectPrefix: "New booking request",
@@ -388,6 +413,8 @@ export const translations = {
           nameRequired: "Por favor ingresa tu nombre completo.",
           emailRequired: "Por favor ingresa tu correo electrónico.",
           emailInvalid: "Por favor ingresa un correo electrónico válido.",
+          submitError:
+            "No pudimos enviar tu mensaje. Por favor, inténtalo de nuevo en un momento.",
         },
         success: {
           title: "Mensaje enviado",
@@ -496,6 +523,29 @@ export const translations = {
       },
     },
     emails: {
+      contact: {
+        admin: {
+          subjectPrefix: "Nuevo mensaje de contacto",
+          heading: "Nuevo mensaje de contacto",
+          intro:
+            "Se envió un nuevo mensaje a través del formulario de contacto del sitio web.",
+        },
+        guest: {
+          subject: "Recibimos tu mensaje",
+          heading: "¡Gracias por escribirnos!",
+          intro:
+            "Recibimos tu mensaje y te responderemos lo antes posible.",
+          footerNote:
+            "¿Tienes algo más que agregar mientras tanto? Solo responde este correo.",
+        },
+        shared: {
+          greeting: "Hola {name},",
+          detailsTitle: "Detalles de contacto",
+          nameLabel: "Nombre",
+          emailLabel: "Correo electrónico",
+          messageTitle: "Mensaje",
+        },
+      },
       booking: {
         admin: {
           subjectPrefix: "Nueva solicitud de reserva",

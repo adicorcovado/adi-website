@@ -13,10 +13,12 @@ import FormField, { inputClasses } from "./FormField";
 
 interface ContactFormProps {
   t: ContactTranslations["form"];
+  lang: string;
 }
 
-export default function ContactForm({ t }: ContactFormProps) {
+export default function ContactForm({ t, lang }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const schema = useMemo(() => buildContactMessageSchema(t.errors), [t.errors]);
 
@@ -30,9 +32,19 @@ export default function ContactForm({ t }: ContactFormProps) {
     mode: "onBlur",
   });
 
-  const onSubmit = handleSubmit((data) => {
-    console.log("Contact message submission:", data);
-    setIsSubmitted(true);
+  const onSubmit = handleSubmit(async (data) => {
+    setSubmitError(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, lang }),
+      });
+      if (!response.ok) throw new Error("Contact request failed");
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(t.errors.submitError);
+    }
   });
 
   if (isSubmitted) {
@@ -98,6 +110,12 @@ export default function ContactForm({ t }: ContactFormProps) {
             {...register("comment")}
           />
         </FormField>
+
+        {submitError && (
+          <p className="text-sm text-danger-600" role="alert">
+            {submitError}
+          </p>
+        )}
 
         <div className="mt-2 flex justify-end">
           <button
