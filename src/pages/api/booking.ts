@@ -133,7 +133,13 @@ export const POST: APIRoute = async ({ request }) => {
   const attachmentBuffer = Buffer.from(await entranceFeeProof.arrayBuffer());
 
   const resend = new Resend(resendApiKey);
-  const adminEmail = buildBookingAdminEmail({ data, pricing, t, lang });
+  // Admin notifications always go out in Spanish, regardless of the guest's language.
+  const adminEmail = buildBookingAdminEmail({
+    data,
+    pricing,
+    t: getTranslations("es"),
+    lang: "es",
+  });
   const guestEmail = buildBookingGuestEmail({ data, pricing, t, lang });
 
   const [adminResult, guestResult] = await Promise.allSettled([
