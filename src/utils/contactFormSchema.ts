@@ -14,6 +14,8 @@ export type HeadcountField = (typeof HEADCOUNT_FIELDS)[number];
 
 export interface ContactFormMessages {
   nameRequired: string;
+  emailRequired: string;
+  emailInvalid: string;
   checkInRequired: string;
   checkOutRequired: string;
   dateOrder: string;
@@ -45,6 +47,11 @@ export function buildContactFormSchema(messages: ContactFormMessages) {
   return z
     .object({
       name: z.string().trim().min(1, messages.nameRequired),
+      email: z
+        .string()
+        .trim()
+        .min(1, messages.emailRequired)
+        .email(messages.emailInvalid),
       companyName: z.string().trim().optional(),
       checkInDate: z.string().min(1, messages.checkInRequired),
       checkOutDate: z.string().min(1, messages.checkOutRequired),
@@ -76,6 +83,7 @@ const emptyHeadcount = HEADCOUNT_FIELDS.reduce(
 
 export const CONTACT_FORM_DEFAULT_VALUES = {
   name: "",
+  email: "",
   companyName: "",
   checkInDate: "",
   checkOutDate: "",
@@ -93,6 +101,7 @@ export const CONTACT_FORM_DEFAULT_VALUES = {
 export const STEP_FIELDS: Array<Array<keyof ContactFormValues>> = [
   [
     "name",
+    "email",
     "companyName",
     "checkInDate",
     "checkOutDate",

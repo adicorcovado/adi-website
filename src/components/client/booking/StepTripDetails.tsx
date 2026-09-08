@@ -46,6 +46,20 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
           />
         </FormField>
 
+        <FormField
+          htmlFor="email"
+          label={t.fields.email.label}
+          error={errors.email?.message}
+        >
+          <input
+            id="email"
+            type="email"
+            placeholder={t.fields.email.placeholder}
+            className={inputClasses(!!errors.email)}
+            {...register("email")}
+          />
+        </FormField>
+
         <FormField htmlFor="companyName" label={t.fields.companyName.label}>
           <input
             id="companyName"

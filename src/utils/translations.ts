@@ -150,6 +150,7 @@ export const translations = {
             "Tell us who's coming and when so we can prepare the station for your stay.",
           fields: {
             name: { label: "Full name", placeholder: "Jane Doe" },
+            email: { label: "Email", placeholder: "jane@example.com" },
             companyName: {
               label: "Company name",
               placeholder: "Organization or company (optional)",
@@ -207,6 +208,8 @@ export const translations = {
         },
         errors: {
           nameRequired: "Please enter your full name.",
+          emailRequired: "Please enter your email address.",
+          emailInvalid: "Please enter a valid email address.",
           checkInRequired: "Please select a check-in date.",
           checkOutRequired: "Please select a check-out date.",
           dateOrder: "Check-out date must be on or after the check-in date.",
@@ -370,6 +373,10 @@ export const translations = {
             "Cuéntanos quién viene y cuándo para preparar la estación para tu estadía.",
           fields: {
             name: { label: "Nombre completo", placeholder: "Juana Pérez" },
+            email: {
+              label: "Correo electrónico",
+              placeholder: "juana@ejemplo.com",
+            },
             companyName: {
               label: "Nombre de la empresa",
               placeholder: "Organización o empresa (opcional)",
@@ -427,6 +434,8 @@ export const translations = {
         },
         errors: {
           nameRequired: "Por favor ingresa tu nombre completo.",
+          emailRequired: "Por favor ingresa tu correo electrónico.",
+          emailInvalid: "Por favor ingresa un correo electrónico válido.",
           checkInRequired: "Por favor selecciona una fecha de ingreso.",
           checkOutRequired: "Por favor selecciona una fecha de salida.",
           dateOrder:
