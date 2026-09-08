@@ -17,6 +17,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Titles/subtitles use Brevia; body copy uses Futura PT via
      --default-font-family. */
   h1,
