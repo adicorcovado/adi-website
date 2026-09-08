@@ -20,6 +20,7 @@ import StepDocuments from "./StepDocuments";
 
 interface BookingWizardProps {
   t: BookingTranslations["form"];
+  lang: string;
 }
 
 const TOTAL_STEPS = 3;
@@ -30,10 +31,27 @@ const slideVariants = {
   exit: (direction: number) => ({ x: direction > 0 ? -32 : 32, opacity: 0 }),
 };
 
-export default function BookingWizard({ t }: BookingWizardProps) {
+function buildBookingFormData(data: ContactFormValues, lang: string): FormData {
+  const formData = new FormData();
+  formData.set("name", data.name);
+  formData.set("email", data.email);
+  formData.set("companyName", data.companyName ?? "");
+  formData.set("checkInDate", data.checkInDate);
+  formData.set("checkOutDate", data.checkOutDate);
+  formData.set("lang", lang);
+  for (const field of ["adults", "children", "guides", "volunteers", "researchers"] as const) {
+    formData.set(field, String(data[field]));
+  }
+  formData.set("meals", JSON.stringify(data.meals));
+  formData.set("entranceFeeProof", data.entranceFeeProof);
+  return formData;
+}
+
+export default function BookingWizard({ t, lang }: BookingWizardProps) {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const schema = useMemo(() => buildContactFormSchema(t.errors), [t.errors]);
 
@@ -53,9 +71,18 @@ export default function BookingWizard({ t }: BookingWizardProps) {
     if (isValid) goToStep(step + 1);
   };
 
-  const onSubmit = methods.handleSubmit((data) => {
-    console.log("Contact form submission:", data);
-    setIsSubmitted(true);
+  const onSubmit = methods.handleSubmit(async (data) => {
+    setSubmitError(null);
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        body: buildBookingFormData(data, lang),
+      });
+      if (!response.ok) throw new Error("Booking request failed");
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(t.errors.submitError);
+    }
   });
 
   const handlePrimaryAction = () => {
@@ -143,6 +170,12 @@ export default function BookingWizard({ t }: BookingWizardProps) {
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {submitError && (
+            <p className="mt-6 text-sm text-danger-600" role="alert">
+              {submitError}
+            </p>
+          )}
 
           <div className="mt-8 flex items-center justify-between border-t border-accent-50 pt-6">
             <button

@@ -215,11 +215,53 @@ export const translations = {
           dateOrder: "Check-out date must be on or after the check-in date.",
           countMin: "Must be 0 or greater.",
           fileRequired: "Please upload the entrance fee confirmation.",
+          submitError:
+            "We couldn't submit your request. Please try again in a moment.",
         },
         success: {
           title: "Request received",
           description:
             "Thanks! We've logged your request and will be in touch shortly to confirm the details.",
+        },
+      },
+    },
+    emails: {
+      booking: {
+        admin: {
+          subjectPrefix: "New booking request",
+          heading: "New booking request",
+          intro:
+            "A new stay request was submitted through the website. Details and the park entrance fee confirmation are below.",
+        },
+        guest: {
+          subject: "We've received your booking request",
+          heading: "Thanks for your request!",
+          intro:
+            "We've received your stay request for the Sirena Ranger Station. Our team will review availability and be in touch shortly to confirm the details.",
+          footerNote:
+            "Have a question in the meantime? Just reply to this email.",
+        },
+        shared: {
+          greeting: "Hi {name},",
+          tripDetailsTitle: "Trip details",
+          guestLabel: "Guest",
+          emailLabel: "Email",
+          companyLabel: "Organization",
+          checkInLabel: "Check-in",
+          checkOutLabel: "Check-out",
+          nightsLabel: "Nights",
+          lodgingTitle: "Guests & lodging",
+          mealsTitle: "Meals",
+          categoryColumn: "Category",
+          guestsColumn: "Guests",
+          rateColumn: "Rate / night",
+          mealRateColumn: "Rate",
+          subtotalColumn: "Subtotal",
+          mealColumn: "Meal",
+          totalLabel: "Estimated total",
+          exchangeNote:
+            "Amounts in colones (₡) follow the exchange rate defined by the Banco Central de Costa Rica and are shown separately from the total in dollars.",
+          attachmentNote: "Park entrance fee confirmation attached.",
         },
       },
     },
@@ -443,11 +485,53 @@ export const translations = {
           countMin: "Debe ser 0 o mayor.",
           fileRequired:
             "Por favor adjunta la confirmación de la tarifa de ingreso.",
+          submitError:
+            "No pudimos enviar tu solicitud. Por favor intenta de nuevo en un momento.",
         },
         success: {
           title: "Solicitud recibida",
           description:
             "¡Gracias! Registramos tu solicitud y te contactaremos pronto para confirmar los detalles.",
+        },
+      },
+    },
+    emails: {
+      booking: {
+        admin: {
+          subjectPrefix: "Nueva solicitud de reserva",
+          heading: "Nueva solicitud de reserva",
+          intro:
+            "Se envió una nueva solicitud de estadía a través del sitio web. Los detalles y la confirmación de la tarifa de ingreso al parque están a continuación.",
+        },
+        guest: {
+          subject: "Recibimos tu solicitud de reserva",
+          heading: "¡Gracias por tu solicitud!",
+          intro:
+            "Recibimos tu solicitud de estadía en la Estación Sirena. Nuestro equipo revisará la disponibilidad y te contactará pronto para confirmar los detalles.",
+          footerNote:
+            "¿Tienes alguna pregunta mientras tanto? Solo responde este correo.",
+        },
+        shared: {
+          greeting: "Hola {name},",
+          tripDetailsTitle: "Detalles del viaje",
+          guestLabel: "Huésped",
+          emailLabel: "Correo electrónico",
+          companyLabel: "Organización",
+          checkInLabel: "Ingreso",
+          checkOutLabel: "Salida",
+          nightsLabel: "Noches",
+          lodgingTitle: "Huéspedes y hospedaje",
+          mealsTitle: "Alimentación",
+          categoryColumn: "Categoría",
+          guestsColumn: "Personas",
+          rateColumn: "Tarifa / noche",
+          mealRateColumn: "Tarifa",
+          subtotalColumn: "Subtotal",
+          mealColumn: "Tiempo de comida",
+          totalLabel: "Total estimado",
+          exchangeNote:
+            "Los montos en colones (₡) siguen el tipo de cambio definido por el Banco Central de Costa Rica y se muestran por separado del total en dólares.",
+          attachmentNote: "Se adjunta la confirmación de la tarifa de ingreso al parque.",
         },
       },
     },
@@ -458,6 +542,7 @@ export type Language = keyof typeof translations;
 export type Translations = (typeof translations)[Language];
 export type BookingTranslations = Translations["booking"];
 export type ContactTranslations = Translations["contact"];
+export type EmailTranslations = Translations["emails"];
 
 export function getTranslations(lang: string | undefined): Translations {
   const language = (lang || "en") as Language;
