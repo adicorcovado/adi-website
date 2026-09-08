@@ -3,6 +3,7 @@ import Section from "../Section.astro";
 import Button from "../Button.astro";
 import Reveal from "../../client/Reveal";
 import { getTranslations } from "../../../utils/translations";
+import { getLocalizedPath } from "../../../utils/languages";
 
 interface Props {
   lang: string;
@@ -20,13 +21,17 @@ const email = translations.footer.email;
     <p class="mt-4 text-lg text-primary-50">{t.subtitle}</p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <Button
-        href={`mailto:${email}?subject=Donation`}
+        href={getLocalizedPath(lang, "contact")}
         variant="secondary"
         size="lg"
       >
         {t.primaryCta}
       </Button>
-      <Button href={`mailto:${email}`} variant="inverse" size="lg">
+      <Button
+        href={getLocalizedPath(lang, "contact")}
+        variant="inverse"
+        size="lg"
+      >
         {t.secondaryCta}
       </Button>
     </div>
