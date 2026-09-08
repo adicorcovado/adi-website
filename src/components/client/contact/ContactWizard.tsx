@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, type Resolver } from "react-hook-form";
 import { AnimatePresence, motion } from "motion/react";
 import { HiCheck, HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi2";
 import {
@@ -34,7 +34,7 @@ export default function ContactWizard({ t }: ContactWizardProps) {
   const schema = useMemo(() => buildContactFormSchema(t.errors), [t.errors]);
 
   const methods = useForm<ContactFormValues>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as Resolver<ContactFormValues>,
     defaultValues: CONTACT_FORM_DEFAULT_VALUES,
     mode: "onBlur",
   });
