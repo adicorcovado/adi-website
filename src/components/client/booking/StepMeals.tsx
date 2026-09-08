@@ -1,9 +1,9 @@
 import { MEAL_TYPES } from "../../../utils/contactFormSchema";
-import type { ContactTranslations } from "../../../utils/translations";
+import type { BookingTranslations } from "../../../utils/translations";
 import MealCategoryFields from "./MealCategoryFields";
 
 interface StepMealsProps {
-  t: ContactTranslations["form"]["step2"];
+  t: BookingTranslations["form"]["step2"];
 }
 
 export default function StepMeals({ t }: StepMealsProps) {

@@ -1,13 +1,13 @@
 import { useFormContext } from "react-hook-form";
 import type { ContactFormValues, MealType } from "../../../utils/contactFormSchema";
 import { HEADCOUNT_FIELDS } from "../../../utils/contactFormSchema";
-import type { ContactTranslations } from "../../../utils/translations";
+import type { BookingTranslations } from "../../../utils/translations";
 import FormField, { inputClasses } from "./FormField";
 
 interface MealCategoryFieldsProps {
   mealType: MealType;
   title: string;
-  fieldLabels: ContactTranslations["form"]["step2"]["fields"];
+  fieldLabels: BookingTranslations["form"]["step2"]["fields"];
 }
 
 export default function MealCategoryFields({

@@ -2,10 +2,10 @@ import { useRef, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { HiOutlineDocumentArrowUp } from "react-icons/hi2";
 import type { ContactFormValues } from "../../../utils/contactFormSchema";
-import type { ContactTranslations } from "../../../utils/translations";
+import type { BookingTranslations } from "../../../utils/translations";
 
 interface StepDocumentsProps {
-  t: ContactTranslations["form"]["step3"];
+  t: BookingTranslations["form"]["step3"];
 }
 
 export default function StepDocuments({ t }: StepDocumentsProps) {

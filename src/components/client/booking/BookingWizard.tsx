@@ -2,20 +2,24 @@ import { useMemo, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm, type Resolver } from "react-hook-form";
 import { AnimatePresence, motion } from "motion/react";
-import { HiCheck, HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi2";
+import {
+  HiCheck,
+  HiOutlineArrowLeft,
+  HiOutlineArrowRight,
+} from "react-icons/hi2";
 import {
   buildContactFormSchema,
   CONTACT_FORM_DEFAULT_VALUES,
   STEP_FIELDS,
   type ContactFormValues,
 } from "../../../utils/contactFormSchema";
-import type { ContactTranslations } from "../../../utils/translations";
+import type { BookingTranslations } from "../../../utils/translations";
 import StepTripDetails from "./StepTripDetails";
 import StepMeals from "./StepMeals";
 import StepDocuments from "./StepDocuments";
 
-interface ContactWizardProps {
-  t: ContactTranslations["form"];
+interface BookingWizardProps {
+  t: BookingTranslations["form"];
 }
 
 const TOTAL_STEPS = 3;
@@ -26,7 +30,7 @@ const slideVariants = {
   exit: (direction: number) => ({ x: direction > 0 ? -32 : 32, opacity: 0 }),
 };
 
-export default function ContactWizard({ t }: ContactWizardProps) {
+export default function BookingWizard({ t }: BookingWizardProps) {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -80,7 +84,10 @@ export default function ContactWizard({ t }: ContactWizardProps) {
     <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-10">
       <ol className="mb-8 flex items-center">
         {t.steps.map((stepInfo, index) => (
-          <li key={stepInfo.title} className="flex flex-1 items-center last:flex-none">
+          <li
+            key={stepInfo.title}
+            className="flex flex-1 items-center last:flex-none"
+          >
             <div className="flex flex-col items-center gap-2">
               <div
                 className={[
@@ -151,7 +158,9 @@ export default function ContactWizard({ t }: ContactWizardProps) {
             <button
               type="button"
               onClick={handlePrimaryAction}
-              disabled={step === TOTAL_STEPS - 1 && methods.formState.isSubmitting}
+              disabled={
+                step === TOTAL_STEPS - 1 && methods.formState.isSubmitting
+              }
               className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-70"
             >
               {step < TOTAL_STEPS - 1 ? (

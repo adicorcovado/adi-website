@@ -25,7 +25,7 @@ const navItems = [
   { label: t.nav.contact, href: getLocalizedPath(lang, "contact") },
 ];
 
-const cta = { label: t.nav.donate, href: `${homePath}#contact` };
+const cta = { label: t.nav.bookNow, href: getLocalizedPath(lang, "booking") };
 
 const languageLabels: Record<string, string> = { en: "EN", es: "ES" };
 const languages = supportedLanguages.map((code) => ({

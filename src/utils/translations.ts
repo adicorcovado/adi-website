@@ -6,7 +6,7 @@ export const translations = {
       projects: "Projects",
       corcovado: "Corcovado",
       contact: "Contact",
-      donate: "Support Us",
+      bookNow: "Book now",
     },
     footer: {
       tagline:
@@ -101,8 +101,40 @@ export const translations = {
     },
     contact: {
       hero: {
+        eyebrow: "Get in touch",
+        title: "Contact us",
+        subtitle:
+          "Have a question about ADI Corcovado, the Sirena Ranger Station, or how to get involved? Send us a message and we'll get back to you.",
+      },
+      form: {
+        fields: {
+          name: { label: "Full name", placeholder: "Jane Doe" },
+          email: { label: "Email", placeholder: "jane@example.com" },
+          comment: {
+            label: "Message",
+            placeholder: "Tell us how we can help…",
+          },
+        },
+        buttons: {
+          submit: "Send message",
+          submitting: "Sending…",
+        },
+        errors: {
+          nameRequired: "Please enter your full name.",
+          emailRequired: "Please enter your email address.",
+          emailInvalid: "Please enter a valid email address.",
+        },
+        success: {
+          title: "Message sent",
+          description:
+            "Thanks for reaching out! We've received your message and will reply as soon as we can.",
+        },
+      },
+    },
+    booking: {
+      hero: {
         eyebrow: "Plan your visit",
-        title: "Contact Us",
+        title: "Book your stay",
         subtitle:
           "Tell us about your stay at the Sirena Ranger Station and we'll take care of the rest — lodging, meals, and park logistics.",
       },
@@ -196,7 +228,7 @@ export const translations = {
       projects: "Proyectos",
       corcovado: "Corcovado",
       contact: "Contacto",
-      donate: "Apóyanos",
+      bookNow: "Reserva ahora",
     },
     footer: {
       tagline:
@@ -289,8 +321,40 @@ export const translations = {
     },
     contact: {
       hero: {
-        eyebrow: "Planifica tu visita",
+        eyebrow: "Ponte en contacto",
         title: "Contáctanos",
+        subtitle:
+          "¿Tienes una pregunta sobre ADI Corcovado, la Estación de Guardaparques Sirena o cómo colaborar? Envíanos un mensaje y te responderemos pronto.",
+      },
+      form: {
+        fields: {
+          name: { label: "Nombre completo", placeholder: "Jane Doe" },
+          email: { label: "Correo electrónico", placeholder: "jane@example.com" },
+          comment: {
+            label: "Mensaje",
+            placeholder: "Cuéntanos cómo podemos ayudarte…",
+          },
+        },
+        buttons: {
+          submit: "Enviar mensaje",
+          submitting: "Enviando…",
+        },
+        errors: {
+          nameRequired: "Por favor ingresa tu nombre completo.",
+          emailRequired: "Por favor ingresa tu correo electrónico.",
+          emailInvalid: "Por favor ingresa un correo electrónico válido.",
+        },
+        success: {
+          title: "Mensaje enviado",
+          description:
+            "¡Gracias por escribirnos! Recibimos tu mensaje y te responderemos lo antes posible.",
+        },
+      },
+    },
+    booking: {
+      hero: {
+        eyebrow: "Planifica tu visita",
+        title: "Reserva tu estadía",
         subtitle:
           "Cuéntanos sobre tu estadía en la Estación Sirena y nosotros nos encargamos del resto: hospedaje, alimentación y logística del parque.",
       },
@@ -383,6 +447,7 @@ export const translations = {
 
 export type Language = keyof typeof translations;
 export type Translations = (typeof translations)[Language];
+export type BookingTranslations = Translations["booking"];
 export type ContactTranslations = Translations["contact"];
 
 export function getTranslations(lang: string | undefined): Translations {

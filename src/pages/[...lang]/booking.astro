@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/server/Section.astro";
 import Reveal from "../../components/client/Reveal";
-import ContactForm from "../../components/client/contact/ContactForm";
+import BookingWizard from "../../components/client/booking/BookingWizard";
 import { generatePaths, getCurrentLanguage } from "../../utils/languages";
 import { getTranslations } from "../../utils/translations";
 
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const lang = getCurrentLanguage(Astro.params.lang);
-const t = getTranslations(lang).contact;
+const t = getTranslations(lang).booking;
 ---
 
 <Layout
@@ -38,6 +38,6 @@ const t = getTranslations(lang).contact;
   </section>
 
   <Section background="white" containerClass="max-w-3xl">
-    <ContactForm client:visible t={t.form} />
+    <BookingWizard client:visible t={t.form} />
   </Section>
 </Layout>

@@ -1,11 +1,11 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import type { ContactFormValues } from "../../../utils/contactFormSchema";
 import { HEADCOUNT_FIELDS } from "../../../utils/contactFormSchema";
-import type { ContactTranslations } from "../../../utils/translations";
+import type { BookingTranslations } from "../../../utils/translations";
 import FormField, { inputClasses } from "./FormField";
 
 interface StepTripDetailsProps {
-  t: ContactTranslations["form"]["step1"];
+  t: BookingTranslations["form"]["step1"];
 }
 
 export default function StepTripDetails({ t }: StepTripDetailsProps) {
