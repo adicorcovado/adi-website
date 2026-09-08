@@ -262,14 +262,14 @@ export const translations = {
           subject: "We've received your booking request",
           heading: "Thanks for your request!",
           intro:
-            "We've received your stay request for the Sirena Ranger Station. Our team will review availability and be in touch shortly to confirm the details.",
+            "We've received your booking request for the Sirena Ranger Station. Our team will review availability and be in touch shortly to confirm the details.",
           footerNote:
             "Have a question in the meantime? Just reply to this email.",
         },
         shared: {
           greeting: "Hi {name},",
           tripDetailsTitle: "Trip details",
-          guestLabel: "Guest",
+          guestLabel: "Requester",
           emailLabel: "Email",
           companyLabel: "Organization",
           checkInLabel: "Check-in",
@@ -399,7 +399,10 @@ export const translations = {
       form: {
         fields: {
           name: { label: "Nombre completo", placeholder: "Jane Doe" },
-          email: { label: "Correo electrónico", placeholder: "jane@example.com" },
+          email: {
+            label: "Correo electrónico",
+            placeholder: "jane@example.com",
+          },
           comment: {
             label: "Mensaje",
             placeholder: "Cuéntanos cómo podemos ayudarte…",
@@ -533,8 +536,7 @@ export const translations = {
         guest: {
           subject: "Recibimos tu mensaje",
           heading: "¡Gracias por escribirnos!",
-          intro:
-            "Recibimos tu mensaje y te responderemos lo antes posible.",
+          intro: "Recibimos tu mensaje y te responderemos lo antes posible.",
           footerNote:
             "¿Tienes algo más que agregar mientras tanto? Solo responde este correo.",
         },
@@ -551,20 +553,20 @@ export const translations = {
           subjectPrefix: "Nueva solicitud de reserva",
           heading: "Nueva solicitud de reserva",
           intro:
-            "Se envió una nueva solicitud de estadía a través del sitio web. Los detalles y la confirmación de la tarifa de ingreso al parque están a continuación.",
+            "Se envió una nueva solicitud de reserva a través del sitio web. Los detalles y la confirmación de la tarifa de ingreso al parque están a continuación.",
         },
         guest: {
           subject: "Recibimos tu solicitud de reserva",
           heading: "¡Gracias por tu solicitud!",
           intro:
-            "Recibimos tu solicitud de estadía en la Estación Sirena. Nuestro equipo revisará la disponibilidad y te contactará pronto para confirmar los detalles.",
+            "Recibimos tu solicitud de reserva en la Estación Sirena. Nuestro equipo revisará la disponibilidad y te contactará pronto para confirmar los detalles.",
           footerNote:
             "¿Tienes alguna pregunta mientras tanto? Solo responde este correo.",
         },
         shared: {
           greeting: "Hola {name},",
           tripDetailsTitle: "Detalles del viaje",
-          guestLabel: "Huésped",
+          guestLabel: "Solicitante",
           emailLabel: "Correo electrónico",
           companyLabel: "Organización",
           checkInLabel: "Ingreso",
@@ -581,7 +583,8 @@ export const translations = {
           totalLabel: "Total estimado",
           exchangeNote:
             "Los montos en colones (₡) siguen el tipo de cambio definido por el Banco Central de Costa Rica y se muestran por separado del total en dólares.",
-          attachmentNote: "Se adjunta la confirmación de la tarifa de ingreso al parque.",
+          attachmentNote:
+            "Se adjunta la confirmación de la tarifa de ingreso al parque.",
         },
       },
     },
