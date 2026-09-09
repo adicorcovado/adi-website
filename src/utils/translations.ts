@@ -208,6 +208,13 @@ export const translations = {
           submit: "Submit request",
           submitting: "Submitting…",
         },
+        noMealsWarning: {
+          title: "Continue without meals?",
+          description:
+            "You haven't added any meals to your reservation request. Are you sure you want to continue without adding any meals?",
+          confirm: "Continue",
+          cancel: "Cancel",
+        },
         errors: {
           nameRequired: "Please enter your full name.",
           emailRequired: "Please enter your email address.",
@@ -503,6 +510,13 @@ export const translations = {
           next: "Continuar",
           submit: "Enviar solicitud",
           submitting: "Enviando…",
+        },
+        noMealsWarning: {
+          title: "¿Continuar sin alimentación?",
+          description:
+            "No has agregado ningún tiempo de comida a tu solicitud de reserva. ¿Estás seguro de que deseas continuar sin agregar alimentación?",
+          confirm: "Continuar",
+          cancel: "Cancelar",
         },
         errors: {
           nameRequired: "Por favor ingresa tu nombre completo.",

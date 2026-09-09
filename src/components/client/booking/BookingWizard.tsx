@@ -10,10 +10,13 @@ import {
 import {
   buildContactFormSchema,
   CONTACT_FORM_DEFAULT_VALUES,
+  HEADCOUNT_FIELDS,
+  MEAL_TYPES,
   STEP_FIELDS,
   type ContactFormValues,
 } from "../../../utils/contactFormSchema";
 import type { BookingTranslations } from "../../../utils/translations";
+import ConfirmDialog from "../ConfirmDialog";
 import StepTripDetails from "./StepTripDetails";
 import StepMeals from "./StepMeals";
 import StepDocuments from "./StepDocuments";
@@ -24,6 +27,13 @@ interface BookingWizardProps {
 }
 
 const TOTAL_STEPS = 3;
+const MEALS_STEP_INDEX = 1;
+
+function hasNoMeals(meals: ContactFormValues["meals"]): boolean {
+  return MEAL_TYPES.every((mealType) =>
+    HEADCOUNT_FIELDS.every((field) => Number(meals[mealType][field]) === 0),
+  );
+}
 
 const slideVariants = {
   enter: (direction: number) => ({ x: direction > 0 ? 32 : -32, opacity: 0 }),
@@ -52,6 +62,7 @@ export default function BookingWizard({ t, lang }: BookingWizardProps) {
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showNoMealsWarning, setShowNoMealsWarning] = useState(false);
 
   const schema = useMemo(() => buildContactFormSchema(t.errors), [t.errors]);
 
@@ -68,7 +79,19 @@ export default function BookingWizard({ t, lang }: BookingWizardProps) {
 
   const handleNext = async () => {
     const isValid = await methods.trigger(STEP_FIELDS[step]);
-    if (isValid) goToStep(step + 1);
+    if (!isValid) return;
+
+    if (step === MEALS_STEP_INDEX && hasNoMeals(methods.getValues("meals"))) {
+      setShowNoMealsWarning(true);
+      return;
+    }
+
+    goToStep(step + 1);
+  };
+
+  const handleConfirmNoMeals = () => {
+    setShowNoMealsWarning(false);
+    goToStep(step + 1);
   };
 
   const onSubmit = methods.handleSubmit(async (data) => {
@@ -210,6 +233,16 @@ export default function BookingWizard({ t, lang }: BookingWizardProps) {
           </div>
         </form>
       </FormProvider>
+
+      <ConfirmDialog
+        open={showNoMealsWarning}
+        title={t.noMealsWarning.title}
+        description={t.noMealsWarning.description}
+        confirmLabel={t.noMealsWarning.confirm}
+        cancelLabel={t.noMealsWarning.cancel}
+        onConfirm={handleConfirmNoMeals}
+        onCancel={() => setShowNoMealsWarning(false)}
+      />
     </div>
   );
 }
