@@ -10,13 +10,17 @@ export const translations = {
     },
     footer: {
       tagline:
-        "A non-profit sustaining life inside Corcovado National Park, lodging, meals, and ranger support at the Sirena Station.",
+        "We work to strengthen our communities, contribute to the conservation of our territory, and promote sustainable development that creates opportunities for our people.",
       linksTitle: "Explore",
       contactTitle: "Get in touch",
-      address: "Sirena Ranger Station, Corcovado National Park, Costa Rica",
-      email: "info@adi-corcovado.org",
-      phone: "+506 0000 0000",
+      socialTitle: "Follow us",
+      address: "Puerto Jiménez, Puntarenas, Costa Rica",
+      email: "info@adicorcovado.org",
+      phone: "+506 8597-8686",
       rights: "All rights reserved.",
+      facebookLabel: "Follow us on Facebook",
+      instagramLabel: "Follow us on Instagram",
+      whatsappLabel: "Message us on WhatsApp",
     },
     home: {
       hero: {
@@ -124,7 +128,7 @@ export const translations = {
         eyebrow: "Get in touch",
         title: "Contact us",
         subtitle:
-          "Have a question about ADI Corcovado, the Sirena Ranger Station, or how to get involved? Send us a message and we'll get back to you.",
+          "Want to learn more about our work, our projects, or how you can collaborate? Write to us. We would love to hear from you.",
       },
       form: {
         fields: {
@@ -143,6 +147,7 @@ export const translations = {
           nameRequired: "Please enter your full name.",
           emailRequired: "Please enter your email address.",
           emailInvalid: "Please enter a valid email address.",
+          captchaRequired: "Please complete the verification challenge.",
           submitError:
             "We couldn't send your message. Please try again in a moment.",
         },
@@ -329,14 +334,17 @@ export const translations = {
     },
     footer: {
       tagline:
-        "Una asociación sin fines de lucro que sostiene la vida dentro del Parque Nacional Corcovado, hospedaje, alimentación y apoyo a los guardaparques en la Estación Sirena.",
+        "Trabajamos para fortalecer nuestras comunidades, contribuir a la conservación de nuestro territorio e impulsar un desarrollo sostenible que genere oportunidades para nuestra gente.",
       linksTitle: "Explorar",
       contactTitle: "Contáctanos",
-      address:
-        "Estación de Guardaparques Sirena, Parque Nacional Corcovado, Costa Rica",
-      email: "info@adi-corcovado.org",
-      phone: "+506 0000 0000",
+      socialTitle: "Síguenos",
+      address: "Puerto Jiménez, Puntarenas, Costa Rica",
+      email: "info@adicorcovado.org",
+      phone: "+506 8597-8686",
       rights: "Todos los derechos reservados.",
+      facebookLabel: "Síguenos en Facebook",
+      instagramLabel: "Síguenos en Instagram",
+      whatsappLabel: "Escríbenos por WhatsApp",
     },
     home: {
       hero: {
@@ -441,14 +449,14 @@ export const translations = {
         eyebrow: "Ponte en contacto",
         title: "Contáctanos",
         subtitle:
-          "¿Tienes una pregunta sobre ADI Corcovado, la Estación de Guardaparques Sirena o cómo colaborar? Envíanos un mensaje y te responderemos pronto.",
+          "¿Quieres conocer más sobre nuestro trabajo, nuestros proyectos o cómo puedes colaborar? Escríbenos. Nos encantará escucharte.",
       },
       form: {
         fields: {
-          name: { label: "Nombre completo", placeholder: "Jane Doe" },
+          name: { label: "Nombre completo", placeholder: "Juan Pérez" },
           email: {
             label: "Correo electrónico",
-            placeholder: "jane@example.com",
+            placeholder: "juan@example.com",
           },
           comment: {
             label: "Mensaje",
@@ -463,6 +471,7 @@ export const translations = {
           nameRequired: "Por favor ingresa tu nombre completo.",
           emailRequired: "Por favor ingresa tu correo electrónico.",
           emailInvalid: "Por favor ingresa un correo electrónico válido.",
+          captchaRequired: "Por favor completa la verificación.",
           submitError:
             "No pudimos enviar tu mensaje. Por favor, inténtalo de nuevo en un momento.",
         },
@@ -494,7 +503,7 @@ export const translations = {
             name: { label: "Nombre completo", placeholder: "Juana Pérez" },
             email: {
               label: "Correo electrónico",
-              placeholder: "juana@ejemplo.com",
+              placeholder: "juan@ejemplo.com",
             },
             companyName: {
               label: "Nombre de la empresa",

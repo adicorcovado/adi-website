@@ -1,4 +1,5 @@
 ---
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { getTranslations } from "../../utils/translations";
 import { getLocalizedPath } from "../../utils/languages";
 
@@ -22,7 +23,7 @@ const year = new Date().getFullYear();
 
 <footer class="bg-accent-900 text-white">
   <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
       <div class="sm:col-span-2 lg:col-span-2">
         <a href={homePath} class="flex items-center gap-2">
           <img src="/logo-adi.png" alt="ADI Corcovado" class="h-24 w-auto" />
@@ -66,11 +67,53 @@ const year = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href={`tel:${t.footer.phone}`} class="hover:text-white">
+            <a
+              href="https://wa.me/50685978686"
+              class="hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {t.footer.phone}
             </a>
           </li>
         </ul>
+      </div>
+
+      <div>
+        <h3
+          class="text-sm font-semibold tracking-wide text-accent-200 uppercase"
+        >
+          {t.footer.socialTitle}
+        </h3>
+        <div class="mt-4 flex items-center gap-4">
+          <a
+            href="https://www.facebook.com/adicorcovadocarate"
+            aria-label={t.footer.facebookLabel}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white/80 transition-colors hover:text-white"
+          >
+            <FaFacebook className="h-6 w-6" />
+          </a>
+          <a
+            href="https://www.instagram.com/corcovadocarate/"
+            aria-label={t.footer.instagramLabel}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white/80 transition-colors hover:text-white"
+          >
+            <FaInstagram className="h-6 w-6" />
+          </a>
+          <a
+            href="https://wa.me/50685978686"
+            aria-label={t.footer.whatsappLabel}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white/80 transition-colors hover:text-white"
+          >
+            <FaWhatsapp className="h-6 w-6" />
+          </a>
+        </div>
       </div>
     </div>
 

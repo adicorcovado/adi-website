@@ -14,6 +14,7 @@ const contactRequestSchema = z.object({
   email: z.string().trim().min(1).email(),
   comment: z.string().trim().optional(),
   lang: z.enum(["en", "es"]).default("en"),
+  turnstileToken: z.string().trim().min(1),
 });
 
 function jsonResponse(body: unknown, status: number): Response {
@@ -21,6 +22,32 @@ function jsonResponse(body: unknown, status: number): Response {
     status,
     headers: { "Content-Type": "application/json" },
   });
+}
+
+async function verifyTurnstileToken(
+  token: string,
+  remoteIp: string | null,
+): Promise<boolean> {
+  const secretKey = import.meta.env.TURNSTILE_SECRET_KEY;
+  if (!secretKey) {
+    console.error("Contact API is missing TURNSTILE_SECRET_KEY configuration.");
+    return false;
+  }
+
+  const body = new URLSearchParams({ secret: secretKey, response: token });
+  if (remoteIp) body.append("remoteip", remoteIp);
+
+  try {
+    const result = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      { method: "POST", body },
+    );
+    const outcome = (await result.json()) as { success: boolean };
+    return outcome.success;
+  } catch (error) {
+    console.error("Failed to verify Turnstile token:", error);
+    return false;
+  }
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -35,6 +62,21 @@ export const POST: APIRoute = async ({ request }) => {
   if (!parsed.success) {
     return jsonResponse(
       { error: "Please check the required fields and try again." },
+      400,
+    );
+  }
+
+  const clientIp =
+    request.headers.get("CF-Connecting-IP") ??
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    null;
+  const isHuman = await verifyTurnstileToken(
+    parsed.data.turnstileToken,
+    clientIp,
+  );
+  if (!isHuman) {
+    return jsonResponse(
+      { error: "Captcha verification failed. Please try again." },
       400,
     );
   }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type Resolver } from "react-hook-form";
 import { motion } from "motion/react";
@@ -9,16 +9,24 @@ import {
   type ContactMessageFormValues,
 } from "../../../utils/contactMessageSchema";
 import type { ContactTranslations } from "../../../utils/translations";
+import Turnstile, { type TurnstileHandle } from "../Turnstile";
 import FormField, { inputClasses } from "./FormField";
 
 interface ContactFormProps {
   t: ContactTranslations["form"];
   lang: string;
+  turnstileSiteKey: string;
 }
 
-export default function ContactForm({ t, lang }: ContactFormProps) {
+export default function ContactForm({
+  t,
+  lang,
+  turnstileSiteKey,
+}: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileHandle>(null);
 
   const schema = useMemo(() => buildContactMessageSchema(t.errors), [t.errors]);
 
@@ -34,16 +42,25 @@ export default function ContactForm({ t, lang }: ContactFormProps) {
 
   const onSubmit = handleSubmit(async (data) => {
     setSubmitError(null);
+
+    if (!captchaToken) {
+      setSubmitError(t.errors.captchaRequired);
+      return;
+    }
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, lang }),
+        body: JSON.stringify({ ...data, lang, turnstileToken: captchaToken }),
       });
       if (!response.ok) throw new Error("Contact request failed");
       setIsSubmitted(true);
     } catch {
       setSubmitError(t.errors.submitError);
+    } finally {
+      setCaptchaToken(null);
+      turnstileRef.current?.reset();
     }
   });
 
@@ -110,6 +127,14 @@ export default function ContactForm({ t, lang }: ContactFormProps) {
             {...register("comment")}
           />
         </FormField>
+
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={turnstileSiteKey}
+          onVerify={setCaptchaToken}
+          onExpire={() => setCaptchaToken(null)}
+          onError={() => setCaptchaToken(null)}
+        />
 
         {submitError && (
           <p className="text-sm text-danger-600" role="alert">
