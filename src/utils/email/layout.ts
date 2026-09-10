@@ -15,7 +15,7 @@ export const EMAIL_COLORS = {
   white: "#ffffff",
 };
 
-const LOGO_URL = "https://adi-corcovado.com/logo-adi.png";
+const LOGO_URL = "https://adicorcovado.org/logo-adi.png";
 
 export function escapeHtml(value: string): string {
   return value
