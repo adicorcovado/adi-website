@@ -38,6 +38,11 @@ const t = getTranslations(lang).booking;
   </section>
 
   <Section background="white" containerClass="max-w-3xl">
-    <BookingWizard client:visible t={t.form} lang={lang} />
+    <BookingWizard
+      client:visible
+      t={t.form}
+      lang={lang}
+      turnstileSiteKey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}
+    />
   </Section>
 </Layout>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm, type Resolver } from "react-hook-form";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,6 +17,7 @@ import {
 } from "../../../utils/contactFormSchema";
 import type { BookingTranslations } from "../../../utils/translations";
 import ConfirmDialog from "../ConfirmDialog";
+import Turnstile, { type TurnstileHandle } from "../Turnstile";
 import StepTripDetails from "./StepTripDetails";
 import StepMeals from "./StepMeals";
 import StepDocuments from "./StepDocuments";
@@ -24,6 +25,7 @@ import StepDocuments from "./StepDocuments";
 interface BookingWizardProps {
   t: BookingTranslations["form"];
   lang: string;
+  turnstileSiteKey: string;
 }
 
 const TOTAL_STEPS = 3;
@@ -41,7 +43,11 @@ const slideVariants = {
   exit: (direction: number) => ({ x: direction > 0 ? -32 : 32, opacity: 0 }),
 };
 
-function buildBookingFormData(data: ContactFormValues, lang: string): FormData {
+function buildBookingFormData(
+  data: ContactFormValues,
+  lang: string,
+  turnstileToken: string,
+): FormData {
   const formData = new FormData();
   formData.set("name", data.name);
   formData.set("email", data.email);
@@ -49,6 +55,7 @@ function buildBookingFormData(data: ContactFormValues, lang: string): FormData {
   formData.set("checkInDate", data.checkInDate);
   formData.set("checkOutDate", data.checkOutDate);
   formData.set("lang", lang);
+  formData.set("turnstileToken", turnstileToken);
   for (const field of ["adults", "children", "guides", "volunteers", "researchers"] as const) {
     formData.set(field, String(data[field]));
   }
@@ -57,12 +64,18 @@ function buildBookingFormData(data: ContactFormValues, lang: string): FormData {
   return formData;
 }
 
-export default function BookingWizard({ t, lang }: BookingWizardProps) {
+export default function BookingWizard({
+  t,
+  lang,
+  turnstileSiteKey,
+}: BookingWizardProps) {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showNoMealsWarning, setShowNoMealsWarning] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileHandle>(null);
 
   const schema = useMemo(() => buildContactFormSchema(t.errors), [t.errors]);
 
@@ -96,15 +109,24 @@ export default function BookingWizard({ t, lang }: BookingWizardProps) {
 
   const onSubmit = methods.handleSubmit(async (data) => {
     setSubmitError(null);
+
+    if (!captchaToken) {
+      setSubmitError(t.errors.captchaRequired);
+      return;
+    }
+
     try {
       const response = await fetch("/api/booking", {
         method: "POST",
-        body: buildBookingFormData(data, lang),
+        body: buildBookingFormData(data, lang, captchaToken),
       });
       if (!response.ok) throw new Error("Booking request failed");
       setIsSubmitted(true);
     } catch {
       setSubmitError(t.errors.submitError);
+    } finally {
+      setCaptchaToken(null);
+      turnstileRef.current?.reset();
     }
   });
 
@@ -193,6 +215,17 @@ export default function BookingWizard({ t, lang }: BookingWizardProps) {
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {step === TOTAL_STEPS - 1 && (
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={turnstileSiteKey}
+              onVerify={setCaptchaToken}
+              onExpire={() => setCaptchaToken(null)}
+              onError={() => setCaptchaToken(null)}
+              className="mt-6"
+            />
+          )}
 
           {submitError && (
             <p className="mt-6 text-sm text-danger-600" role="alert">

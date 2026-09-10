@@ -6,6 +6,7 @@ import {
   buildContactGuestEmail,
 } from "../../utils/email/contactEmails";
 import { getTranslations } from "../../utils/translations";
+import { getClientIp, verifyTurnstileToken } from "../../utils/turnstile";
 
 export const prerender = false;
 
@@ -24,32 +25,6 @@ function jsonResponse(body: unknown, status: number): Response {
   });
 }
 
-async function verifyTurnstileToken(
-  token: string,
-  remoteIp: string | null,
-): Promise<boolean> {
-  const secretKey = import.meta.env.TURNSTILE_SECRET_KEY;
-  if (!secretKey) {
-    console.error("Contact API is missing TURNSTILE_SECRET_KEY configuration.");
-    return false;
-  }
-
-  const body = new URLSearchParams({ secret: secretKey, response: token });
-  if (remoteIp) body.append("remoteip", remoteIp);
-
-  try {
-    const result = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      { method: "POST", body },
-    );
-    const outcome = (await result.json()) as { success: boolean };
-    return outcome.success;
-  } catch (error) {
-    console.error("Failed to verify Turnstile token:", error);
-    return false;
-  }
-}
-
 export const POST: APIRoute = async ({ request }) => {
   let payload: unknown;
   try {
@@ -66,10 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  const clientIp =
-    request.headers.get("CF-Connecting-IP") ??
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    null;
+  const clientIp = getClientIp(request);
   const isHuman = await verifyTurnstileToken(
     parsed.data.turnstileToken,
     clientIp,

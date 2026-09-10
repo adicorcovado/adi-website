@@ -249,6 +249,7 @@ export const translations = {
           dateOrder: "Check-out date must be on or after the check-in date.",
           countMin: "Must be 0 or greater.",
           fileRequired: "Please upload the entrance fee confirmation.",
+          captchaRequired: "Please complete the verification challenge.",
           submitError:
             "We couldn't submit your request. Please try again in a moment.",
         },
@@ -578,6 +579,7 @@ export const translations = {
           countMin: "Debe ser 0 o mayor.",
           fileRequired:
             "Por favor adjunta la confirmación de la tarifa de ingreso.",
+          captchaRequired: "Por favor completa la verificación.",
           submitError:
             "No pudimos enviar tu solicitud. Por favor intenta de nuevo en un momento.",
         },

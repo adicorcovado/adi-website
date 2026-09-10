@@ -13,6 +13,7 @@ import {
   buildBookingGuestEmail,
 } from "../../utils/email/bookingEmails";
 import { getTranslations } from "../../utils/translations";
+import { getClientIp, verifyTurnstileToken } from "../../utils/turnstile";
 
 export const prerender = false;
 
@@ -44,6 +45,7 @@ const bookingRequestSchema = z
     checkInDate: z.string().min(1),
     checkOutDate: z.string().min(1),
     lang: z.enum(["en", "es"]).default("en"),
+    turnstileToken: z.string().trim().min(1),
     ...headcountShape,
     meals: z.object(mealsShape),
   })
@@ -82,6 +84,7 @@ export const POST: APIRoute = async ({ request }) => {
     checkInDate: formData.get("checkInDate"),
     checkOutDate: formData.get("checkOutDate"),
     lang: formData.get("lang") || "en",
+    turnstileToken: formData.get("turnstileToken"),
     adults: formData.get("adults"),
     children: formData.get("children"),
     guides: formData.get("guides"),
@@ -93,6 +96,18 @@ export const POST: APIRoute = async ({ request }) => {
   if (!parsed.success) {
     return jsonResponse(
       { error: "Please check the required fields and try again." },
+      400,
+    );
+  }
+
+  const clientIp = getClientIp(request);
+  const isHuman = await verifyTurnstileToken(
+    parsed.data.turnstileToken,
+    clientIp,
+  );
+  if (!isHuman) {
+    return jsonResponse(
+      { error: "Captcha verification failed. Please try again." },
       400,
     );
   }
