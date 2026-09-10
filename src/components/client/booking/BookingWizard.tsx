@@ -244,7 +244,7 @@ export default function BookingWizard({
               type="button"
               onClick={() => goToStep(step - 1)}
               disabled={step === 0}
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold text-primary-600 transition-colors hover:bg-primary-50 disabled:pointer-events-none disabled:opacity-0"
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold text-primary-600 transition-colors hover:bg-primary-50 disabled:pointer-events-none disabled:opacity-0 cursor-pointer"
             >
               <HiOutlineArrowLeft className="h-4 w-4" />
               {t.buttons.back}

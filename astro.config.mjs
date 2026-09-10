@@ -13,7 +13,7 @@ export default defineConfig({
   site: "https://adi-corcovado.com",
 
   i18n: {
-    defaultLocale: "en",
+    defaultLocale: "es",
     locales: ["en", "es"],
   },
 

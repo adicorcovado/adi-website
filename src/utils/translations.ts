@@ -663,6 +663,6 @@ export type ContactTranslations = Translations["contact"];
 export type EmailTranslations = Translations["emails"];
 
 export function getTranslations(lang: string | undefined): Translations {
-  const language = (lang || "en") as Language;
-  return translations[language] || translations.en;
+  const language = (lang || "es") as Language;
+  return translations[language] || translations.es;
 }

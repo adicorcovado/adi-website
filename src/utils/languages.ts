@@ -1,5 +1,5 @@
 export const supportedLanguages = ["en", "es"] as const;
-export const defaultLanguage = "en";
+export const defaultLanguage = "es";
 const showDefaultLangInUrl = false;
 
 export const generatePaths = (): Array<{

@@ -14,7 +14,7 @@ const contactRequestSchema = z.object({
   name: z.string().trim().min(1),
   email: z.string().trim().min(1).email(),
   comment: z.string().trim().optional(),
-  lang: z.enum(["en", "es"]).default("en"),
+  lang: z.enum(["en", "es"]).default("es"),
   turnstileToken: z.string().trim().min(1),
 });
 
