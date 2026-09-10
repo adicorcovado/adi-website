@@ -26,10 +26,10 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
 
   return (
     <div>
-      <h3 className="font-brevia text-xl font-semibold text-accent-900">
+      <h3 className="font-brevia text-xl font-bold text-primary-500">
         {t.title}
       </h3>
-      <p className="mt-1.5 text-accent-700">{t.description}</p>
+      <p className="mt-1.5 text-accent-700 text-lg">{t.description}</p>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <FormField

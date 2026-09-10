@@ -48,7 +48,7 @@ const languages = supportedLanguages.map((code) => ({
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-lg font-semibold text-accent-900 transition-colors hover:text-primary-500"
+            class="text-xl font-semibold text-accent-900 transition-colors hover:text-primary-500"
           >
             {item.label}
           </a>
@@ -57,7 +57,7 @@ const languages = supportedLanguages.map((code) => ({
     </nav>
 
     <div class="hidden items-center gap-6 lg:flex">
-      <div class="flex items-center gap-2 text-sm font-semibold">
+      <div class="flex items-center gap-2 text-md font-semibold">
         {
           languages.map((option, index) => (
             <>

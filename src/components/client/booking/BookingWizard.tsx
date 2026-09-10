@@ -56,7 +56,13 @@ function buildBookingFormData(
   formData.set("checkOutDate", data.checkOutDate);
   formData.set("lang", lang);
   formData.set("turnstileToken", turnstileToken);
-  for (const field of ["adults", "children", "guides", "volunteers", "researchers"] as const) {
+  for (const field of [
+    "adults",
+    "children",
+    "guides",
+    "volunteers",
+    "researchers",
+  ] as const) {
     formData.set(field, String(data[field]));
   }
   formData.set("meals", JSON.stringify(data.meals));
@@ -175,7 +181,7 @@ export default function BookingWizard({
               </div>
               <span
                 className={[
-                  "hidden text-xs font-semibold sm:block",
+                  "hidden text-md font-semibold sm:block",
                   index <= step ? "text-accent-900" : "text-accent-400",
                 ].join(" ")}
               >
@@ -250,7 +256,7 @@ export default function BookingWizard({
               disabled={
                 step === TOTAL_STEPS - 1 && methods.formState.isSubmitting
               }
-              className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-70"
+              className="inline-flex items-center gap-2 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600 disabled:opacity-70 cursor-pointer"
             >
               {step < TOTAL_STEPS - 1 ? (
                 <>

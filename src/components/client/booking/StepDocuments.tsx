@@ -19,13 +19,13 @@ export default function StepDocuments({ t }: StepDocumentsProps) {
 
   return (
     <div>
-      <h3 className="font-brevia text-xl font-semibold text-accent-900">
+      <h3 className="font-brevia text-xl font-bold text-primary-500">
         {t.title}
       </h3>
-      <p className="mt-1.5 text-accent-700">{t.description}</p>
+      <p className="mt-1.5 text-accent-700 text-lg">{t.description}</p>
 
       <div className="mt-6">
-        <label className="mb-1.5 block text-sm font-semibold text-accent-900">
+        <label className="mb-1.5 block text-md font-semibold text-accent-900">
           {t.fields.file.label}
         </label>
 
@@ -56,16 +56,16 @@ export default function StepDocuments({ t }: StepDocumentsProps) {
               ].join(" ")}
             >
               <HiOutlineDocumentArrowUp className="h-10 w-10 text-primary-500" />
-              <p className="text-accent-700">
+              <p className="text-accent-700 text-lg">
                 {t.fields.file.dropText}{" "}
                 <span className="font-semibold text-primary-600 underline">
                   {t.fields.file.browseText}
                 </span>
               </p>
-              <p className="text-sm text-accent-400">
+              <p className="text-md text-accent-400">
                 {t.fields.file.helpText}
               </p>
-              <p className="mt-2 text-sm font-semibold text-accent-900">
+              <p className="mt-2 text-md font-semibold text-accent-900">
                 {value instanceof File ? value.name : t.fields.file.noFileText}
               </p>
               <input
