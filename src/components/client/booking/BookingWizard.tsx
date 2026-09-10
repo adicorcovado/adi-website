@@ -82,6 +82,7 @@ export default function BookingWizard({
   const [showNoMealsWarning, setShowNoMealsWarning] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileHandle>(null);
+  const wizardRef = useRef<HTMLDivElement>(null);
 
   const schema = useMemo(() => buildContactFormSchema(t.errors), [t.errors]);
 
@@ -94,6 +95,7 @@ export default function BookingWizard({
   const goToStep = (nextStep: number) => {
     setDirection(nextStep > step ? 1 : -1);
     setStep(nextStep);
+    wizardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleNext = async () => {
@@ -159,7 +161,7 @@ export default function BookingWizard({
   }
 
   return (
-    <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-10">
+    <div ref={wizardRef} className="rounded-2xl bg-white p-6 shadow-sm sm:p-10">
       <ol className="mb-8 flex items-center">
         {t.steps.map((stepInfo, index) => (
           <li
