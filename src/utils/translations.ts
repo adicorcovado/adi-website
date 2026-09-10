@@ -21,66 +21,66 @@ export const translations = {
     home: {
       hero: {
         eyebrow: "ADI Corcovado Carate",
-        title: "Guardians of Costa Rica's last great wilderness",
+        title: "Conserving with people",
         subtitle:
-          "We run the lodging, food service, and daily life of the Sirena Ranger Station deep inside Corcovado National Park, so rangers, researchers, and visitors can keep protecting one of the most biodiverse places on Earth.",
-        primaryCta: "Support Our Work",
-        secondaryCta: "See Our Projects",
+          "ADI Corcovado-Carate is a non-profit community organization, founded in 2012 on the initiative of residents from the communities of Piro, Agua Buena, Río Oro, and Carate. We work for the economic, social, cultural, and educational wellbeing and development of our communities.",
+        primaryCta: "Learn About Our Work",
+        secondaryCta: "Our Projects",
         imageAlt: "Aerial view of the Corcovado rainforest canopy",
       },
       intro: {
-        eyebrow: "Who we are",
-        title: "A non-profit built around one remote outpost",
-        body: "ADI Corcovado is the association behind the Sirena Ranger Station, the beating heart of Corcovado National Park. Every meal served, bed made, and repair completed keeps rangers in the field and the park's rainforest, beaches, and wildlife protected for the generations to come.",
+        eyebrow: "What we do",
+        title: "We work to create opportunities in our community",
+        body: "We drive initiatives, projects, and partnerships aimed at responding to the needs of our communities and creating development opportunities for the people who live in them.",
         ourWork: [
           {
-            title: "Impulsamos proyectos comunitarios",
+            title: "We drive community projects",
             description:
-              "Apoyamos iniciativas que responden a las necesidades de nuestras comunidades.",
+              "We support initiatives that respond to the needs of our communities.",
           },
           {
-            title: "Fortalecemos la producción local",
+            title: "We strengthen local production",
             description:
-              "Apoyamos a productores y emprendimientos para generar oportunidades y fortalecer la economía local.",
+              "We support producers and entrepreneurs to create opportunities and strengthen the local economy.",
           },
           {
-            title: "Creamos alianzas",
+            title: "We build partnerships",
             description:
-              "Sumamos esfuerzos con instituciones, organizaciones y empresas para desarrollar proyectos de beneficio comunitario.",
+              "We join forces with institutions, organizations, and businesses to develop projects that benefit the community.",
           },
         ],
         imageAlt: "Volunteers and rangers outside the Sirena Station",
       },
       ourWork: {
-        eyebrow: "Our projects",
-        title: "Where your support goes",
+        eyebrow: "Our work",
+        title: "Supporting community development",
         subtitle:
-          "From facility upkeep to conservation initiatives, every project keeps the park running for the people who protect it.",
-        cta: "View all projects",
+          "Projects that strengthen our communities, drive local production, and contribute to the conservation of the Osa Peninsula.",
+        cta: "View all our work",
         items: [
           {
-            title: "Sirena Station Lodging",
+            title: "Lodging & Food Service",
             description:
-              "Maintaining safe, comfortable housing for park rangers, researchers, and visiting scientists stationed deep in the rainforest.",
+              "We manage the lodging and food services that allow us to host visitors, researchers, and staff staying at the Sirena Station.",
             imageAlt: "Sirena Station lodging cabins",
 
             image: "/images/ourWork/sirena-station.webp",
-            cta: { label: "Book your stay", slug: "booking" },
+            cta: { label: "Book Now", slug: "booking" },
           },
           {
-            title: "Ranger Food Service",
+            title: "PROLOS",
             description:
-              "Running the kitchen and dining hall that feeds the rangers and staff who patrol and protect Corcovado every day.",
+              "(Local Producer-Made Products) We strengthen the production and marketing of products from our communities, connecting local producers with new markets.",
             imageAlt: "Dining hall at the Sirena Station",
 
-            image: "/images/ourWork/food.webp",
+            image: "/images/ourWork/prolos.webp",
             cta: undefined as { label: string; slug: string } | undefined,
           },
           {
-            title: "Trail & Facility Upkeep",
+            title: "Tourism Promotion",
             description:
-              "Funding the ongoing maintenance of trails, docks, and station infrastructure across one of the park's most visited zones.",
-            imageAlt: "Forest trail inside Corcovado National Park",
+              "We promote responsible visits to the Osa Peninsula, strengthening tourism as an engine of development for our communities through partnerships, fairs, and digital communication.",
+            imageAlt: "Trail in Corcovado National Park",
 
             image: "/images/ourWork/trail.webp",
             cta: undefined as { label: string; slug: string } | undefined,
@@ -93,28 +93,28 @@ export const translations = {
         body: "Called 'the most biologically intense place on Earth' by National Geographic, Corcovado protects one of the last great expanses of Pacific lowland rainforest in Central America, home to tapirs, scarlet macaws, all four Costa Rican monkey species, and hundreds of species found nowhere else.",
         points: [
           {
-            title: "Sirena Ranger Station",
+            title: "Sirena Station",
             description:
-              "The remote station at the heart of the park, only reachable by boat, plane, or a multi-hour hike.",
+              "The park's central station, surrounded by forest, rivers, and coastline. It has an extensive trail network and excellent opportunities for wildlife watching.",
           },
           {
-            title: "Unmatched biodiversity",
+            title: "La Leona Station",
             description:
-              "Rainforest, mangrove, and coastline ecosystems packed into a single protected area.",
+              "Land access to the park from Carate, with routes through beach and forest, wildlife watching, and seasonal turtle sightings. It's also the starting point of the route to Sirena.",
           },
           {
-            title: "Active conservation",
+            title: "Los Patos Station",
             description:
-              "Rangers based at Sirena patrol year-round to protect the park from poaching and illegal logging.",
+              "A sector of tropical forest and mountains, with trails along the Rincón River, waterfalls, and great diversity of flora and fauna. It also connects to Sirena.",
           },
         ],
         cta: "Learn about the park",
         imageAlt: "Wildlife in Corcovado National Park",
       },
       cta: {
-        title: "Help us keep Corcovado protected",
+        title: "Be part of our projects",
         subtitle:
-          "Every donation funds the station that keeps rangers in the field and the rainforest standing.",
+          "If one of our projects inspires you and you'd like to contribute, you can do so through a donation.",
         primaryCta: "Donate Now",
         secondaryCta: "Contact Us",
       },
