@@ -10,7 +10,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://adi-corcovado.com",
+  site: "https://adicorcovado.org",
 
   i18n: {
     defaultLocale: "es",
