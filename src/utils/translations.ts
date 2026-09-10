@@ -161,9 +161,9 @@ export const translations = {
     booking: {
       hero: {
         eyebrow: "Plan your visit",
-        title: "Book your stay",
+        title: "Request your booking",
         subtitle:
-          "Tell us about your stay at the Sirena Ranger Station and we'll take care of the rest — lodging, meals, and park logistics.",
+          "Complete the form with the details of your visit to the Sirena Ranger Station. Our team will review availability and get in touch with you to confirm your booking, lodging, and meals.",
       },
       form: {
         steps: [
@@ -174,7 +174,7 @@ export const translations = {
         step1: {
           title: "Trip details",
           description:
-            "Tell us who's coming and when so we can prepare the station for your stay.",
+            "Let us know the dates of your visit and who will be in your group.",
           fields: {
             name: { label: "Full name", placeholder: "Jane Doe" },
             email: { label: "Email", placeholder: "jane@example.com" },
@@ -198,7 +198,7 @@ export const translations = {
         step2: {
           title: "Meals",
           description:
-            "Let us know how many people need each meal during the stay.",
+            "Let us know how many people will need each meal during the stay.",
           mealTypes: {
             breakfast: { title: "Breakfasts" },
             snack: { title: "Snacks" },
@@ -216,7 +216,7 @@ export const translations = {
         step3: {
           title: "Documents",
           description:
-            "Upload your Corcovado National Park entrance fee confirmation to complete your request.",
+            "Attach your park entrance fee confirmation to complete your booking request. This document is required to process your stay at the Sirena Ranger Station.",
           fields: {
             file: {
               label: "Park entrance fee confirmation",
@@ -486,9 +486,9 @@ export const translations = {
     booking: {
       hero: {
         eyebrow: "Planifica tu visita",
-        title: "Reserva tu estadía",
+        title: "Solicita tu reserva",
         subtitle:
-          "Cuéntanos sobre tu estadía en la Estación Sirena y nosotros nos encargamos del resto: hospedaje, alimentación y logística del parque.",
+          "Completa el formulario con los detalles de tu visita a la Estación Sirena. Nuestro equipo revisará la disponibilidad y se pondrá en contacto contigo para confirmar tu reserva, hospedaje y alimentación.",
       },
       form: {
         steps: [
@@ -499,7 +499,7 @@ export const translations = {
         step1: {
           title: "Detalles del viaje",
           description:
-            "Cuéntanos quién viene y cuándo para preparar la estación para tu estadía.",
+            "Indícanos las fechas de tu visita y quiénes forman parte del grupo.",
           fields: {
             name: { label: "Nombre completo", placeholder: "Juana Pérez" },
             email: {
@@ -526,7 +526,7 @@ export const translations = {
         step2: {
           title: "Alimentación",
           description:
-            "Indícanos cuántas personas necesitan cada tiempo de comida durante la estadía.",
+            "Indícanos cuántas personas necesitarán cada tiempo de comida durante su estadía.",
           mealTypes: {
             breakfast: { title: "Desayunos" },
             snack: { title: "Meriendas" },
@@ -544,10 +544,10 @@ export const translations = {
         step3: {
           title: "Documentos",
           description:
-            "Adjunta la confirmación de pago de la tarifa de ingreso al Parque Nacional Corcovado para completar tu solicitud.",
+            "Adjunta la confirmación de tu reserva de ingreso al Parque Nacional Corcovado. Este documento es necesario para gestionar tu estadía en la Estación Sirena.",
           fields: {
             file: {
-              label: "Confirmación de tarifa de ingreso al parque",
+              label: "Confirmación de reserva de ingreso al parque",
               helpText: "PDF o imagen, hasta 10 MB.",
               dropText: "Arrastra y suelta tu archivo aquí, o",
               browseText: "selecciónalo",
@@ -578,7 +578,7 @@ export const translations = {
             "La fecha de salida debe ser igual o posterior a la fecha de ingreso.",
           countMin: "Debe ser 0 o mayor.",
           fileRequired:
-            "Por favor adjunta la confirmación de la tarifa de ingreso.",
+            "Por favor adjunta la confirmación de tu reserva de ingreso.",
           captchaRequired: "Por favor completa la verificación.",
           submitError:
             "No pudimos enviar tu solicitud. Por favor intenta de nuevo en un momento.",
