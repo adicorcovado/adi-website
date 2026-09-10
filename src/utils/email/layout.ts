@@ -44,7 +44,7 @@ export function renderEmailLayout({
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ADI Corcovado</title>
+    <title>ADI Corcovado Carate</title>
   </head>
   <body style="margin:0;padding:0;background-color:${EMAIL_COLORS.primary50};font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
     <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${escapeHtml(previewText)}</div>
@@ -65,7 +65,7 @@ export function renderEmailLayout({
             <tr>
               <td style="background-color:${EMAIL_COLORS.primary50};padding:20px 32px;text-align:center;color:${EMAIL_COLORS.accent400};font-size:12px;line-height:1.5;">
                 <p style="margin:0 0 4px;">${escapeHtml(footerAddress)}</p>
-                <p style="margin:0;">© ${new Date().getFullYear()} ADI Corcovado. ${escapeHtml(footerRights)}</p>
+                <p style="margin:0;">© ${new Date().getFullYear()} ADI Corcovado Carate. ${escapeHtml(footerRights)}</p>
               </td>
             </tr>
           </table>

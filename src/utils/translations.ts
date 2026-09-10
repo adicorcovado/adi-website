@@ -20,7 +20,7 @@ export const translations = {
     },
     home: {
       hero: {
-        eyebrow: "ADI Corcovado",
+        eyebrow: "ADI Corcovado Carate",
         title: "Guardians of Costa Rica's last great wilderness",
         subtitle:
           "We run the lodging, food service, and daily life of the Sirena Ranger Station deep inside Corcovado National Park, so rangers, researchers, and visitors can keep protecting one of the most biodiverse places on Earth.",
@@ -32,9 +32,26 @@ export const translations = {
         eyebrow: "Who we are",
         title: "A non-profit built around one remote outpost",
         body: "ADI Corcovado is the association behind the Sirena Ranger Station, the beating heart of Corcovado National Park. Every meal served, bed made, and repair completed keeps rangers in the field and the park's rainforest, beaches, and wildlife protected for the generations to come.",
+        ourWork: [
+          {
+            title: "Impulsamos proyectos comunitarios",
+            description:
+              "Apoyamos iniciativas que responden a las necesidades de nuestras comunidades.",
+          },
+          {
+            title: "Fortalecemos la producción local",
+            description:
+              "Apoyamos a productores y emprendimientos para generar oportunidades y fortalecer la economía local.",
+          },
+          {
+            title: "Creamos alianzas",
+            description:
+              "Sumamos esfuerzos con instituciones, organizaciones y empresas para desarrollar proyectos de beneficio comunitario.",
+          },
+        ],
         imageAlt: "Volunteers and rangers outside the Sirena Station",
       },
-      projects: {
+      ourWork: {
         eyebrow: "Our projects",
         title: "Where your support goes",
         subtitle:
@@ -47,7 +64,8 @@ export const translations = {
               "Maintaining safe, comfortable housing for park rangers, researchers, and visiting scientists stationed deep in the rainforest.",
             imageAlt: "Sirena Station lodging cabins",
 
-            image: "/images/projects/sirena-station.webp",
+            image: "/images/ourWork/sirena-station.webp",
+            cta: { label: "Book your stay", slug: "booking" },
           },
           {
             title: "Ranger Food Service",
@@ -55,7 +73,8 @@ export const translations = {
               "Running the kitchen and dining hall that feeds the rangers and staff who patrol and protect Corcovado every day.",
             imageAlt: "Dining hall at the Sirena Station",
 
-            image: "/images/projects/food.webp",
+            image: "/images/ourWork/food.webp",
+            cta: undefined as { label: string; slug: string } | undefined,
           },
           {
             title: "Trail & Facility Upkeep",
@@ -63,7 +82,8 @@ export const translations = {
               "Funding the ongoing maintenance of trails, docks, and station infrastructure across one of the park's most visited zones.",
             imageAlt: "Forest trail inside Corcovado National Park",
 
-            image: "/images/projects/trail.webp",
+            image: "/images/ourWork/trail.webp",
+            cta: undefined as { label: string; slug: string } | undefined,
           },
         ],
       },
@@ -320,47 +340,67 @@ export const translations = {
     },
     home: {
       hero: {
-        eyebrow: "ADI Corcovado",
-        title: "Guardianes de la última gran selva de Costa Rica",
+        eyebrow: "ADI Corcovado Carate",
+        title: "Conservando con gente",
         subtitle:
-          "Administramos el hospedaje, la alimentación y la vida diaria de la Estación Sirena en el corazón del Parque Nacional Corcovado, para que guardaparques, investigadores y visitantes puedan seguir protegiendo uno de los lugares más biodiversos del planeta.",
-        primaryCta: "Apoya Nuestro Trabajo",
-        secondaryCta: "Ver Nuestros Proyectos",
+          "La ADI Corcovado-Carate es una organización comunitaria sin fines de lucro, constituida en 2012 por iniciativa de los vecinos de las comunidades de Piro, Agua Buena, Río Oro y Carate. Trabajamos por el bienestar y desarrollo económico, social, cultural y educativo de nuestras comunidades.",
+        primaryCta: "Conoce Nuestro Trabajo",
+        secondaryCta: "Nuestros Proyectos",
         imageAlt: "Vista aérea del dosel de la selva de Corcovado",
       },
       intro: {
-        eyebrow: "Quiénes somos",
-        title: "Una asociación construida alrededor de un puesto remoto",
-        body: "ADI Corcovado es la asociación detrás de la Estación Sirena, el corazón del Parque Nacional Corcovado. Cada comida servida, cama tendida y reparación realizada mantiene a los guardaparques en el campo y protege la selva, las playas y la vida silvestre del parque para las futuras generaciones.",
+        eyebrow: "Qué hacemos",
+        title: "Trabajamos para generar oportunidades en nuestra comunidad",
+        body: "Impulsamos iniciativas, proyectos y alianzas orientados a responder a las necesidades de nuestras comunidades y a generar oportunidades de desarrollo para las personas que las habitan.",
+        ourWork: [
+          {
+            title: "Impulsamos proyectos comunitarios",
+            description:
+              "Apoyamos iniciativas que responden a las necesidades de nuestras comunidades.",
+          },
+          {
+            title: "Fortalecemos la producción local",
+            description:
+              "Apoyamos a productores y emprendimientos para generar oportunidades y fortalecer la economía local.",
+          },
+          {
+            title: "Creamos alianzas",
+            description:
+              "Sumamos esfuerzos con instituciones, organizaciones y empresas para desarrollar proyectos de beneficio comunitario.",
+          },
+        ],
         imageAlt: "Voluntarios y guardaparques frente a la Estación Sirena",
       },
-      projects: {
-        eyebrow: "Nuestros proyectos",
-        title: "A dónde va tu apoyo",
+      ourWork: {
+        eyebrow: "Nuestro trabajo",
+        title: "Apoyando el desarrollo de la comunidad",
         subtitle:
-          "Desde el mantenimiento de instalaciones hasta iniciativas de conservación, cada proyecto mantiene el parque en marcha para quienes lo protegen.",
-        cta: "Ver todos los proyectos",
+          "Proyectos que fortalecen nuestras comunidades, impulsan la producción local y contribuyen a la conservación de la península de Osa.",
+        cta: "Ver todos los trabajos",
         items: [
           {
-            title: "Hospedaje de la Estación Sirena",
+            title: "Hospedaje y alimentación",
             description:
-              "Mantenimiento de alojamiento seguro y cómodo para guardaparques, investigadores y científicos visitantes en medio de la selva.",
+              "Gestionamos los servicios de hospedaje y alimentación que permiten atender a visitantes, investigadores y al personal que permanece en la Estación Sirena.",
             imageAlt: "Cabañas de hospedaje en la Estación Sirena",
-            image: "/images/projects/sirena-station.webp",
+            image: "/images/ourWork/sirena-station.webp",
+            cta: { label: "Reserva ahora", slug: "booking" },
           },
           {
-            title: "Alimentación de Guardaparques",
+            title: "PROLOS",
             description:
-              "Operación de la cocina y el comedor que alimenta a los guardaparques y al personal que patrulla y protege Corcovado cada día.",
+              "(Productos Producidos por Productores Locales) Fortalecemos la producción y comercialización de productos de nuestras comunidades, conectando a productores locales con nuevos mercados.",
             imageAlt: "Comedor en la Estación Sirena",
-            image: "/images/projects/food.webp",
+            image: "/images/ourWork/prolos.webp",
+            cta: undefined as { label: string; slug: string } | undefined,
           },
           {
-            title: "Mantenimiento de Senderos e Instalaciones",
+            title: "Promoción turística",
             description:
-              "Financiamiento del mantenimiento continuo de senderos, muelles e infraestructura en una de las zonas más visitadas del parque.",
+              "Promovemos la visita responsable a la Península de Osa, fortaleciendo el turismo como motor de desarrollo para nuestras comunidades mediante alianzas, ferias y comunicación digital.",
             imageAlt: "Sendero en el Parque Nacional Corcovado",
-            image: "/images/projects/trail.webp",
+            image: "/images/ourWork/trail.webp",
+            cta: undefined as { label: string; slug: string } | undefined,
           },
         ],
       },
@@ -370,28 +410,28 @@ export const translations = {
         body: "Descrito por National Geographic como 'el lugar biológicamente más intenso de la Tierra', Corcovado protege una de las últimas grandes extensiones de selva tropical del Pacífico en Centroamérica, hogar de dantas, lapas rojas, los cuatro monos de Costa Rica y cientos de especies que no existen en ningún otro lugar.",
         points: [
           {
-            title: "Estación de Guardaparques Sirena",
+            title: "Estación Sirena",
             description:
-              "La estación remota en el corazón del parque, accesible solo en bote, avioneta o una caminata de varias horas.",
+              "La estación central del parque, rodeada de bosque, ríos y costa. Cuenta con una amplia red de senderos y excelentes oportunidades para observar fauna.",
           },
           {
-            title: "Biodiversidad incomparable",
+            title: "Estación La Leona",
             description:
-              "Ecosistemas de selva, manglar y costa reunidos en una sola área protegida.",
+              "Acceso terrestre al parque desde Carate, con recorridos por playa y bosque, observación de fauna y tortugas en temporada. También es el inicio de la ruta hacia Sirena.",
           },
           {
-            title: "Conservación activa",
+            title: "Estación Los Patos",
             description:
-              "Los guardaparques de Sirena patrullan todo el año para proteger el parque de la caza furtiva y la tala ilegal.",
+              "Un sector de bosque tropical y montaña, con senderos junto al río Rincón, cataratas y gran diversidad de flora y fauna. También conecta con Sirena.",
           },
         ],
         cta: "Conoce el parque",
         imageAlt: "Vida silvestre en el Parque Nacional Corcovado",
       },
       cta: {
-        title: "Ayúdanos a mantener Corcovado protegido",
+        title: "Sé parte de nuestros proyectos",
         subtitle:
-          "Cada donación financia la estación que mantiene a los guardaparques en el campo y la selva en pie.",
+          "Si alguno de nuestros proyectos te inspira y quieres aportar, puedes hacerlo a través de una donación.",
         primaryCta: "Donar Ahora",
         secondaryCta: "Contáctanos",
       },

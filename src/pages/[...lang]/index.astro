@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/server/home/Hero.astro";
 import Intro from "../../components/server/home/Intro.astro";
-import Projects from "../../components/server/home/Projects.astro";
+import OurWork from "../../components/server/home/OurWork.astro";
 import Corcovado from "../../components/server/home/Corcovado.astro";
 import Cta from "../../components/server/home/Cta.astro";
 import { generatePaths, getCurrentLanguage } from "../../utils/languages";
@@ -17,7 +17,7 @@ const lang = getCurrentLanguage(Astro.params.lang);
 <Layout lang={lang}>
   <Hero lang={lang} />
   <Intro lang={lang} />
-  <Projects lang={lang} />
+  <OurWork lang={lang} />
   <Corcovado lang={lang} />
   <Cta lang={lang} />
 </Layout>

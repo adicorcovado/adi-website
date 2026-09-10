@@ -1,18 +1,19 @@
 ---
 import Section from "../Section.astro";
-import PlaceholderImage from "../PlaceholderImage.astro";
+import Button from "../Button.astro";
 import Reveal from "../../client/Reveal";
 import { getTranslations } from "../../../utils/translations";
+import { getLocalizedPath } from "../../../utils/languages";
 
 interface Props {
   lang: string;
 }
 
 const { lang } = Astro.props;
-const t = getTranslations(lang).home.projects;
+const t = getTranslations(lang).home.ourWork;
 ---
 
-<Section id="projects" background="muted">
+<Section id="our-work" background="muted">
   <Reveal client:visible className="max-w-2xl">
     <p
       class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase"
@@ -40,6 +41,16 @@ const t = getTranslations(lang).home.projects;
             <div class="flex flex-1 flex-col p-6">
               <h3 class="text-xl font-bold text-accent-900">{item.title}</h3>
               <p class="mt-3 flex-1 text-accent-700">{item.description}</p>
+              {item.cta && (
+                <Button
+                  href={getLocalizedPath(lang, item.cta.slug)}
+                  variant="primary"
+                  size="md"
+                  class="mt-6 self-start"
+                >
+                  {item.cta.label}
+                </Button>
+              )}
             </div>
           </article>
         </Reveal>

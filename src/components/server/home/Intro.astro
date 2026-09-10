@@ -34,6 +34,21 @@ const t = getTranslations(lang).home.intro;
       <p class="mt-6 text-lg text-accent-700">
         {t.body}
       </p>
+      <ul class="mt-8 space-y-6">
+        {
+          t.ourWork.map((point) => (
+            <li class="flex gap-4">
+              <span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-primary-500" />
+              <div>
+                <p class="font-brevia font-semibold text-accent-900">
+                  {point.title}
+                </p>
+                <p class="mt-1 text-accent-700">{point.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
     </Reveal>
   </div>
 </Section>

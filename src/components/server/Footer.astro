@@ -13,7 +13,6 @@ const homePath = getLocalizedPath(lang);
 const navItems = [
   { label: t.nav.home, href: homePath },
   { label: t.nav.about, href: `${homePath}#about` },
-  { label: t.nav.projects, href: `${homePath}#projects` },
   { label: t.nav.corcovado, href: `${homePath}#corcovado` },
   { label: t.nav.contact, href: `${homePath}#contact` },
 ];
@@ -26,7 +25,7 @@ const year = new Date().getFullYear();
     <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
       <div class="sm:col-span-2 lg:col-span-2">
         <a href={homePath} class="flex items-center gap-2">
-          <img src="/logo-adi.png" alt="ADI Corcovado" class="h-20 w-auto" />
+          <img src="/logo-adi.png" alt="ADI Corcovado" class="h-24 w-auto" />
         </a>
         <p class="mt-4 max-w-sm text-md text-accent-200">{t.footer.tagline}</p>
       </div>
@@ -76,7 +75,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="mt-12 border-t border-white/10 pt-8 text-sm text-accent-200">
-      &copy; {year} ADI Corcovado. {t.footer.rights}
+      &copy; {year} ADI Corcovado Carate. {t.footer.rights}
     </div>
   </div>
 </footer>
