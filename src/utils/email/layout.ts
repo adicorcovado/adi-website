@@ -54,7 +54,7 @@ export function renderEmailLayout({
           <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:${EMAIL_COLORS.white};border-radius:12px;overflow:hidden;">
             <tr>
               <td style="background-color:${EMAIL_COLORS.accent900};padding:24px 32px;text-align:center;">
-                <img src="${LOGO_URL}" alt="ADI Corcovado" height="40" style="height:40px;width:auto;" />
+                <img src="${LOGO_URL}" alt="ADI Corcovado" height="100" style="height:100px;width:auto;" />
               </td>
             </tr>
             <tr>
