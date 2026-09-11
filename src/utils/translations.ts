@@ -33,7 +33,7 @@ export const translations = {
         imageAlt: "Aerial view of the Corcovado rainforest canopy",
       },
       intro: {
-        eyebrow: "What we do",
+        eyebrow: "About Us",
         title: "We work to create opportunities in our community",
         body: "We drive initiatives, projects, and partnerships aimed at responding to the needs of our communities and creating development opportunities for the people who live in them.",
         ourWork: [
@@ -358,7 +358,7 @@ export const translations = {
         imageAlt: "Vista aérea del dosel de la selva de Corcovado",
       },
       intro: {
-        eyebrow: "Qué hacemos",
+        eyebrow: "Quiénes Somos",
         title: "Trabajamos para generar oportunidades en nuestra comunidad",
         body: "Impulsamos iniciativas, proyectos y alianzas orientados a responder a las necesidades de nuestras comunidades y a generar oportunidades de desarrollo para las personas que las habitan.",
         ourWork: [
