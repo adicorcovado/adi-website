@@ -28,14 +28,23 @@ const headcountShape = HEADCOUNT_FIELDS.reduce(
   {} as Record<HeadcountField, typeof headcountSchema>,
 );
 
-const mealCategorySchema = z.object(headcountShape);
-const mealsShape = MEAL_TYPES.reduce(
+const mealHeadcountShape = HEADCOUNT_FIELDS.reduce(
+  (shape, field) => {
+    shape[field] = headcountSchema.default(0);
+    return shape;
+  },
+  {} as Record<HeadcountField, z.ZodDefault<typeof headcountSchema>>,
+);
+
+const mealCategorySchema = z.object(mealHeadcountShape);
+const mealDayShape = MEAL_TYPES.reduce(
   (shape, meal) => {
     shape[meal] = mealCategorySchema;
     return shape;
   },
   {} as Record<MealType, typeof mealCategorySchema>,
 );
+const mealDaySchema = z.object(mealDayShape);
 
 const bookingRequestSchema = z
   .object({
@@ -47,7 +56,7 @@ const bookingRequestSchema = z
     lang: z.enum(["en", "es"]).default("es"),
     turnstileToken: z.string().trim().min(1),
     ...headcountShape,
-    meals: z.object(mealsShape),
+    meals: z.record(z.string(), mealDaySchema),
   })
   .refine(
     (data) => new Date(data.checkOutDate) >= new Date(data.checkInDate),

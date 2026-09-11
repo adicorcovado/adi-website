@@ -97,6 +97,7 @@ function renderSummaryBody(input: BuildBookingEmailInput): string {
     html += renderSectionTitle(shared.mealsTitle);
     html += renderLineItemsTable(
       [
+        shared.dateColumn,
         shared.mealColumn,
         shared.categoryColumn,
         shared.guestsColumn,
@@ -104,6 +105,7 @@ function renderSummaryBody(input: BuildBookingEmailInput): string {
         shared.subtotalColumn,
       ],
       pricing.mealLines.map((line) => [
+        formatDate(line.date, lang),
         mealLabels[line.mealType].title,
         categoryLabels[line.category].label,
         String(line.count),

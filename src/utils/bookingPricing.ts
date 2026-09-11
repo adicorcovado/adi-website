@@ -8,7 +8,9 @@ import {
 export type BookingCurrency = "USD" | "CRC";
 
 export type HeadcountTotals = Record<HeadcountField, number>;
-export type MealTotals = Record<MealType, HeadcountTotals>;
+export type MealDayTotals = Record<MealType, HeadcountTotals>;
+/** Meal headcounts keyed by stay day (`YYYY-MM-DD`). */
+export type MealTotals = Record<string, MealDayTotals>;
 
 interface CategoryRate {
   currency: BookingCurrency;
@@ -60,6 +62,7 @@ export interface BookingLodgingLine {
 }
 
 export interface BookingMealLine extends BookingLodgingLine {
+  date: string;
   mealType: MealType;
 }
 
@@ -110,25 +113,29 @@ export function calculateBookingPricing(
     }
   }
 
-  for (const mealType of MEAL_TYPES) {
-    for (const category of HEADCOUNT_FIELDS) {
-      const count = meals[mealType]?.[category];
-      if (!count) continue;
+  for (const date of Object.keys(meals).sort()) {
+    const dayMeals = meals[date];
+    for (const mealType of MEAL_TYPES) {
+      for (const category of HEADCOUNT_FIELDS) {
+        const count = dayMeals[mealType]?.[category];
+        if (!count) continue;
 
-      const rate = BOOKING_RATES[category];
-      const unitPrice = rate.meals[mealType];
-      if (!unitPrice) continue;
+        const rate = BOOKING_RATES[category];
+        const unitPrice = rate.meals[mealType];
+        if (!unitPrice) continue;
 
-      const total = unitPrice * count;
-      mealLines.push({
-        mealType,
-        category,
-        currency: rate.currency,
-        count,
-        unitPrice,
-        total,
-      });
-      addToTotal(rate.currency, total);
+        const total = unitPrice * count;
+        mealLines.push({
+          date,
+          mealType,
+          category,
+          currency: rate.currency,
+          count,
+          unitPrice,
+          total,
+        });
+        addToTotal(rate.currency, total);
+      }
     }
   }
 

@@ -198,7 +198,10 @@ export const translations = {
         step2: {
           title: "Meals",
           description:
-            "Let us know how many people will need each meal during the stay.",
+            "Let us know how many people will need each meal, day by day, during the stay.",
+          dayLabel: "Day {number}",
+          missingDatesNotice:
+            "Please select your check-in and check-out dates in the previous step to plan meals.",
           mealTypes: {
             breakfast: { title: "Breakfasts" },
             snack: { title: "Snacks" },
@@ -310,6 +313,7 @@ export const translations = {
           nightsLabel: "Nights",
           lodgingTitle: "Guests & lodging",
           mealsTitle: "Meals",
+          dateColumn: "Date",
           categoryColumn: "Category",
           guestsColumn: "Guests",
           rateColumn: "Rate / night",
@@ -526,7 +530,10 @@ export const translations = {
         step2: {
           title: "Alimentación",
           description:
-            "Indícanos cuántas personas necesitarán cada tiempo de comida durante su estadía.",
+            "Indícanos cuántas personas necesitarán cada tiempo de comida, día por día, durante su estadía.",
+          dayLabel: "Día {number}",
+          missingDatesNotice:
+            "Selecciona las fechas de ingreso y salida en el paso anterior para planificar la alimentación.",
           mealTypes: {
             breakfast: { title: "Desayunos" },
             snack: { title: "Meriendas" },
@@ -639,6 +646,7 @@ export const translations = {
           nightsLabel: "Noches",
           lodgingTitle: "Huéspedes y hospedaje",
           mealsTitle: "Alimentación",
+          dateColumn: "Fecha",
           categoryColumn: "Categoría",
           guestsColumn: "Personas",
           rateColumn: "Tarifa / noche",

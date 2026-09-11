@@ -32,8 +32,12 @@ const TOTAL_STEPS = 3;
 const MEALS_STEP_INDEX = 1;
 
 function hasNoMeals(meals: ContactFormValues["meals"]): boolean {
-  return MEAL_TYPES.every((mealType) =>
-    HEADCOUNT_FIELDS.every((field) => Number(meals[mealType][field]) === 0),
+  return Object.values(meals ?? {}).every((day) =>
+    MEAL_TYPES.every((mealType) =>
+      HEADCOUNT_FIELDS.every(
+        (field) => Number(day[mealType]?.[field] ?? 0) === 0,
+      ),
+    ),
   );
 }
 
@@ -218,7 +222,7 @@ export default function BookingWizard({
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 {step === 0 && <StepTripDetails t={t.step1} />}
-                {step === 1 && <StepMeals t={t.step2} />}
+                {step === 1 && <StepMeals t={t.step2} lang={lang} />}
                 {step === 2 && <StepDocuments t={t.step3} />}
               </motion.div>
             </AnimatePresence>

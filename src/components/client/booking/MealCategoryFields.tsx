@@ -1,26 +1,33 @@
 import { useFormContext } from "react-hook-form";
-import type { ContactFormValues, MealType } from "../../../utils/contactFormSchema";
-import { HEADCOUNT_FIELDS } from "../../../utils/contactFormSchema";
+import type {
+  ContactFormValues,
+  HeadcountField,
+  MealType,
+} from "../../../utils/contactFormSchema";
 import type { BookingTranslations } from "../../../utils/translations";
 import FormField, { inputClasses } from "./FormField";
 
 interface MealCategoryFieldsProps {
+  dayKey: string;
   mealType: MealType;
   title: string;
   fieldLabels: BookingTranslations["form"]["step2"]["fields"];
+  activeFields: readonly HeadcountField[];
 }
 
 export default function MealCategoryFields({
+  dayKey,
   mealType,
   title,
   fieldLabels,
+  activeFields,
 }: MealCategoryFieldsProps) {
   const {
     register,
     formState: { errors },
   } = useFormContext<ContactFormValues>();
 
-  const mealErrors = errors.meals?.[mealType];
+  const mealErrors = errors.meals?.[dayKey]?.[mealType];
 
   return (
     <fieldset className="rounded-xl border border-accent-100 p-5">
@@ -28,8 +35,8 @@ export default function MealCategoryFields({
         {title}
       </legend>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {HEADCOUNT_FIELDS.map((field) => {
-          const id = `meals.${mealType}.${field}`;
+        {activeFields.map((field) => {
+          const id = `meals.${dayKey}.${mealType}.${field}`;
           return (
             <FormField
               key={id}
@@ -42,8 +49,9 @@ export default function MealCategoryFields({
                 type="number"
                 min={0}
                 step={1}
+                placeholder="0"
                 className={inputClasses(!!mealErrors?.[field])}
-                {...register(`meals.${mealType}.${field}`)}
+                {...register(`meals.${dayKey}.${mealType}.${field}`)}
               />
             </FormField>
           );

@@ -12,6 +12,27 @@ export const HEADCOUNT_FIELDS = [
 export type MealType = (typeof MEAL_TYPES)[number];
 export type HeadcountField = (typeof HEADCOUNT_FIELDS)[number];
 
+const MAX_STAY_DAYS = 60;
+
+/** Every calendar day of the stay (`YYYY-MM-DD`, both ends inclusive), capped at `MAX_STAY_DAYS`. */
+export function getStayDays(checkInDate: string, checkOutDate: string): string[] {
+  if (!checkInDate || !checkOutDate) return [];
+
+  const start = new Date(`${checkInDate}T00:00:00Z`);
+  const end = new Date(`${checkOutDate}T00:00:00Z`);
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || end < start) {
+    return [checkInDate];
+  }
+
+  const days: string[] = [];
+  const cursor = new Date(start);
+  while (cursor.getTime() <= end.getTime() && days.length < MAX_STAY_DAYS) {
+    days.push(cursor.toISOString().slice(0, 10));
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+  }
+  return days;
+}
+
 export interface ContactFormMessages {
   nameRequired: string;
   emailRequired: string;
@@ -34,15 +55,29 @@ export function buildContactFormSchema(messages: ContactFormMessages) {
     {} as Record<HeadcountField, typeof count>,
   );
 
-  const mealCategorySchema = z.object(headcountShape);
+  // Only the headcount categories selected in step 1 get rendered per meal per
+  // day, so the rest are never registered — default them to 0 instead of
+  // requiring every category on every meal/day combination.
+  const mealCount = count.default(0);
+  const mealHeadcountShape = HEADCOUNT_FIELDS.reduce(
+    (shape, field) => {
+      shape[field] = mealCount;
+      return shape;
+    },
+    {} as Record<HeadcountField, typeof mealCount>,
+  );
 
-  const mealsShape = MEAL_TYPES.reduce(
+  const mealCategorySchema = z.object(mealHeadcountShape);
+
+  const mealDayShape = MEAL_TYPES.reduce(
     (shape, meal) => {
       shape[meal] = mealCategorySchema;
       return shape;
     },
     {} as Record<MealType, typeof mealCategorySchema>,
   );
+
+  const mealDaySchema = z.object(mealDayShape);
 
   return z
     .object({
@@ -56,7 +91,7 @@ export function buildContactFormSchema(messages: ContactFormMessages) {
       checkInDate: z.string().min(1, messages.checkInRequired),
       checkOutDate: z.string().min(1, messages.checkOutRequired),
       ...headcountShape,
-      meals: z.object(mealsShape),
+      meals: z.record(z.string(), mealDaySchema),
       entranceFeeProof: z.custom<File>(
         (value) => value instanceof File && value.size > 0,
         { message: messages.fileRequired },
@@ -88,13 +123,7 @@ export const CONTACT_FORM_DEFAULT_VALUES = {
   checkInDate: "",
   checkOutDate: "",
   ...emptyHeadcount,
-  meals: MEAL_TYPES.reduce(
-    (meals, meal) => {
-      meals[meal] = { ...emptyHeadcount };
-      return meals;
-    },
-    {} as Record<MealType, Record<HeadcountField, number>>,
-  ),
+  meals: {},
   entranceFeeProof: undefined,
 } as unknown as ContactFormValues;
 
