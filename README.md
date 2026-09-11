@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics - ADI-Corcovado
+# Astro Starter Kit: Basics - ADI-Corcovado Carate
 
 ```sh
 npm create astro@latest -- --template basics
