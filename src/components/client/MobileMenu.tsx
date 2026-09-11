@@ -21,7 +21,11 @@ interface MobileMenuProps {
   languages: LangOption[];
 }
 
-export default function MobileMenu({ navItems, cta, languages }: MobileMenuProps) {
+export default function MobileMenu({
+  navItems,
+  cta,
+  languages,
+}: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -119,16 +123,23 @@ export default function MobileMenu({ navItems, cta, languages }: MobileMenuProps
                   </a>
 
                   <div className="mt-auto flex gap-4">
-                    {languages.map((option) => (
-                      <a
-                        key={option.code}
-                        href={option.href}
-                        className={`text-sm font-semibold ${
-                          option.current ? "text-primary-600" : "text-accent-400"
-                        }`}
-                      >
-                        {option.label}
-                      </a>
+                    {languages.map((option, index) => (
+                      <>
+                        {index > 0 && (
+                          <span className="text-accent-200">/</span>
+                        )}
+                        <a
+                          key={option.code}
+                          href={option.href}
+                          className={`text-md font-semibold ${
+                            option.current
+                              ? "text-primary-600"
+                              : "text-accent-400"
+                          }`}
+                        >
+                          {option.label}
+                        </a>
+                      </>
                     ))}
                   </div>
                 </motion.div>
