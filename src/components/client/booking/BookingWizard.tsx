@@ -74,7 +74,9 @@ function buildBookingFormData(
     formData.set(field, String(data[field]));
   }
   formData.set("meals", JSON.stringify(data.meals));
-  formData.set("entranceFeeProof", data.entranceFeeProof);
+  for (const file of data.entranceFeeProofs) {
+    formData.append("entranceFeeProofs", file);
+  }
   return formData;
 }
 

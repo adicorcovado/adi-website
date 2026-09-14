@@ -259,14 +259,17 @@ export const translations = {
         step4: {
           title: "Documents",
           description:
-            "Attach your park entrance fee confirmation to complete your booking request. This document is required to process your stay at the Sirena Ranger Station.",
+            "Attach your park entrance fee confirmation to complete your booking request. You can attach up to 4 documents. These documents are required to process your stay at the Sirena Ranger Station.",
           fields: {
             file: {
-              label: "Park entrance fee confirmation",
-              helpText: "PDF or image, up to 10 MB.",
-              dropText: "Drag and drop your file here, or",
+              label: "Park entrance fee confirmation documents",
+              helpText: "PDF or image, up to 10 MB each. Attach up to 4 documents.",
+              dropText: "Drag and drop your files here, or",
               browseText: "browse",
-              noFileText: "No file selected",
+              noFileText: "No files attached yet",
+              progressLabel: "{count} of {min} minimum documents attached",
+              maxReachedText: "Maximum of {max} files reached.",
+              removeLabel: "Remove file",
             },
           },
         },
@@ -294,7 +297,7 @@ export const translations = {
           checkOutRequired: "Please select a check-out date.",
           dateOrder: "Check-out date must be on or after the check-in date.",
           countMin: "Must be 0 or greater.",
-          fileRequired: "Please upload the entrance fee confirmation.",
+          fileRequired: "Please attach the entrance fee confirmation document.",
           captchaRequired: "Please complete the verification challenge.",
           submitError:
             "We couldn't submit your request. Please try again in a moment.",
@@ -374,7 +377,7 @@ export const translations = {
           totalLabel: "Estimated total",
           exchangeNote:
             "Amounts in colones (₡) follow the exchange rate defined by the Banco Central de Costa Rica and are shown separately from the total in dollars.",
-          attachmentNote: "Park entrance fee confirmation attached.",
+          attachmentNote: "Park entrance fee confirmation documents attached.",
         },
       },
     },
@@ -642,14 +645,17 @@ export const translations = {
         step4: {
           title: "Documentos",
           description:
-            "Adjunta la confirmación de tu reserva de ingreso al Parque Nacional Corcovado. Este documento es necesario para gestionar tu estadía en la Estación Sirena.",
+            "Adjunta la confirmación de tu ingreso al Parque Nacional Corcovado. Puedes adjuntar hasta 4 documentos. Estos documentos son necesarios para gestionar tu estadía en la Estación Sirena.",
           fields: {
             file: {
-              label: "Confirmación de reserva de ingreso al parque",
-              helpText: "PDF o imagen, hasta 10 MB.",
-              dropText: "Arrastra y suelta tu archivo aquí, o",
-              browseText: "selecciónalo",
-              noFileText: "Ningún archivo seleccionado",
+              label: "Documentos de confirmación de ingreso al parque",
+              helpText: "PDF o imagen, hasta 10 MB cada uno. Adjunta hasta 4 documentos.",
+              dropText: "Arrastra y suelta tus archivos aquí, o",
+              browseText: "selecciónalos",
+              noFileText: "Ningún archivo adjunto todavía",
+              progressLabel: "{count} de {min} documentos mínimos adjuntos",
+              maxReachedText: "Se alcanzó el máximo de {max} archivos.",
+              removeLabel: "Eliminar archivo",
             },
           },
         },
@@ -679,7 +685,7 @@ export const translations = {
             "La fecha de salida debe ser igual o posterior a la fecha de ingreso.",
           countMin: "Debe ser 0 o mayor.",
           fileRequired:
-            "Por favor adjunta la confirmación de tu reserva de ingreso.",
+            "Por favor adjunta el documento de confirmación de ingreso.",
           captchaRequired: "Por favor completa la verificación.",
           submitError:
             "No pudimos enviar tu solicitud. Por favor intenta de nuevo en un momento.",
@@ -759,7 +765,7 @@ export const translations = {
           exchangeNote:
             "Los montos en colones (₡) siguen el tipo de cambio definido por el Banco Central de Costa Rica y se muestran por separado del total en dólares.",
           attachmentNote:
-            "Se adjunta la confirmación de la tarifa de ingreso al parque.",
+            "Se adjuntan los documentos de confirmación de la tarifa de ingreso al parque.",
         },
       },
     },

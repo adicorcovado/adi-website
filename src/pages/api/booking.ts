@@ -5,6 +5,7 @@ import {
   HEADCOUNT_FIELDS,
   ID_TYPES,
   MEAL_TYPES,
+  MIN_ENTRANCE_FEE_PROOFS,
   PAYMENT_METHODS,
   type HeadcountField,
   type MealType,
@@ -132,16 +133,24 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  const entranceFeeProof = formData.get("entranceFeeProof");
-  if (!(entranceFeeProof instanceof File) || entranceFeeProof.size === 0) {
+  const entranceFeeProofs = formData
+    .getAll("entranceFeeProofs")
+    .filter((value): value is File => value instanceof File && value.size > 0);
+
+  if (entranceFeeProofs.length < MIN_ENTRANCE_FEE_PROOFS) {
     return jsonResponse(
-      { error: "Please attach the park entrance fee confirmation." },
+      {
+        error:
+          MIN_ENTRANCE_FEE_PROOFS <= 1
+            ? "Please attach the park entrance fee confirmation document."
+            : `Please attach at least ${MIN_ENTRANCE_FEE_PROOFS} park entrance fee confirmation documents.`,
+      },
       400,
     );
   }
-  if (entranceFeeProof.size > MAX_FILE_SIZE) {
+  if (entranceFeeProofs.some((file) => file.size > MAX_FILE_SIZE)) {
     return jsonResponse(
-      { error: "The attached file must be 10 MB or smaller." },
+      { error: "Each attached file must be 10 MB or smaller." },
       400,
     );
   }
@@ -175,7 +184,12 @@ export const POST: APIRoute = async ({ request }) => {
     nights,
     !sameDayTrip,
   );
-  const attachmentBuffer = Buffer.from(await entranceFeeProof.arrayBuffer());
+  const attachments = await Promise.all(
+    entranceFeeProofs.map(async (file, index) => ({
+      filename: file.name || `entrance-fee-confirmation-${index + 1}`,
+      content: Buffer.from(await file.arrayBuffer()),
+    })),
+  );
 
   const resend = new Resend(resendApiKey);
   // Admin notifications always go out in Spanish, regardless of the guest's language.
@@ -194,12 +208,7 @@ export const POST: APIRoute = async ({ request }) => {
       replyTo: data.email,
       subject: adminEmail.subject,
       html: adminEmail.html,
-      attachments: [
-        {
-          filename: entranceFeeProof.name || "entrance-fee-confirmation",
-          content: attachmentBuffer,
-        },
-      ],
+      attachments,
     }),
     resend.emails.send({
       from: fromEmail,

@@ -22,6 +22,9 @@ export type PaymentMethod = (typeof PAYMENT_METHODS)[number];
 
 const MAX_STAY_DAYS = 60;
 
+export const MIN_ENTRANCE_FEE_PROOFS = 1;
+export const MAX_ENTRANCE_FEE_PROOFS = 4;
+
 /** Every calendar day of the stay (`YYYY-MM-DD`, both ends inclusive), capped at `MAX_STAY_DAYS`. */
 export function getStayDays(checkInDate: string, checkOutDate: string): string[] {
   if (!checkInDate || !checkOutDate) return [];
@@ -108,10 +111,11 @@ export function buildContactFormSchema(messages: ContactFormMessages) {
       checkOutDate: z.string().min(1, messages.checkOutRequired),
       ...headcountShape,
       meals: z.record(z.string(), mealDaySchema),
-      entranceFeeProof: z.custom<File>(
-        (value) => value instanceof File && value.size > 0,
-        { message: messages.fileRequired },
-      ),
+      entranceFeeProofs: z
+        .array(
+          z.custom<File>((value) => value instanceof File && value.size > 0),
+        )
+        .min(MIN_ENTRANCE_FEE_PROOFS, messages.fileRequired),
     })
     .refine(
       (data) =>
@@ -143,7 +147,7 @@ export const CONTACT_FORM_DEFAULT_VALUES = {
   checkOutDate: "",
   ...emptyHeadcount,
   meals: {},
-  entranceFeeProof: undefined,
+  entranceFeeProofs: [],
 } as unknown as ContactFormValues;
 
 export const STEP_FIELDS: Array<Array<keyof ContactFormValues>> = [
@@ -158,5 +162,5 @@ export const STEP_FIELDS: Array<Array<keyof ContactFormValues>> = [
     "researchers",
   ],
   ["meals"],
-  ["entranceFeeProof"],
+  ["entranceFeeProofs"],
 ];
