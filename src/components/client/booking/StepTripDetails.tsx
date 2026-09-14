@@ -74,6 +74,7 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
           htmlFor="checkInDate"
           label={t.fields.checkInDate.label}
           error={errors.checkInDate?.message}
+          helpText={t.fields.checkInDate.helpText}
         >
           <input
             id="checkInDate"
@@ -91,6 +92,7 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
           htmlFor="checkOutDate"
           label={t.fields.checkOutDate.label}
           error={errors.checkOutDate?.message}
+          helpText={t.fields.checkOutDate.helpText}
         >
           <input
             id="checkOutDate"

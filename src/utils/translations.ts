@@ -182,8 +182,16 @@ export const translations = {
               label: "Company name",
               placeholder: "Organization or company (optional)",
             },
-            checkInDate: { label: "Check-in date" },
-            checkOutDate: { label: "Check-out date" },
+            checkInDate: {
+              label: "Check-in date",
+              helpText:
+                "Must match the check-in date on your SINAC booking confirmation.",
+            },
+            checkOutDate: {
+              label: "Check-out date",
+              helpText:
+                "Must match the check-out date on your SINAC booking confirmation.",
+            },
             adults: { label: "Number of adults" },
             children: { label: "Number of children" },
             guides: { label: "Number of guides" },
@@ -514,8 +522,16 @@ export const translations = {
               label: "Nombre de la empresa",
               placeholder: "Organización o empresa (opcional)",
             },
-            checkInDate: { label: "Fecha de ingreso" },
-            checkOutDate: { label: "Fecha de salida" },
+            checkInDate: {
+              label: "Fecha de ingreso",
+              helpText:
+                "Debe coincidir con la fecha de ingreso indicada en la boleta de reserva del SINAC.",
+            },
+            checkOutDate: {
+              label: "Fecha de salida",
+              helpText:
+                "Debe coincidir con la fecha de salida indicada en la boleta de reserva del SINAC.",
+            },
             adults: { label: "Cantidad de adultos" },
             children: { label: "Cantidad de niños" },
             guides: { label: "Cantidad de guías" },
