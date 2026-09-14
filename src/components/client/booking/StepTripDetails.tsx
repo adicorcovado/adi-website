@@ -5,7 +5,7 @@ import type { BookingTranslations } from "../../../utils/translations";
 import FormField, { inputClasses } from "./FormField";
 
 interface StepTripDetailsProps {
-  t: BookingTranslations["form"]["step1"];
+  t: BookingTranslations["form"]["step2"];
 }
 
 export default function StepTripDetails({ t }: StepTripDetailsProps) {
@@ -32,44 +32,6 @@ export default function StepTripDetails({ t }: StepTripDetailsProps) {
       <p className="mt-1.5 text-accent-700 text-lg">{t.description}</p>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
-        <FormField
-          htmlFor="name"
-          label={t.fields.name.label}
-          error={errors.name?.message}
-        >
-          <input
-            id="name"
-            type="text"
-            placeholder={t.fields.name.placeholder}
-            className={inputClasses(!!errors.name)}
-            {...register("name")}
-          />
-        </FormField>
-
-        <FormField
-          htmlFor="email"
-          label={t.fields.email.label}
-          error={errors.email?.message}
-        >
-          <input
-            id="email"
-            type="email"
-            placeholder={t.fields.email.placeholder}
-            className={inputClasses(!!errors.email)}
-            {...register("email")}
-          />
-        </FormField>
-
-        <FormField htmlFor="companyName" label={t.fields.companyName.label}>
-          <input
-            id="companyName"
-            type="text"
-            placeholder={t.fields.companyName.placeholder}
-            className={inputClasses(!!errors.companyName)}
-            {...register("companyName")}
-          />
-        </FormField>
-
         <FormField
           htmlFor="checkInDate"
           label={t.fields.checkInDate.label}

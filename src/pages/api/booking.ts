@@ -3,7 +3,9 @@ import { Resend } from "resend";
 import { z } from "zod";
 import {
   HEADCOUNT_FIELDS,
+  ID_TYPES,
   MEAL_TYPES,
+  PAYMENT_METHODS,
   type HeadcountField,
   type MealType,
 } from "../../utils/contactFormSchema";
@@ -51,6 +53,9 @@ const bookingRequestSchema = z
     name: z.string().trim().min(1),
     email: z.string().trim().min(1).email(),
     companyName: z.string().trim().optional(),
+    idType: z.enum(ID_TYPES),
+    idNumber: z.string().trim().min(1),
+    paymentMethod: z.enum(PAYMENT_METHODS),
     checkInDate: z.string().min(1),
     checkOutDate: z.string().min(1),
     lang: z.enum(["en", "es"]).default("es"),
@@ -90,6 +95,9 @@ export const POST: APIRoute = async ({ request }) => {
     name: formData.get("name"),
     email: formData.get("email"),
     companyName: formData.get("companyName") || undefined,
+    idType: formData.get("idType"),
+    idNumber: formData.get("idNumber"),
+    paymentMethod: formData.get("paymentMethod"),
     checkInDate: formData.get("checkInDate"),
     checkOutDate: formData.get("checkOutDate"),
     lang: formData.get("lang") || "es",

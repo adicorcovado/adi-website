@@ -1,4 +1,5 @@
 import type { Language, Translations } from "../translations";
+import type { IdType, PaymentMethod } from "../contactFormSchema";
 import type {
   BookingCurrency,
   BookingPricing,
@@ -18,6 +19,9 @@ export interface BookingSubmission extends HeadcountTotals {
   name: string;
   email: string;
   companyName?: string;
+  idType: IdType;
+  idNumber: string;
+  paymentMethod: PaymentMethod;
   checkInDate: string;
   checkOutDate: string;
   meals: MealTotals;
@@ -55,8 +59,10 @@ function formatDate(dateValue: string, lang: Language): string {
 function renderSummaryBody(input: BuildBookingEmailInput): string {
   const { data, pricing, t, lang } = input;
   const shared = t.emails.booking.shared;
-  const categoryLabels = t.booking.form.step2.fields;
-  const mealLabels = t.booking.form.step2.mealTypes;
+  const categoryLabels = t.booking.form.step3.fields;
+  const mealLabels = t.booking.form.step3.mealTypes;
+  const idTypeLabels = t.booking.form.step1.fields.idType.options;
+  const paymentMethodLabels = t.booking.form.step1.fields.paymentMethod.options;
 
   const tripDetailRows: Array<[string, string]> = [
     [shared.guestLabel, data.name],
@@ -65,6 +71,11 @@ function renderSummaryBody(input: BuildBookingEmailInput): string {
   if (data.companyName) {
     tripDetailRows.push([shared.companyLabel, data.companyName]);
   }
+  tripDetailRows.push(
+    [shared.idTypeLabel, idTypeLabels[data.idType]],
+    [shared.idNumberLabel, data.idNumber],
+    [shared.paymentMethodLabel, paymentMethodLabels[data.paymentMethod]],
+  );
   const sameDayTrip = data.checkInDate === data.checkOutDate;
   tripDetailRows.push(
     [shared.checkInLabel, formatDate(data.checkInDate, lang)],

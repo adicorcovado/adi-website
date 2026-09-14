@@ -167,14 +167,15 @@ export const translations = {
       },
       form: {
         steps: [
+          { title: "Requester Details" },
           { title: "Trip Details" },
           { title: "Meals" },
           { title: "Documents" },
         ],
         step1: {
-          title: "Trip details",
+          title: "Requester details",
           description:
-            "Let us know the dates of your visit and who will be in your group.",
+            "Enter your personal details and select a payment method; this information will be used to manage your booking and billing.",
           fields: {
             name: { label: "Full name", placeholder: "Jane Doe" },
             email: { label: "Email", placeholder: "jane@example.com" },
@@ -182,6 +183,37 @@ export const translations = {
               label: "Company name",
               placeholder: "Organization or company (optional)",
             },
+            idType: {
+              label: "ID type",
+              placeholder: "Select an ID type",
+              options: {
+                cedulaFisica: "Cédula física",
+                cedulaJuridica: "Cédula jurídica",
+                pasaporte: "Passport",
+              },
+            },
+            idNumber: {
+              label: "ID number",
+              placeholder: "e.g. 1-2345-6789",
+            },
+            paymentMethod: {
+              label: "Payment method",
+              placeholder: "Select a payment method",
+              helpText:
+                "We'll use this information to provide you with the payment instructions for your booking.",
+              options: {
+                bankDeposit: "Bank deposit",
+                electronicTransfer: "Electronic transfer",
+                creditDebitCard: "Credit or debit card",
+              },
+            },
+          },
+        },
+        step2: {
+          title: "Trip details",
+          description:
+            "Let us know the dates of your visit and who will be in your group.",
+          fields: {
             checkInDate: {
               label: "Check-in date",
               helpText:
@@ -203,7 +235,7 @@ export const translations = {
             },
           },
         },
-        step2: {
+        step3: {
           title: "Meals",
           description:
             "Let us know how many people will need each meal, day by day, during the stay.",
@@ -224,7 +256,7 @@ export const translations = {
             researchers: { label: "Researchers / officials" },
           },
         },
-        step3: {
+        step4: {
           title: "Documents",
           description:
             "Attach your park entrance fee confirmation to complete your booking request. This document is required to process your stay at the Sirena Ranger Station.",
@@ -255,6 +287,9 @@ export const translations = {
           nameRequired: "Please enter your full name.",
           emailRequired: "Please enter your email address.",
           emailInvalid: "Please enter a valid email address.",
+          idTypeRequired: "Please select an ID type.",
+          idNumberRequired: "Please enter your ID number.",
+          paymentMethodRequired: "Please select a payment method.",
           checkInRequired: "Please select a check-in date.",
           checkOutRequired: "Please select a check-out date.",
           dateOrder: "Check-out date must be on or after the check-in date.",
@@ -316,6 +351,9 @@ export const translations = {
           guestLabel: "Requester",
           emailLabel: "Email",
           companyLabel: "Organization",
+          idTypeLabel: "ID type",
+          idNumberLabel: "ID number",
+          paymentMethodLabel: "Payment method",
           checkInLabel: "Check-in",
           checkOutLabel: "Check-out",
           nightsLabel: "Nights",
@@ -504,16 +542,17 @@ export const translations = {
       },
       form: {
         steps: [
+          { title: "Datos del solicitante" },
           { title: "Detalles del viaje" },
           { title: "Alimentación" },
           { title: "Documentos" },
         ],
         step1: {
-          title: "Detalles del viaje",
+          title: "Datos del solicitante",
           description:
-            "Indícanos las fechas de tu visita y quiénes forman parte del grupo.",
+            "Ingresa tus datos personales y selecciona el método de pago; esta información será utilizada para gestionar tu reserva y facturación.",
           fields: {
-            name: { label: "Nombre completo", placeholder: "Juana Pérez" },
+            name: { label: "Nombre completo", placeholder: "Juan Pérez" },
             email: {
               label: "Correo electrónico",
               placeholder: "juan@ejemplo.com",
@@ -522,6 +561,37 @@ export const translations = {
               label: "Nombre de la empresa",
               placeholder: "Organización o empresa (opcional)",
             },
+            idType: {
+              label: "Tipo de identificación",
+              placeholder: "Selecciona un tipo de identificación",
+              options: {
+                cedulaFisica: "Cédula física",
+                cedulaJuridica: "Cédula jurídica",
+                pasaporte: "Pasaporte",
+              },
+            },
+            idNumber: {
+              label: "Número de identificación",
+              placeholder: "Ej. 1-2345-6789",
+            },
+            paymentMethod: {
+              label: "Método de pago",
+              placeholder: "Selecciona un método de pago",
+              helpText:
+                "Utilizaremos esta información para brindarte las instrucciones de pago de tu reserva.",
+              options: {
+                bankDeposit: "Depósito bancario",
+                electronicTransfer: "Transferencia electrónica",
+                creditDebitCard: "Tarjeta de crédito o débito",
+              },
+            },
+          },
+        },
+        step2: {
+          title: "Detalles del viaje",
+          description:
+            "Indícanos las fechas de tu visita y quiénes forman parte del grupo.",
+          fields: {
             checkInDate: {
               label: "Fecha de ingreso",
               helpText:
@@ -543,7 +613,7 @@ export const translations = {
             },
           },
         },
-        step2: {
+        step3: {
           title: "Alimentación",
           description:
             "Indícanos cuántas personas necesitarán cada tiempo de comida, día por día, durante su estadía.",
@@ -564,7 +634,7 @@ export const translations = {
             researchers: { label: "Investigadores / funcionarios" },
           },
         },
-        step3: {
+        step4: {
           title: "Documentos",
           description:
             "Adjunta la confirmación de tu reserva de ingreso al Parque Nacional Corcovado. Este documento es necesario para gestionar tu estadía en la Estación Sirena.",
@@ -595,6 +665,9 @@ export const translations = {
           nameRequired: "Por favor ingresa tu nombre completo.",
           emailRequired: "Por favor ingresa tu correo electrónico.",
           emailInvalid: "Por favor ingresa un correo electrónico válido.",
+          idTypeRequired: "Por favor selecciona un tipo de identificación.",
+          idNumberRequired: "Por favor ingresa tu número de identificación.",
+          paymentMethodRequired: "Por favor selecciona un método de pago.",
           checkInRequired: "Por favor selecciona una fecha de ingreso.",
           checkOutRequired: "Por favor selecciona una fecha de salida.",
           dateOrder:
@@ -657,6 +730,9 @@ export const translations = {
           guestLabel: "Solicitante",
           emailLabel: "Correo electrónico",
           companyLabel: "Organización",
+          idTypeLabel: "Tipo de identificación",
+          idNumberLabel: "Número de identificación",
+          paymentMethodLabel: "Método de pago",
           checkInLabel: "Ingreso",
           checkOutLabel: "Salida",
           nightsLabel: "Noches",

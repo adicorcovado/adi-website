@@ -18,6 +18,7 @@ import {
 import type { BookingTranslations } from "../../../utils/translations";
 import ConfirmDialog from "../ConfirmDialog";
 import Turnstile, { type TurnstileHandle } from "../Turnstile";
+import StepRequesterDetails from "./StepRequesterDetails";
 import StepTripDetails from "./StepTripDetails";
 import StepMeals from "./StepMeals";
 import StepDocuments from "./StepDocuments";
@@ -28,8 +29,8 @@ interface BookingWizardProps {
   turnstileSiteKey: string;
 }
 
-const TOTAL_STEPS = 3;
-const MEALS_STEP_INDEX = 1;
+const TOTAL_STEPS = 4;
+const MEALS_STEP_INDEX = 2;
 
 function hasNoMeals(meals: ContactFormValues["meals"]): boolean {
   return Object.values(meals ?? {}).every((day) =>
@@ -56,6 +57,9 @@ function buildBookingFormData(
   formData.set("name", data.name);
   formData.set("email", data.email);
   formData.set("companyName", data.companyName ?? "");
+  formData.set("idType", data.idType);
+  formData.set("idNumber", data.idNumber);
+  formData.set("paymentMethod", data.paymentMethod);
   formData.set("checkInDate", data.checkInDate);
   formData.set("checkOutDate", data.checkOutDate);
   formData.set("lang", lang);
@@ -221,9 +225,10 @@ export default function BookingWizard({
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
-                {step === 0 && <StepTripDetails t={t.step1} />}
-                {step === 1 && <StepMeals t={t.step2} lang={lang} />}
-                {step === 2 && <StepDocuments t={t.step3} />}
+                {step === 0 && <StepRequesterDetails t={t.step1} />}
+                {step === 1 && <StepTripDetails t={t.step2} />}
+                {step === 2 && <StepMeals t={t.step3} lang={lang} />}
+                {step === 3 && <StepDocuments t={t.step4} />}
               </motion.div>
             </AnimatePresence>
           </div>

@@ -11,7 +11,7 @@ import Collapse from "../Collapse";
 import MealCategoryFields from "./MealCategoryFields";
 
 interface StepMealsProps {
-  t: BookingTranslations["form"]["step2"];
+  t: BookingTranslations["form"]["step3"];
   lang: string;
 }
 

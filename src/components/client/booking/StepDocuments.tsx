@@ -5,7 +5,7 @@ import type { ContactFormValues } from "../../../utils/contactFormSchema";
 import type { BookingTranslations } from "../../../utils/translations";
 
 interface StepDocumentsProps {
-  t: BookingTranslations["form"]["step3"];
+  t: BookingTranslations["form"]["step4"];
 }
 
 export default function StepDocuments({ t }: StepDocumentsProps) {

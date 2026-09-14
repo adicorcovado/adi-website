@@ -11,7 +11,7 @@ interface MealCategoryFieldsProps {
   dayKey: string;
   mealType: MealType;
   title: string;
-  fieldLabels: BookingTranslations["form"]["step2"]["fields"];
+  fieldLabels: BookingTranslations["form"]["step3"]["fields"];
   activeFields: readonly HeadcountField[];
 }
 

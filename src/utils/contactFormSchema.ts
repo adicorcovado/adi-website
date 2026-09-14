@@ -8,9 +8,17 @@ export const HEADCOUNT_FIELDS = [
   "volunteers",
   "researchers",
 ] as const;
+export const ID_TYPES = ["cedulaFisica", "cedulaJuridica", "pasaporte"] as const;
+export const PAYMENT_METHODS = [
+  "bankDeposit",
+  "electronicTransfer",
+  "creditDebitCard",
+] as const;
 
 export type MealType = (typeof MEAL_TYPES)[number];
 export type HeadcountField = (typeof HEADCOUNT_FIELDS)[number];
+export type IdType = (typeof ID_TYPES)[number];
+export type PaymentMethod = (typeof PAYMENT_METHODS)[number];
 
 const MAX_STAY_DAYS = 60;
 
@@ -37,6 +45,9 @@ export interface ContactFormMessages {
   nameRequired: string;
   emailRequired: string;
   emailInvalid: string;
+  idTypeRequired: string;
+  idNumberRequired: string;
+  paymentMethodRequired: string;
   checkInRequired: string;
   checkOutRequired: string;
   dateOrder: string;
@@ -88,6 +99,11 @@ export function buildContactFormSchema(messages: ContactFormMessages) {
         .min(1, messages.emailRequired)
         .email(messages.emailInvalid),
       companyName: z.string().trim().optional(),
+      idType: z.enum(ID_TYPES, { message: messages.idTypeRequired }),
+      idNumber: z.string().trim().min(1, messages.idNumberRequired),
+      paymentMethod: z.enum(PAYMENT_METHODS, {
+        message: messages.paymentMethodRequired,
+      }),
       checkInDate: z.string().min(1, messages.checkInRequired),
       checkOutDate: z.string().min(1, messages.checkOutRequired),
       ...headcountShape,
@@ -120,6 +136,9 @@ export const CONTACT_FORM_DEFAULT_VALUES = {
   name: "",
   email: "",
   companyName: "",
+  idType: "",
+  idNumber: "",
+  paymentMethod: "",
   checkInDate: "",
   checkOutDate: "",
   ...emptyHeadcount,
@@ -128,10 +147,8 @@ export const CONTACT_FORM_DEFAULT_VALUES = {
 } as unknown as ContactFormValues;
 
 export const STEP_FIELDS: Array<Array<keyof ContactFormValues>> = [
+  ["name", "email", "companyName", "idType", "idNumber", "paymentMethod"],
   [
-    "name",
-    "email",
-    "companyName",
     "checkInDate",
     "checkOutDate",
     "adults",
