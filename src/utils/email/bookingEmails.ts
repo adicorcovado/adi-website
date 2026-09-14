@@ -12,6 +12,7 @@ import {
   renderEmailLayout,
   renderKeyValueTable,
   renderLineItemsTable,
+  renderNotice,
   renderSectionTitle,
 } from "./layout";
 
@@ -56,7 +57,10 @@ function formatDate(dateValue: string, lang: Language): string {
   }).format(new Date(`${dateValue}T00:00:00Z`));
 }
 
-function renderSummaryBody(input: BuildBookingEmailInput): string {
+function renderSummaryBody(
+  input: BuildBookingEmailInput,
+  options?: { estimateWarning?: { title: string; text: string } },
+): string {
   const { data, pricing, t, lang } = input;
   const shared = t.emails.booking.shared;
   const categoryLabels = t.booking.form.step3.fields;
@@ -85,6 +89,13 @@ function renderSummaryBody(input: BuildBookingEmailInput): string {
 
   let html = renderSectionTitle(shared.tripDetailsTitle);
   html += renderKeyValueTable(tripDetailRows);
+
+  if (options?.estimateWarning) {
+    html += renderNotice(
+      options.estimateWarning.title,
+      options.estimateWarning.text,
+    );
+  }
 
   if (pricing.lodgingLines.length > 0) {
     html += renderSectionTitle(shared.lodgingTitle);
@@ -180,8 +191,14 @@ export function buildBookingGuestEmail(input: BuildBookingEmailInput): BookingEm
   const bodyHtml = `
     <h1 style="margin:0 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:22px;color:${EMAIL_COLORS.accent900};">${escapeHtml(guest.heading)}</h1>
     <p style="margin:0 0 4px;color:${EMAIL_COLORS.accent700};">${escapeHtml(greeting)}</p>
-    <p style="margin:0 0 24px;color:${EMAIL_COLORS.accent700};">${escapeHtml(guest.intro)}</p>
-    ${renderSummaryBody(input)}
+    <p style="margin:0 0 8px;color:${EMAIL_COLORS.accent700};">${escapeHtml(guest.intro)}</p>
+    <p style="margin:0 0 24px;color:${EMAIL_COLORS.accent700};">${escapeHtml(guest.introDetail)}</p>
+    ${renderSummaryBody(input, {
+      estimateWarning: {
+        title: guest.estimateWarningTitle,
+        text: guest.estimateWarningText,
+      },
+    })}
     <p style="margin:24px 0 0;font-size:13px;color:${EMAIL_COLORS.accent400};">${escapeHtml(guest.footerNote)}</p>
   `;
 

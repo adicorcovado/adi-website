@@ -341,7 +341,12 @@ export const translations = {
           subject: "We've received your booking request",
           heading: "Thanks for your request!",
           intro:
-            "We've received your booking request for the Sirena Ranger Station. Our team will review availability and be in touch shortly to confirm the details.",
+            "We've received your service request for your visit to the Sirena Station.",
+          introDetail:
+            "Our team will review the information provided and verify that it matches the attached SINAC reservation ticket(s). If everything is correct, ADI Corcovado Carate will proceed with billing and email you the confirmation along with the instructions needed to make your payment.",
+          estimateWarningTitle: "Important",
+          estimateWarningText:
+            "The costs shown below are only an informational estimate based on the details of your request. They do not represent a booking confirmation or an invoice. Please do not make any payment until you receive the confirmation, invoice, and payment instructions by email from ADI Corcovado Carate.",
           footerNote:
             "Have a question in the meantime? Just reply to this email.",
         },
@@ -720,7 +725,12 @@ export const translations = {
           subject: "Recibimos tu solicitud de reserva",
           heading: "¡Gracias por tu solicitud!",
           intro:
-            "Recibimos tu solicitud de reserva en la Estación Sirena. Nuestro equipo revisará la disponibilidad y te contactará pronto para confirmar los detalles.",
+            "Hemos recibido tu solicitud de servicios para tu visita a la Estación Sirena.",
+          introDetail:
+            "Nuestro equipo revisará la información proporcionada y verificará que coincida con la(s) boleta(s) de reserva del SINAC adjuntas. Si toda la información es correcta, la ADI Corcovado Carate procederá con la facturación y te enviará por correo electrónico la confirmación junto con las instrucciones necesarias para realizar el pago.",
+          estimateWarningTitle: "Importante",
+          estimateWarningText:
+            "Los costos que se muestran a continuación son únicamente un estimado informativo basado en los datos de tu solicitud. No representan una confirmación de la reserva ni una factura. No realices ningún pago hasta recibir por correo electrónico la confirmación, la factura y las instrucciones de pago por parte de la ADI Corcovado Carate.",
           footerNote:
             "¿Tienes alguna pregunta mientras tanto? Solo responde este correo.",
         },

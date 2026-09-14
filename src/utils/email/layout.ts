@@ -90,6 +90,17 @@ export function renderKeyValueTable(rows: Array<[string, string]>): string {
   </table>`;
 }
 
+export function renderNotice(title: string, text: string): string {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+    <tr>
+      <td style="padding:14px 16px;background-color:${EMAIL_COLORS.primary50};border-left:4px solid ${EMAIL_COLORS.primary500};border-radius:6px;">
+        <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:${EMAIL_COLORS.accent900};">${escapeHtml(title)}</p>
+        <p style="margin:0;font-size:13px;line-height:1.5;color:${EMAIL_COLORS.accent700};">${escapeHtml(text)}</p>
+      </td>
+    </tr>
+  </table>`;
+}
+
 export function renderSectionTitle(title: string): string {
   return `<h2 style="margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:16px;font-weight:700;color:${EMAIL_COLORS.accent900};">${escapeHtml(title)}</h2>`;
 }

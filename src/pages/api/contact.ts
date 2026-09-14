@@ -60,7 +60,10 @@ export const POST: APIRoute = async ({ request }) => {
       "Contact API is missing RESEND_API_KEY and/or CONTACT_FROM_EMAIL configuration.",
     );
     return jsonResponse(
-      { error: "Contact requests are temporarily unavailable. Please try again later." },
+      {
+        error:
+          "Contact requests are temporarily unavailable. Please try again later.",
+      },
       500,
     );
   }
@@ -68,7 +71,8 @@ export const POST: APIRoute = async ({ request }) => {
   const data = parsed.data;
   const lang = data.lang;
   const t = getTranslations(lang);
-  const notificationEmail = import.meta.env.CONTACT_NOTIFICATION_EMAIL || t.footer.email;
+  const notificationEmail =
+    import.meta.env.CONTACT_NOTIFICATION_EMAIL || t.footer.email;
 
   const resend = new Resend(resendApiKey);
   // Admin notifications always go out in Spanish, regardless of the sender's language.
@@ -86,6 +90,7 @@ export const POST: APIRoute = async ({ request }) => {
     resend.emails.send({
       from: fromEmail,
       to: data.email,
+      replyTo: notificationEmail,
       subject: guestEmail.subject,
       html: guestEmail.html,
     }),
@@ -97,7 +102,9 @@ export const POST: APIRoute = async ({ request }) => {
   if (adminResult.status === "rejected" || adminResult.value.error) {
     console.error(
       "Failed to send contact notification email:",
-      adminResult.status === "rejected" ? adminResult.reason : adminResult.value.error,
+      adminResult.status === "rejected"
+        ? adminResult.reason
+        : adminResult.value.error,
     );
     return jsonResponse(
       { error: "We couldn't send your message. Please try again later." },
@@ -108,7 +115,9 @@ export const POST: APIRoute = async ({ request }) => {
   if (guestResult.status === "rejected" || guestResult.value.error) {
     console.error(
       "Failed to send contact auto-reply email:",
-      guestResult.status === "rejected" ? guestResult.reason : guestResult.value.error,
+      guestResult.status === "rejected"
+        ? guestResult.reason
+        : guestResult.value.error,
     );
   }
 

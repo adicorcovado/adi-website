@@ -9,7 +9,10 @@ import {
   type HeadcountField,
   type MealType,
 } from "../../utils/contactFormSchema";
-import { calculateBookingPricing, calculateNights } from "../../utils/bookingPricing";
+import {
+  calculateBookingPricing,
+  calculateNights,
+} from "../../utils/bookingPricing";
 import {
   buildBookingAdminEmail,
   buildBookingGuestEmail,
@@ -63,10 +66,10 @@ const bookingRequestSchema = z
     ...headcountShape,
     meals: z.record(z.string(), mealDaySchema),
   })
-  .refine(
-    (data) => new Date(data.checkOutDate) >= new Date(data.checkInDate),
-    { message: "checkOutDate must be on or after checkInDate", path: ["checkOutDate"] },
-  );
+  .refine((data) => new Date(data.checkOutDate) >= new Date(data.checkInDate), {
+    message: "checkOutDate must be on or after checkInDate",
+    path: ["checkOutDate"],
+  });
 
 function jsonResponse(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -150,7 +153,10 @@ export const POST: APIRoute = async ({ request }) => {
       "Booking API is missing RESEND_API_KEY and/or BOOKING_FROM_EMAIL configuration.",
     );
     return jsonResponse(
-      { error: "Booking requests are temporarily unavailable. Please try again later." },
+      {
+        error:
+          "Booking requests are temporarily unavailable. Please try again later.",
+      },
       500,
     );
   }
@@ -158,11 +164,17 @@ export const POST: APIRoute = async ({ request }) => {
   const data = parsed.data;
   const lang = data.lang;
   const t = getTranslations(lang);
-  const notificationEmail = import.meta.env.BOOKING_NOTIFICATION_EMAIL || t.footer.email;
+  const notificationEmail =
+    import.meta.env.BOOKING_NOTIFICATION_EMAIL || t.footer.email;
 
   const nights = calculateNights(data.checkInDate, data.checkOutDate);
   const sameDayTrip = data.checkInDate === data.checkOutDate;
-  const pricing = calculateBookingPricing(data, data.meals, nights, !sameDayTrip);
+  const pricing = calculateBookingPricing(
+    data,
+    data.meals,
+    nights,
+    !sameDayTrip,
+  );
   const attachmentBuffer = Buffer.from(await entranceFeeProof.arrayBuffer());
 
   const resend = new Resend(resendApiKey);
@@ -192,6 +204,7 @@ export const POST: APIRoute = async ({ request }) => {
     resend.emails.send({
       from: fromEmail,
       to: data.email,
+      replyTo: notificationEmail,
       subject: guestEmail.subject,
       html: guestEmail.html,
     }),
@@ -203,7 +216,9 @@ export const POST: APIRoute = async ({ request }) => {
   if (adminResult.status === "rejected" || adminResult.value.error) {
     console.error(
       "Failed to send booking notification email:",
-      adminResult.status === "rejected" ? adminResult.reason : adminResult.value.error,
+      adminResult.status === "rejected"
+        ? adminResult.reason
+        : adminResult.value.error,
     );
     return jsonResponse(
       { error: "We couldn't submit your request. Please try again later." },
@@ -214,7 +229,9 @@ export const POST: APIRoute = async ({ request }) => {
   if (guestResult.status === "rejected" || guestResult.value.error) {
     console.error(
       "Failed to send booking confirmation email:",
-      guestResult.status === "rejected" ? guestResult.reason : guestResult.value.error,
+      guestResult.status === "rejected"
+        ? guestResult.reason
+        : guestResult.value.error,
     );
   }
 
