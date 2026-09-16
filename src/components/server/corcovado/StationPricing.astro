@@ -1,0 +1,94 @@
+---
+import Section from "../Section.astro";
+import Reveal from "../../client/Reveal";
+import { getTranslations } from "../../../utils/translations";
+import type { StationSlug } from "../../../utils/stations";
+import { BOOKING_RATES } from "../../../utils/bookingPricing";
+import { HEADCOUNT_FIELDS, MEAL_TYPES } from "../../../utils/contactFormSchema";
+
+interface Props {
+  lang: string;
+  slug: StationSlug;
+}
+
+const { lang, slug } = Astro.props;
+const t = getTranslations(lang).stations[slug].pricing;
+
+const formatAmount = (amount: number, currency: "USD" | "CRC") =>
+  new Intl.NumberFormat(lang === "es" ? "es-CR" : "en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: currency === "CRC" ? 0 : 2,
+  }).format(amount);
+---
+
+<Section id="pricing" background="muted">
+  <Reveal client:visible className="max-w-2xl">
+    <p
+      class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase"
+    >
+      {t.eyebrow}
+    </p>
+    <h2 class="mt-4 text-3xl font-bold text-accent-900 sm:text-4xl">
+      {t.title}
+    </h2>
+    <p class="mt-6 text-xl text-accent-700">
+      {t.subtitle}
+    </p>
+  </Reveal>
+
+  <Reveal
+    client:visible
+    delay={0.1}
+    className="mt-10 overflow-x-auto rounded-2xl bg-white shadow-sm"
+  >
+    <table class="w-full min-w-160 text-left">
+      <thead>
+        <tr class="border-b border-primary-100">
+          <th class="px-6 py-4 font-brevia font-semibold text-accent-900">
+            {t.categoryColumn}
+          </th>
+          <th class="px-6 py-4 font-brevia font-semibold text-accent-900">
+            {t.lodgingColumn}
+          </th>
+          {
+            MEAL_TYPES.map((mealType) => (
+              <th class="px-6 py-4 font-brevia font-semibold text-accent-900">
+                {t.mealLabels[mealType]}
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          HEADCOUNT_FIELDS.map((category) => {
+            const rate = BOOKING_RATES[category];
+            return (
+              <tr class="border-b border-primary-50 last:border-0">
+                <td class="px-6 py-4 font-semibold text-accent-900">
+                  {t.categoryLabels[category]}
+                </td>
+                <td class="px-6 py-4 text-accent-700">
+                  {formatAmount(rate.lodgingPerNight, rate.currency)}
+                </td>
+                {MEAL_TYPES.map((mealType) => {
+                  const price = rate.meals[mealType];
+                  return (
+                    <td class="px-6 py-4 text-accent-700">
+                      {price
+                        ? formatAmount(price, rate.currency)
+                        : t.notOffered}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </Reveal>
+
+  <p class="mt-4 text-md text-accent-500">{t.currencyNote}</p>
+</Section>

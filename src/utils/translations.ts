@@ -123,6 +123,127 @@ export const translations = {
         secondaryCta: "Contact Us",
       },
     },
+    stations: {
+      sirena: {
+        eyebrow: "Corcovado National Park",
+        title: "Sirena Station",
+        subtitle:
+          "The heart of Corcovado National Park, where rainforest, rivers, and Pacific coastline meet at one of the best wildlife-watching sites in Costa Rica.",
+        heroImage: "/images/ourWork/sirena-station.webp",
+        heroImageAlt:
+          "Sirena Station lodging platforms in Corcovado National Park",
+        history: {
+          eyebrow: "History",
+          title: "About the station",
+          body: [
+            "Sirena Station is the central ranger and research station of Corcovado National Park, set on the lowlands where the Sirena and Pavo rivers meet the Pacific Ocean. For decades it has served as a base for park rangers, biologists, and researchers studying one of the last great expanses of Pacific lowland rainforest in Central America.",
+            "Today Sirena remains the park's main hub, connected by trail to the La Leona and Los Patos entrance stations. ADI Corcovado manages the station's lodging and food service, supporting the visitors, volunteers, and researchers who pass through.",
+          ],
+          image: "/images/home/wildlife.webp",
+          imageAlt: "Trail through the rainforest near Sirena Station",
+        },
+        attractions: {
+          eyebrow: "What to see",
+          title: "Top attractions",
+          subtitle:
+            "Sirena is widely considered the best wildlife-watching station in Corcovado, with habitats ranging from primary rainforest to river mouth and coastline.",
+          items: [
+            {
+              title: "Sirena River mouth",
+              description:
+                "Watch for American crocodiles, herons, and other waterbirds where the Sirena River meets the ocean.",
+              image: "/images/home/home-3.webp",
+              imageAlt: "Sirena River mouth",
+            },
+            {
+              title: "Extensive trail network",
+              description:
+                "Marked trails loop through primary and secondary forest, connecting the station to La Leona and Los Patos.",
+              image: "/images/ourWork/trail.webp",
+              imageAlt: "Trail near Sirena Station",
+            },
+            {
+              title: "Exceptional wildlife watching",
+              description:
+                "Home to tapirs, all four Costa Rican monkey species, scarlet macaws, and, in season, sightings of jaguars and their prey.",
+              image: "/images/home/home-4.webp",
+              imageAlt: "Wildlife in Corcovado National Park",
+            },
+            {
+              title: "Pacific coastline",
+              description:
+                "Miles of undeveloped beach right at the station's doorstep, with occasional sightings of dolphins and migrating whales offshore.",
+              image: "/images/home/home-5.webp",
+              imageAlt: "Pacific coastline near Sirena Station",
+            },
+          ],
+        },
+        booking: {
+          eyebrow: "Plan your stay",
+          title: "How to book",
+          subtitle:
+            "Booking a stay at Sirena Station is a two-step process split between the park administration and ADI Corcovado.",
+          lodgingNote:
+            "Sirena offers shared-bed lodging under two roofed platforms with shared bathrooms. We do not offer private rooms.",
+          steps: [
+            {
+              title: "Request your park entrance",
+              description:
+                "Request your entrance tickets first with the Corcovado National Park administration (SINAC-ACOSA).",
+              emailLabel: "Email",
+              email: "acosa.reservaciones@sinac.go.cr",
+              phoneLabel: "Phone",
+              phone: "2775-2110 / 2775-1210 / 2775-1538 ext. 101",
+              cta: undefined as { label: string; slug: string } | undefined,
+            },
+            {
+              title: "Request lodging & meals",
+              description:
+                "Once you have your park entrance reservation, request lodging and food service with ADI Corcovado.",
+              emailLabel: "Email",
+              email: undefined as string | undefined,
+              phoneLabel: undefined as string | undefined,
+              phone: undefined as string | undefined,
+              cta: { label: "Request your booking", slug: "booking" },
+            },
+          ],
+          guideNotice: {
+            title: "Guide required for hiking access",
+            body: "If you hike in to Sirena Station from the main entrances — La Leona Station or Los Patos Station — you must enter with an authorized guide, as required by SINAC-ACOSA park regulations. Guiding service is entirely private and must be arranged on your own. You can request the list of authorized guides from SINAC-ACOSA at acosa.reservaciones@sinac.go.cr.",
+          },
+        },
+        pricing: {
+          eyebrow: "Rates",
+          title: "Lodging & meal prices",
+          subtitle:
+            "Official ADI Corcovado tariffs for lodging and meals at Sirena Station.",
+          categoryColumn: "Category",
+          lodgingColumn: "Lodging / night",
+          notOffered: "—",
+          currencyNote:
+            "Rates for researchers and public officials are listed in Costa Rican colones (₡); all other categories are priced in US dollars.",
+          categoryLabels: {
+            adults: "Adults",
+            children: "Children",
+            guides: "Guides",
+            volunteers: "Students / volunteers",
+            researchers: "Researchers / officials",
+          },
+          mealLabels: {
+            breakfast: "Breakfast",
+            snack: "Snack",
+            lunch: "Lunch",
+            dinner: "Dinner",
+          },
+        },
+        cta: {
+          title: "Ready to visit Sirena Station?",
+          subtitle:
+            "Start your booking request and our team will help you coordinate lodging and meals once you have your park entrance reservation.",
+          button: "Book now",
+        },
+      },
+    },
     contact: {
       hero: {
         eyebrow: "Get in touch",
@@ -263,7 +384,8 @@ export const translations = {
           fields: {
             file: {
               label: "Park entrance fee confirmation documents",
-              helpText: "PDF or image, up to 10 MB each. Attach up to 4 documents.",
+              helpText:
+                "PDF or image, up to 10 MB each. Attach up to 4 documents.",
               dropText: "Drag and drop your files here, or",
               browseText: "browse",
               noFileText: "No files attached yet",
@@ -502,6 +624,127 @@ export const translations = {
         secondaryCta: "Contáctanos",
       },
     },
+    stations: {
+      sirena: {
+        eyebrow: "Parque Nacional Corcovado",
+        title: "Estación Sirena",
+        subtitle:
+          "El corazón del Parque Nacional Corcovado, donde el bosque tropical, los ríos y la costa del Pacífico se encuentran en uno de los mejores sitios de observación de fauna de Costa Rica.",
+        heroImage: "/images/ourWork/sirena-station.webp",
+        heroImageAlt:
+          "Plataformas de hospedaje de la Estación Sirena en el Parque Nacional Corcovado",
+        history: {
+          eyebrow: "Historia",
+          title: "Sobre la estación",
+          body: [
+            "La Estación Sirena es la estación central de guardaparques e investigación del Parque Nacional Corcovado, ubicada en las tierras bajas donde los ríos Sirena y Pavo desembocan en el océano Pacífico. Durante décadas ha servido como base para guardaparques, biólogos e investigadores que estudian una de las últimas grandes extensiones de selva tropical del Pacífico en Centroamérica.",
+            "Hoy Sirena continúa siendo el punto central del parque, conectada por senderos con las estaciones de entrada La Leona y Los Patos. La ADI Corcovado administra los servicios de hospedaje y alimentación de la estación, apoyando a los visitantes, voluntarios e investigadores que pasan por ella.",
+          ],
+          image: "/images/home/wildlife.webp",
+          imageAlt: "Sendero en la selva cerca de la Estación Sirena",
+        },
+        attractions: {
+          eyebrow: "Qué ver",
+          title: "Atractivos principales",
+          subtitle:
+            "Sirena es considerada ampliamente como la mejor estación para la observación de fauna en Corcovado, con hábitats que van desde selva primaria hasta desembocadura de río y costa.",
+          items: [
+            {
+              title: "Boca del Río Sirena",
+              description:
+                "Observa cocodrilos americanos, garzas y otras aves acuáticas donde el Río Sirena desemboca en el mar.",
+              image: "/images/home/home-3.webp",
+              imageAlt: "Desembocadura del Río Sirena",
+            },
+            {
+              title: "Amplia red de senderos",
+              description:
+                "Senderos señalizados recorren bosque primario y secundario, conectando la estación con La Leona y Los Patos.",
+              image: "/images/ourWork/trail.webp",
+              imageAlt: "Sendero cerca de la Estación Sirena",
+            },
+            {
+              title: "Excelente observación de fauna",
+              description:
+                "Hogar de dantas, los cuatro monos de Costa Rica, lapas rojas y, en temporada, avistamientos de jaguares y sus presas.",
+              image: "/images/home/home-4.webp",
+              imageAlt: "Fauna silvestre en el Parque Nacional Corcovado",
+            },
+            {
+              title: "Costa del Pacífico",
+              description:
+                "Kilómetros de playa virgen frente a la estación, con avistamientos ocasionales de delfines y ballenas migratorias.",
+              image: "/images/home/home-5.webp",
+              imageAlt: "Costa del Pacífico cerca de la Estación Sirena",
+            },
+          ],
+        },
+        booking: {
+          eyebrow: "Planifica tu estadía",
+          title: "Cómo reservar",
+          subtitle:
+            "Reservar una estadía en la Estación Sirena es un proceso de dos pasos, dividido entre la administración del parque y la ADI Corcovado.",
+          lodgingNote:
+            "La Estación Sirena ofrece hospedaje en camas compartidas, localizadas bajo dos plataformas techadas con baños compartidos. No ofrecemos habitaciones privadas.",
+          steps: [
+            {
+              title: "Solicita tu ingreso al parque",
+              description:
+                "Primero deberás solicitar las entradas con la administración del Parque Nacional Corcovado (SINAC-ACOSA).",
+              emailLabel: "Correo",
+              email: "acosa.reservaciones@sinac.go.cr",
+              phoneLabel: "Teléfono",
+              phone: "2775-2110 / 2775-1210 / 2775-1538 ext. 101",
+              cta: undefined as { label: string; slug: string } | undefined,
+            },
+            {
+              title: "Solicita hospedaje y alimentación",
+              description:
+                "Una vez que tengas la reserva de entradas, deberás solicitar el servicio de hospedaje y alimentación con la ADI Corcovado.",
+              emailLabel: "Correo",
+              email: undefined as string | undefined,
+              phoneLabel: undefined as string | undefined,
+              phone: undefined as string | undefined,
+              cta: { label: "Solicita tu reserva", slug: "booking" },
+            },
+          ],
+          guideNotice: {
+            title: "Guía obligatorio para ingreso caminando",
+            body: "Si ingresas caminando hasta la Estación Sirena desde las principales entradas —La Leona o Los Patos—, deberás ingresar con un guía autorizado de forma obligatoria, según la normativa de la administración del parque SINAC-ACOSA. El servicio de guiado es totalmente privado y debes contratarlo por tu cuenta. Puedes solicitar la lista de guías autorizados a SINAC-ACOSA al correo acosa.reservaciones@sinac.go.cr.",
+          },
+        },
+        pricing: {
+          eyebrow: "Tarifas",
+          title: "Precios de hospedaje y alimentación",
+          subtitle:
+            "Tarifas oficiales de la ADI Corcovado para hospedaje y alimentación en la Estación Sirena.",
+          categoryColumn: "Categoría",
+          lodgingColumn: "Hospedaje / noche",
+          notOffered: "—",
+          currencyNote:
+            "Las tarifas para investigadores y funcionarios públicos se muestran en colones costarricenses (₡); las demás categorías se cobran en dólares estadounidenses.",
+          categoryLabels: {
+            adults: "Adultos",
+            children: "Niños",
+            guides: "Guías",
+            volunteers: "Estudiantes / voluntarios",
+            researchers: "Investigadores / funcionarios",
+          },
+          mealLabels: {
+            breakfast: "Desayuno",
+            snack: "Merienda",
+            lunch: "Almuerzo",
+            dinner: "Cena",
+          },
+        },
+        cta: {
+          title: "¿Listo para visitar la Estación Sirena?",
+          subtitle:
+            "Inicia tu solicitud de reserva y nuestro equipo te ayudará a coordinar el hospedaje y la alimentación una vez tengas tu reserva de ingreso al parque.",
+          button: "Reserva ahora",
+        },
+      },
+    },
     contact: {
       hero: {
         eyebrow: "Ponte en contacto",
@@ -648,7 +891,8 @@ export const translations = {
           fields: {
             file: {
               label: "Documentos de confirmación de ingreso al parque",
-              helpText: "PDF o imagen, hasta 10 MB cada uno. Adjunta hasta 4 documentos.",
+              helpText:
+                "PDF o imagen, hasta 10 MB cada uno. Adjunta hasta 4 documentos.",
               dropText: "Arrastra y suelta tus archivos aquí, o",
               browseText: "selecciónalos",
               noFileText: "Ningún archivo adjunto todavía",

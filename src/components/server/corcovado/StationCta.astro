@@ -1,0 +1,32 @@
+---
+import Section from "../Section.astro";
+import Button from "../Button.astro";
+import Reveal from "../../client/Reveal";
+import { getTranslations } from "../../../utils/translations";
+import { getLocalizedPath } from "../../../utils/languages";
+import type { StationSlug } from "../../../utils/stations";
+
+interface Props {
+  lang: string;
+  slug: StationSlug;
+}
+
+const { lang, slug } = Astro.props;
+const t = getTranslations(lang).stations[slug].cta;
+---
+
+<Section id="book" background="primary" containerClass="text-center">
+  <Reveal client:visible className="mx-auto max-w-2xl">
+    <h2 class="text-3xl font-bold sm:text-4xl">{t.title}</h2>
+    <p class="mt-4 text-xl text-primary-50">{t.subtitle}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <Button
+        href={getLocalizedPath(lang, "booking")}
+        variant="inverse"
+        size="lg"
+      >
+        {t.button}
+      </Button>
+    </div>
+  </Reveal>
+</Section>

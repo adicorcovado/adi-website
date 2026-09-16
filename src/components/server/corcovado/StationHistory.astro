@@ -1,0 +1,44 @@
+---
+import Section from "../Section.astro";
+import Reveal from "../../client/Reveal";
+import { getTranslations } from "../../../utils/translations";
+import type { StationSlug } from "../../../utils/stations";
+
+interface Props {
+  lang: string;
+  slug: StationSlug;
+}
+
+const { lang, slug } = Astro.props;
+const t = getTranslations(lang).stations[slug].history;
+---
+
+<Section id="history" background="white">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <Reveal client:visible>
+      <p
+        class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase"
+      >
+        {t.eyebrow}
+      </p>
+      <h2 class="mt-4 text-3xl font-bold text-accent-900 sm:text-4xl">
+        {t.title}
+      </h2>
+      <div class="mt-6 space-y-4">
+        {
+          t.body.map((paragraph) => (
+            <p class="text-xl text-accent-700">{paragraph}</p>
+          ))
+        }
+      </div>
+    </Reveal>
+
+    <Reveal client:visible delay={0.1}>
+      <img
+        src={t.image}
+        alt={t.imageAlt}
+        class="aspect-4/3 w-full rounded-2xl object-cover"
+      />
+    </Reveal>
+  </div>
+</Section>

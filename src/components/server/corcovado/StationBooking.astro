@@ -1,0 +1,94 @@
+---
+import Section from "../Section.astro";
+import Reveal from "../../client/Reveal";
+import Button from "../Button.astro";
+import { getTranslations } from "../../../utils/translations";
+import type { StationSlug } from "../../../utils/stations";
+
+interface Props {
+  lang: string;
+  slug: StationSlug;
+}
+
+const { lang, slug } = Astro.props;
+const t = getTranslations(lang).stations[slug].booking;
+---
+
+<Section id="booking" background="white">
+  <Reveal client:visible className="max-w-2xl">
+    <p
+      class="font-brevia text-sm font-semibold tracking-wide text-primary-600 uppercase"
+    >
+      {t.eyebrow}
+    </p>
+    <h2 class="mt-4 text-3xl font-bold text-accent-900 sm:text-4xl">
+      {t.title}
+    </h2>
+    <p class="mt-6 text-xl text-accent-700">
+      {t.subtitle}
+    </p>
+  </Reveal>
+
+  <Reveal
+    client:visible
+    delay={0.05}
+    className="mt-6 max-w-2xl rounded-2xl bg-primary-50 p-6"
+  >
+    <p class="text-lg text-accent-700">{t.lodgingNote}</p>
+  </Reveal>
+
+  <div class="mt-12 grid gap-8 lg:grid-cols-2">
+    {
+      t.steps.map((step, index) => (
+        <Reveal client:visible delay={index * 0.1}>
+          <div class="h-full rounded-2xl bg-primary-50 p-8">
+            <span class="font-brevia text-sm font-semibold text-primary-600">
+              {`0${index + 1}`}
+            </span>
+            <h3 class="mt-2 text-xl font-bold text-accent-900">{step.title}</h3>
+            <p class="mt-3 text-lg text-accent-700">{step.description}</p>
+            <dl class="mt-4 space-y-1 text-lg">
+              {step.email && (
+                <div class="flex flex-wrap gap-2">
+                  <dt class="font-semibold text-accent-900">
+                    {step.emailLabel}:
+                  </dt>
+                  <dd>
+                    <a
+                      href={`mailto:${step.email}`}
+                      class="text-primary-600 hover:underline"
+                    >
+                      {step.email}
+                    </a>
+                  </dd>
+                </div>
+              )}
+              {step.phone && (
+                <div class="flex flex-wrap gap-2">
+                  <dt class="font-semibold text-accent-900">
+                    {step.phoneLabel}:
+                  </dt>
+                  <dd class="text-accent-700">{step.phone}</dd>
+                </div>
+              )}
+            </dl>
+            {step.cta && (
+              <Button href={`/${step.cta.slug}`} variant="primary" class="mt-6">
+                {step.cta.label}
+              </Button>
+            )}
+          </div>
+        </Reveal>
+      ))
+    }
+  </div>
+
+  <Reveal
+    client:visible
+    delay={0.2}
+    className="mt-8 rounded-2xl border-2 border-accent-200 bg-accent-50 p-6"
+  >
+    <h3 class="text-lg font-bold text-accent-900">{t.guideNotice.title}</h3>
+    <p class="mt-2 text-lg text-accent-700">{t.guideNotice.body}</p>
+  </Reveal>
+</Section>

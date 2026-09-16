@@ -1,0 +1,36 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import StationHero from "../../../components/server/corcovado/StationHero.astro";
+import StationHistory from "../../../components/server/corcovado/StationHistory.astro";
+import StationAttractions from "../../../components/server/corcovado/StationAttractions.astro";
+import StationBooking from "../../../components/server/corcovado/StationBooking.astro";
+import StationPricing from "../../../components/server/corcovado/StationPricing.astro";
+import StationCta from "../../../components/server/corcovado/StationCta.astro";
+import { generatePaths, getCurrentLanguage } from "../../../utils/languages";
+import { STATION_SLUGS, getCurrentStation } from "../../../utils/stations";
+import { getTranslations } from "../../../utils/translations";
+
+export async function getStaticPaths() {
+  const langPaths = generatePaths();
+  return langPaths.flatMap(({ params }) =>
+    STATION_SLUGS.map((slug) => ({ params: { ...params, slug } })),
+  );
+}
+
+const lang = getCurrentLanguage(Astro.params.lang);
+const slug = getCurrentStation(Astro.params.slug);
+const t = getTranslations(lang).stations[slug];
+---
+
+<Layout
+  lang={lang}
+  title={`${t.title} · ADI Corcovado`}
+  description={t.subtitle}
+>
+  <StationHero lang={lang} slug={slug} />
+  <StationHistory lang={lang} slug={slug} />
+  <StationAttractions lang={lang} slug={slug} />
+  <StationBooking lang={lang} slug={slug} />
+  <StationPricing lang={lang} slug={slug} />
+  <StationCta lang={lang} slug={slug} />
+</Layout>
