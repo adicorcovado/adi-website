@@ -10,12 +10,13 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 const homePath = getLocalizedPath(lang);
+const corcovadoPath = getLocalizedPath(lang, "corcovado");
 
 const navItems = [
   { label: t.nav.home, href: homePath },
   { label: t.nav.about, href: `${homePath}#about` },
-  { label: t.nav.corcovado, href: `${homePath}#corcovado` },
-  { label: t.nav.contact, href: `${homePath}#contact` },
+  { label: t.nav.corcovado, href: corcovadoPath },
+  { label: t.nav.contact, href: getLocalizedPath(lang, "contact") },
 ];
 
 const year = new Date().getFullYear();

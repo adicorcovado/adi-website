@@ -139,7 +139,7 @@ export const translations = {
             "Sirena Station is the central ranger and research station of Corcovado National Park, set on the lowlands where the Sirena and Pavo rivers meet the Pacific Ocean. For decades it has served as a base for park rangers, biologists, and researchers studying one of the last great expanses of Pacific lowland rainforest in Central America.",
             "Today Sirena remains the park's main hub, connected by trail to the La Leona and Los Patos entrance stations. ADI Corcovado manages the station's lodging and food service, supporting the visitors, volunteers, and researchers who pass through.",
           ],
-          image: "/images/home/wildlife.webp",
+          image: "/images/ourWork/sirena-station.webp",
           imageAlt: "Trail through the rainforest near Sirena Station",
         },
         attractions: {
@@ -152,28 +152,28 @@ export const translations = {
               title: "Sirena River mouth",
               description:
                 "Watch for American crocodiles, herons, and other waterbirds where the Sirena River meets the ocean.",
-              image: "/images/home/home-3.webp",
+              image: "/images/home/home-2.webp",
               imageAlt: "Sirena River mouth",
             },
             {
               title: "Extensive trail network",
               description:
                 "Marked trails loop through primary and secondary forest, connecting the station to La Leona and Los Patos.",
-              image: "/images/ourWork/trail.webp",
+              image: "/images/stations/sirena-trail.webp",
               imageAlt: "Trail near Sirena Station",
             },
             {
               title: "Exceptional wildlife watching",
               description:
                 "Home to tapirs, all four Costa Rican monkey species, scarlet macaws, and, in season, sightings of jaguars and their prey.",
-              image: "/images/home/home-4.webp",
+              image: "/images/home/wildlife.webp",
               imageAlt: "Wildlife in Corcovado National Park",
             },
             {
               title: "Pacific coastline",
               description:
                 "Miles of undeveloped beach right at the station's doorstep, with occasional sightings of dolphins and migrating whales offshore.",
-              image: "/images/home/home-5.webp",
+              image: "/images/stations/costa.webp",
               imageAlt: "Pacific coastline near Sirena Station",
             },
           ],
@@ -242,6 +242,33 @@ export const translations = {
             "Start your booking request and our team will help you coordinate lodging and meals once you have your park entrance reservation.",
           button: "Book now",
         },
+      },
+    },
+    corcovadoPage: {
+      hero: {
+        eyebrow: "Corcovado National Park",
+        title: "The most biologically intense place on Earth",
+        subtitle:
+          "A vast, remote wilderness of Pacific lowland rainforest, rivers, and coastline on the Osa Peninsula, protected since 1975 and home to some of the greatest biodiversity on the planet.",
+        image: "/images/home/wildlife.webp",
+        imageAlt: "Wildlife in Corcovado National Park",
+      },
+      history: {
+        eyebrow: "History",
+        title: "A wilderness protected since 1975",
+        body: [
+          "Corcovado National Park was created in 1975 to protect one of the last great expanses of Pacific lowland rainforest in Central America. It forms the core of the Osa Conservation Area, on a peninsula that National Geographic has called 'the most biologically intense place on Earth.'",
+          "The park spans rainforest, mangroves, rivers, and undeveloped coastline, home to tapirs, jaguars, scarlet macaws, all four Costa Rican monkey species, and hundreds of species found nowhere else. It is reached through a network of ranger stations that also serve as trailheads for visitors exploring the park.",
+        ],
+        image: "/images/home/home-3.webp",
+        imageAlt: "Rainforest river inside Corcovado National Park",
+      },
+      stations: {
+        eyebrow: "Ranger stations",
+        title: "Explore the park's stations",
+        subtitle:
+          "Each station is a gateway into a different part of Corcovado, with its own trails, lodging, and wildlife-watching opportunities.",
+        cta: "Learn more",
       },
     },
     contact: {
@@ -640,7 +667,7 @@ export const translations = {
             "La Estación Sirena es la estación central de guardaparques e investigación del Parque Nacional Corcovado, ubicada en las tierras bajas donde los ríos Sirena y Pavo desembocan en el océano Pacífico. Durante décadas ha servido como base para guardaparques, biólogos e investigadores que estudian una de las últimas grandes extensiones de selva tropical del Pacífico en Centroamérica.",
             "Hoy Sirena continúa siendo el punto central del parque, conectada por senderos con las estaciones de entrada La Leona y Los Patos. La ADI Corcovado administra los servicios de hospedaje y alimentación de la estación, apoyando a los visitantes, voluntarios e investigadores que pasan por ella.",
           ],
-          image: "/images/home/wildlife.webp",
+          image: "/images/ourWork/sirena-station.webp",
           imageAlt: "Sendero en la selva cerca de la Estación Sirena",
         },
         attractions: {
@@ -653,28 +680,28 @@ export const translations = {
               title: "Boca del Río Sirena",
               description:
                 "Observa cocodrilos americanos, garzas y otras aves acuáticas donde el Río Sirena desemboca en el mar.",
-              image: "/images/home/home-3.webp",
+              image: "/images/home/home-2.webp",
               imageAlt: "Desembocadura del Río Sirena",
             },
             {
               title: "Amplia red de senderos",
               description:
                 "Senderos señalizados recorren bosque primario y secundario, conectando la estación con La Leona y Los Patos.",
-              image: "/images/ourWork/trail.webp",
+              image: "/images/stations/sirena-trail.webp",
               imageAlt: "Sendero cerca de la Estación Sirena",
             },
             {
               title: "Excelente observación de fauna",
               description:
                 "Hogar de dantas, los cuatro monos de Costa Rica, lapas rojas y, en temporada, avistamientos de jaguares y sus presas.",
-              image: "/images/home/home-4.webp",
+              image: "/images/home/wildlife.webp",
               imageAlt: "Fauna silvestre en el Parque Nacional Corcovado",
             },
             {
               title: "Costa del Pacífico",
               description:
                 "Kilómetros de playa virgen frente a la estación, con avistamientos ocasionales de delfines y ballenas migratorias.",
-              image: "/images/home/home-5.webp",
+              image: "/images/stations/costa.webp",
               imageAlt: "Costa del Pacífico cerca de la Estación Sirena",
             },
           ],
@@ -743,6 +770,33 @@ export const translations = {
             "Inicia tu solicitud de reserva y nuestro equipo te ayudará a coordinar el hospedaje y la alimentación una vez tengas tu reserva de ingreso al parque.",
           button: "Reserva ahora",
         },
+      },
+    },
+    corcovadoPage: {
+      hero: {
+        eyebrow: "Parque Nacional Corcovado",
+        title: "El lugar biológicamente más intenso de la Tierra",
+        subtitle:
+          "Una vasta y remota selva tropical del Pacífico, con ríos y costa, en la Península de Osa, protegida desde 1975 y hogar de una de las mayores biodiversidades del planeta.",
+        image: "/images/home/wildlife.webp",
+        imageAlt: "Vida silvestre en el Parque Nacional Corcovado",
+      },
+      history: {
+        eyebrow: "Historia",
+        title: "Una selva protegida desde 1975",
+        body: [
+          "El Parque Nacional Corcovado fue creado en 1975 para proteger una de las últimas grandes extensiones de selva tropical del Pacífico en Centroamérica. Forma el núcleo del Área de Conservación Osa, en una península que National Geographic ha descrito como 'el lugar biológicamente más intenso de la Tierra'.",
+          "El parque abarca selva, manglares, ríos y costa sin desarrollar, hogar de dantas, jaguares, lapas rojas, los cuatro monos de Costa Rica y cientos de especies que no existen en ningún otro lugar. Se accede a través de una red de estaciones de guardaparques que también sirven como punto de partida para los visitantes que exploran el parque.",
+        ],
+        image: "/images/home/home-3.webp",
+        imageAlt: "Río de selva tropical dentro del Parque Nacional Corcovado",
+      },
+      stations: {
+        eyebrow: "Estaciones de guardaparques",
+        title: "Explora las estaciones del parque",
+        subtitle:
+          "Cada estación es una puerta de entrada a una parte distinta de Corcovado, con sus propios senderos, hospedaje y oportunidades de observación de fauna.",
+        cta: "Conocer más",
       },
     },
     contact: {

@@ -1,0 +1,27 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ParkHero from "../../../components/server/corcovado/ParkHero.astro";
+import ParkHistory from "../../../components/server/corcovado/ParkHistory.astro";
+import RangerStations from "../../../components/server/corcovado/RangerStations.astro";
+import Cta from "../../../components/server/home/Cta.astro";
+import { generatePaths, getCurrentLanguage } from "../../../utils/languages";
+import { getTranslations } from "../../../utils/translations";
+
+export async function getStaticPaths() {
+  return generatePaths();
+}
+
+const lang = getCurrentLanguage(Astro.params.lang);
+const t = getTranslations(lang).corcovadoPage;
+---
+
+<Layout
+  lang={lang}
+  title={`${t.hero.title} · ADI Corcovado`}
+  description={t.hero.subtitle}
+>
+  <ParkHero lang={lang} />
+  <ParkHistory lang={lang} />
+  <RangerStations lang={lang} />
+  <Cta lang={lang} />
+</Layout>

@@ -20,7 +20,7 @@ const currentSlug = stripLangPrefix(Astro.url.pathname, lang);
 const navItems = [
   { label: t.nav.home, href: homePath },
   { label: t.nav.about, href: `${homePath}#about` },
-  { label: t.nav.corcovado, href: `${homePath}#corcovado` },
+  { label: t.nav.corcovado, href: getLocalizedPath(lang, "corcovado") },
   { label: t.nav.contact, href: getLocalizedPath(lang, "contact") },
 ];
 
