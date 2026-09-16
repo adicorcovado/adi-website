@@ -89,7 +89,7 @@ export default function BookingWizard({
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [showNoMealsWarning, setShowNoMealsWarning] = useState(false);
+  const [showNoMealsError, setShowNoMealsError] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileHandle>(null);
   const wizardRef = useRef<HTMLDivElement>(null);
@@ -113,15 +113,10 @@ export default function BookingWizard({
     if (!isValid) return;
 
     if (step === MEALS_STEP_INDEX && hasNoMeals(methods.getValues("meals"))) {
-      setShowNoMealsWarning(true);
+      setShowNoMealsError(true);
       return;
     }
 
-    goToStep(step + 1);
-  };
-
-  const handleConfirmNoMeals = () => {
-    setShowNoMealsWarning(false);
     goToStep(step + 1);
   };
 
@@ -287,13 +282,11 @@ export default function BookingWizard({
       </FormProvider>
 
       <ConfirmDialog
-        open={showNoMealsWarning}
+        open={showNoMealsError}
         title={t.noMealsWarning.title}
         description={t.noMealsWarning.description}
         confirmLabel={t.noMealsWarning.confirm}
-        cancelLabel={t.noMealsWarning.cancel}
-        onConfirm={handleConfirmNoMeals}
-        onCancel={() => setShowNoMealsWarning(false)}
+        onConfirm={() => setShowNoMealsError(false)}
       />
     </div>
   );

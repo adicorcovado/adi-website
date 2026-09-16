@@ -8,9 +8,13 @@ interface ConfirmDialogProps {
   title: string;
   description: string;
   confirmLabel: string;
-  cancelLabel: string;
   onConfirm: () => void;
-  onCancel: () => void;
+  /**
+   * Omit cancelLabel/onCancel to render as a single-button error/alert
+   * dialog (e.g. blocking validation) instead of a confirm/cancel choice.
+   */
+  cancelLabel?: string;
+  onCancel?: () => void;
 }
 
 export default function ConfirmDialog({
@@ -22,11 +26,14 @@ export default function ConfirmDialog({
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  const isErrorOnly = !onCancel;
+  const dismiss = onCancel ?? onConfirm;
+
   useEffect(() => {
     if (!open) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onCancel();
+      if (event.key === "Escape") dismiss();
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -36,7 +43,7 @@ export default function ConfirmDialog({
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [open, onCancel]);
+  }, [open, dismiss]);
 
   if (typeof document === "undefined") return null;
 
@@ -57,7 +64,7 @@ export default function ConfirmDialog({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="absolute inset-0 bg-accent-900/40"
-            onClick={onCancel}
+            onClick={dismiss}
           />
           <motion.div
             key="panel"
@@ -84,17 +91,24 @@ export default function ConfirmDialog({
             </p>
 
             <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row">
-              <button
-                type="button"
-                onClick={onCancel}
-                className="flex-1 rounded-full border border-accent-100 px-6 py-3 font-semibold text-accent-900 transition-colors hover:bg-accent-50"
-              >
-                {cancelLabel}
-              </button>
+              {!isErrorOnly && (
+                <button
+                  type="button"
+                  onClick={onCancel}
+                  className="flex-1 rounded-full border border-accent-100 px-6 py-3 font-semibold text-accent-900 transition-colors hover:bg-accent-50"
+                >
+                  {cancelLabel}
+                </button>
+              )}
               <button
                 type="button"
                 onClick={onConfirm}
-                className="flex-1 rounded-full bg-primary-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-600"
+                className={[
+                  "flex-1 rounded-full px-6 py-3 font-semibold text-white transition-colors cursor-pointer",
+                  isErrorOnly
+                    ? "bg-danger-600 hover:bg-danger-700"
+                    : "bg-primary-500 hover:bg-primary-600",
+                ].join(" ")}
               >
                 {confirmLabel}
               </button>
