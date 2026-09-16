@@ -311,7 +311,7 @@ export const translations = {
         eyebrow: "Plan your visit",
         title: "Request your booking",
         subtitle:
-          "Complete the form with the details of your visit to the Sirena Ranger Station. Our team will review availability and get in touch with you to confirm your booking, lodging, and meals.",
+          "Complete the form with the details of your visit to the Sirena Ranger Station.",
       },
       form: {
         steps: [
@@ -842,7 +842,7 @@ export const translations = {
         eyebrow: "Planifica tu visita",
         title: "Solicita tu reserva",
         subtitle:
-          "Completa el formulario con los detalles de tu visita a la Estación Sirena. Nuestro equipo revisará la disponibilidad y se pondrá en contacto contigo para confirmar tu reserva, hospedaje y alimentación.",
+          "Completa el formulario con los detalles de tu visita a la Estación Sirena.",
       },
       form: {
         steps: [
